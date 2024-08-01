@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+  
+website:
+  cookie-consent:
+    type: express
+    style: headline
+    palette: dark  
+  title: "ENVR 282"
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - sidebar:Labs
+
+  sidebar:
+    - id: Labs
+      title: "Labs"
+      style: "docked"
+      background: light
+      contents: 
+       - getting_started.qmd
+      
+format:
+  html:
+    theme: flatly
+    css: styles.css
+    toc: true
+
+editor: visual
+
+
+
+
+
