@@ -1,7 +1,7 @@
 project:
   type: website
   output-dir: docs
-
+  
 website:
   cookie-consent:
     type: express
@@ -23,7 +23,7 @@ website:
       background: light
       contents: 
        - getting_started.qmd
-      
+
 format:
   html:
     theme: flatly
@@ -31,8 +31,5 @@ format:
     toc: true
 
 editor: visual
-
-
-
 
 
