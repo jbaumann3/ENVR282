@@ -7,7 +7,7 @@ website:
     type: express
     style: headline
     palette: dark  
-  title: "ENVR 282"
+  title: "THIS IS A TEST"
   navbar:
     background: primary
     search: true
