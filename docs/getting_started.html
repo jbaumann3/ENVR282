@@ -189,6 +189,7 @@ cookieconsent.run({
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
   <li><a href="#additional-tutorials-and-resources" id="toc-additional-tutorials-and-resources" class="nav-link" data-scroll-target="#additional-tutorials-and-resources">Additional Tutorials and Resources</a></li>
+  <li><a href="#install-r-and-rstudio" id="toc-install-r-and-rstudio" class="nav-link" data-scroll-target="#install-r-and-rstudio"><strong>1.) Install R and RStudio</strong></a></li>
   <li><a href="#rstudio-layout" id="toc-rstudio-layout" class="nav-link" data-scroll-target="#rstudio-layout"><strong>2.) RStudio Layout</strong></a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#the-working-directory---what-is-it-how-to-check-it-and-how-to-set-it" id="toc-the-working-directory---what-is-it-how-to-check-it-and-how-to-set-it" class="nav-link" data-scroll-target="#the-working-directory---what-is-it-how-to-check-it-and-how-to-set-it"><strong>3.) The Working Directory</strong> - What is it, how to check it, and how to set it!</a>
@@ -249,59 +250,52 @@ cookieconsent.run({
 <p><a href="https://www.youtube.com/watch?v=JtQfXY0lIzc">Video Tidyverse tutorial</a></p>
 <p><a href="https://rstudio.cloud/learn/primers">Want to TRY some stuff on your own? Use the RStudio.cloud primers</a></p>
 <p>The best way to learn is to GOOGLE IT and try stuff</p>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">::: panel-tabset # <strong>1.) Install R and RStudio</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">In this course we will learn how to program in R (a coding language) using RStudio (a coding environment). RStudio makes using R easier and more user friendly!<br>
+<hr>
+</section>
+<section id="install-r-and-rstudio" class="level1">
+<h1><strong>1.) Install R and RStudio</strong></h1>
+<p>In this course we will learn how to program in R (a coding language) using RStudio (a coding environment). RStudio makes using R easier and more user friendly!<br>
 We will also learn how to make pdf and html output files that include code and outputs (tables and graphs).<br>
 These are handy tools for reporting data and even for writing papers! We will use Quarto to do this (a new tool from the folks who designed RStudio).<br>
-Your lab reports will all be built using Quarto.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>You have options:</strong><br>
+Your lab reports will all be built using Quarto.</p>
+<p><strong>You have options:</strong><br>
 1. Install R and RStudio on your device(s) and use it locally<br>
-2. Sign up for a posit cloud account here: https://posit.cloud/plans/free. Posit Cloud is a way to access RStudio online without downloading and installing anything.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: panel-tabset ## <strong>Install R</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">To install R, we will use this link: <a href="https://cran.r-project.org/bin/">install R</a><br>
+2. Sign up for a posit cloud account here: https://posit.cloud/plans/free. Posit Cloud is a way to access RStudio online without downloading and installing anything.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Install R</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Install RStudio</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>To install R, we will use this link: <a href="https://cran.r-project.org/bin/">install R</a><br>
 1.) Choose the operating system you use (macosx or windows)<br>
 2.) Click the blue .pkg link that aligns with your computer and operating system (ask questions if needed)<br>
-3.) Follow instructions</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">## <strong>Install RStudio</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">1.) Click <a href="https://www.rstudio.com/products/rstudio/download/#download">this link</a> and follow instructions<br>
-2.) OPEN RStudio (not R). Click on the logo that is a white R inside a blue circle (RStudio). We never need to open R, we can use RStudio. :::</td>
-</tr>
-</tbody>
-</table>
+3.) Follow instructions</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>1.) Click <a href="https://www.rstudio.com/products/rstudio/download/#download">this link</a> and follow instructions<br>
+2.) OPEN RStudio (not R). Click on the logo that is a white R inside a blue circle (RStudio). We never need to open R, we can use RStudio.</p>
+</div>
+</div>
+</div>
+<hr>
 </section>
 <section id="rstudio-layout" class="level1">
 <h1><strong>2.) RStudio Layout</strong></h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Top Left</strong>: Script</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Bottom Left</strong>: Console/terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Top Right</strong>: Environment, History, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><strong>Bottom Right</strong>: Files, Plots, Packages, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false"><strong>Top Bar</strong>: File, Edit, Etc…</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>Top Left</strong>: Script</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>Bottom Left</strong>: Console/terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>Top Right</strong>: Environment, History, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>Bottom Right</strong>: Files, Plots, Packages, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false"><strong>Top Bar</strong>: File, Edit, Etc…</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Where you will write your script(s). This is where we should be writing our code! It can be run, commented, and saved here.</p>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Here you can run single lines of code and/or see error messages, warnings, and other outputs. Code should not be written here unless it is simple / for testing! Anything worth keeping should go in the script at the top left!</p>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p>Here you will be able to see the dataframes you have read into R or created (using the “Environment tab”). The other tabs are less useful for us at this stage, but feel free to explore them! Note: The Broom icon can be used to clear dataframes from your environment. You can minimize or maximize this and each other quadrant using the symbols at the top right of the quadrant (a collapsed page next to a full page)</p>
 </div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
 <p>This is the second most important quadrant (behind top left) and we can change the working directory here very easily. Here we can see the files in our present working directory (we will learn about that next!) We can also see any plots we make in the plots tab. VERY importantly, we can see the packages we have loaded or installed in the packages tab. This will be useful to you! You can also use this tab to search the internal Help dictionary, though I will note that the internet is often more helpful!</p>
 </div>
-<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
 <p>You can use the top bar in RStudio much like in any other program. I’ll let you explore that on your own. Notably, in the top right corner of the top bar you will see an ‘R’ in a blue box. This is where you can set the project you are working form. Using projects is great because it allows you an easy way to compartmentalize your code, data, figures, and working directory for a single project all in one place! We will get to this shortly.</p>
 </div>
 </div>
@@ -620,7 +614,7 @@ Beyond course use, Quarto and markdown is excellent for creating professional lo
 <h2 class="anchored" data-anchor-id="rendering-your-report"><strong>Rendering your report</strong></h2>
 <p>To Visualize what your report will look like, click the ‘visual’ tab in the top bar (on the left). Note that if you do this, it CAN change your code–so be careful. You can also use the GUI to alter your report in the visual tab. This provides a nice alternative to the code based formatting options in the ‘source’ tab.<br>
 </p>
-<p>To actually render into an html or pdf document, you must click “Render”. You can use the arrow to the right of “Render” to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfully Render your quarto document into an html or pdf report in order to turn in your labs! :::</p>
+<p>To actually render into an html or pdf document, you must click “Render”. You can use the arrow to the right of “Render” to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfully Render your quarto document into an html or pdf report in order to turn in your labs!</p>
 <hr>
 </section>
 </section>

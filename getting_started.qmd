@@ -36,7 +36,7 @@ IN THIS TUTORIAL YOU WILL LEARN:\
 The best way to learn is to GOOGLE IT and try stuff
 
 ------------------------------------------------------------------------
-::: panel-tabset
+
 # **1.) Install R and RStudio**
 
 In this course we will learn how to program in R (a coding language) using RStudio (a coding environment). RStudio makes using R easier and more user friendly!\
@@ -316,7 +316,6 @@ Once you have a code chunk inserted you will notice that the background of the c
 To Visualize what your report will look like, click the 'visual' tab in the top bar (on the left). Note that if you do this, it CAN change your code--so be careful. You can also use the GUI to alter your report in the visual tab. This provides a nice alternative to the code based formatting options in the 'source' tab.\
 
 To actually render into an html or pdf document, you must click "Render". You can use the arrow to the right of "Render" to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfully Render your quarto document into an html or pdf report in order to turn in your labs!
-:::
 
 ------------------------------------------------------------------------
 
