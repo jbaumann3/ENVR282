@@ -197,13 +197,7 @@ cookieconsent.run({
   <li><a href="#how-to-set-the-working-directory" id="toc-how-to-set-the-working-directory" class="nav-link" data-scroll-target="#how-to-set-the-working-directory"><strong>How to SET the working directory</strong></a></li>
   </ul></li>
   <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects"><strong>4.) RStudio Projects!</strong></a></li>
-  <li><a href="#using-quarto" id="toc-using-quarto" class="nav-link" data-scroll-target="#using-quarto"><strong>Using Quarto</strong></a>
-  <ul class="collapse">
-  <li><a href="#to-make-a-quarto-document" id="toc-to-make-a-quarto-document" class="nav-link" data-scroll-target="#to-make-a-quarto-document">To make a Quarto document</a></li>
-  <li><a href="#formatting-text" id="toc-formatting-text" class="nav-link" data-scroll-target="#formatting-text"><strong>Formatting text</strong></a></li>
-  <li><a href="#making-a-code-chunk" id="toc-making-a-code-chunk" class="nav-link" data-scroll-target="#making-a-code-chunk"><strong>Making a code chunk</strong></a></li>
-  <li><a href="#rendering-your-report" id="toc-rendering-your-report" class="nav-link" data-scroll-target="#rendering-your-report"><strong>Rendering your report</strong></a></li>
-  </ul></li>
+  <li><a href="#using-quarto" id="toc-using-quarto" class="nav-link" data-scroll-target="#using-quarto"><strong>Using Quarto</strong></a></li>
   <li><a href="#lab-0-assignment" id="toc-lab-0-assignment" class="nav-link" data-scroll-target="#lab-0-assignment"><strong>Lab 0 Assignment</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="getting_started.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -344,8 +338,10 @@ Your lab reports will all be built using Quarto.</p>
 <p>Quarto is a report building software that is integrated into RStudio. It replaces RMarkdown, if you have used that in the past, and is usable with python, julia, and R. Thus, learning it is a transferable skill. Quarto is designed to allow you to easily write documents that integrate text, hyperlinks, code, and images into a one neat file. This website, for example, is made entirely in Quarto! Quarto documents, or markdown documents as they are more generically known, are common in data science. these documents are great for courses, as you can do your programming, share your code, results, figures, stats, and explanations all in one document. Instead of the instructor downloading your code and running it line by line, we can see the results of the code you write just below the code itself! Super nice for assessing work. Plus, Quarto documents will not render unless the code is error free, so this is a nice way for students to check their own work.<br>
 Beyond course use, Quarto and markdown is excellent for creating professional looking data driven reports as well as online resources (like this website :) ). Learning Quarto is a great skill for anyone interested in programming, data, or the sciences! So, let’s learn how to use it!<br>
 </p>
-<section id="to-make-a-quarto-document" class="level2">
-<h2 class="anchored" data-anchor-id="to-make-a-quarto-document">To make a Quarto document</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">To make a Quarto document</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><strong>Formatting text</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><strong>Making a code chunk</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false"><strong>Rendering your report</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>click file -&gt; new file -&gt; Quarto document / Complete the pop up prompts and then wait for the document to load. / We want to replace the top bit (our YAML header, everything between the two lines that contains just — at the top) with the following (use your name and title!)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
@@ -361,17 +357,15 @@ Beyond course use, Quarto and markdown is excellent for creating professional lo
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>editor<span class="sc">:</span> visual</span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="formatting-text" class="level2">
-<h2 class="anchored" data-anchor-id="formatting-text"><strong>Formatting text</strong></h2>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p>Unlike in a regular R script, using the ‘#’ at the start of a line will not comment that line out. Instead, you can type as you would normally in an R Markdown (Rmd) document. We can format our text in the following ways:</p>
 <p><img src="images/RMD_formatting.png" class="img-fluid"><br>
 Bold: ‘<strong>’ on either end of a word, phrase, or line will make it bold!</strong> this is in bold** =’<strong>‘this is in bold’</strong>’ without the quotes around the **<br>
 </p>
 <p>Line breaks: DO you want text to be on different lines? Insert a ’’ at the end of a line to make a line break!</p>
-</section>
-<section id="making-a-code-chunk" class="level2">
-<h2 class="anchored" data-anchor-id="making-a-code-chunk"><strong>Making a code chunk</strong></h2>
+</div>
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <p>Since qmd documents are text based, we need to tell RStudio when we want to actually include code. To do this, we will insert a code chunk. To insert a code chunk:<br>
 </p>
 <p>1.) Use the keyboard shortcut ‘ctrl’+‘alt’+‘i’ (PC) or ‘cmd’+‘alt’+‘i’ (Mac) to insert a code chunk.<br>
@@ -383,14 +377,15 @@ Bold: ‘<strong>’ on either end of a word, phrase, or line will make it bold!
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Using '#' at the start of a line indicates a comment, which is not runnable code!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="rendering-your-report" class="level2">
-<h2 class="anchored" data-anchor-id="rendering-your-report"><strong>Rendering your report</strong></h2>
+</div>
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
 <p>To Visualize what your report will look like, click the ‘visual’ tab in the top bar (on the left). Note that if you do this, it CAN change your code–so be careful. You can also use the GUI to alter your report in the visual tab. This provides a nice alternative to the code based formatting options in the ‘source’ tab.<br>
 </p>
 <p>To actually render into an html or pdf document, you must click “Render”. You can use the arrow to the right of “Render” to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfully Render your quarto document into an html or pdf report in order to turn in your labs!</p>
+</div>
+</div>
+</div>
 <hr>
-</section>
 </section>
 <section id="lab-0-assignment" class="level1">
 <h1><strong>Lab 0 Assignment</strong></h1>
