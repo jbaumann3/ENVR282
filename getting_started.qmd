@@ -8,7 +8,7 @@ format:
     toc: true
     number-sections: true
     colorlinks: true
-    self-contained: true
+    embed-resources: true
 
 editor: visual
 ---
@@ -161,6 +161,8 @@ format:
     toc: true
     number-sections: true
     colorlinks: true
+    embed-resources: true
+
 editor: visual
 ---
 
@@ -338,8 +340,13 @@ head(coralcover)
 
 **4.** Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. **remember** that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4. 
 
-**5.** Read in [THESE data](https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv) and take a look at the shape of the data using head, tail, str, 
+**5.** Read in [THESE data](https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv) and take a look at the shape of the data using a.) head, b.) tail, c.) str(), d. summary (of a numeric column), and e.) count the number of rows and columns (using code!)
 
+**6.** Change a numeric column to a factor. 
+
+**7.** Write your dataframe to file (save your dataframe as a .csv on your computer). It should save in your working directory. Next, read that file back in to R (This seems silly, but we are practicing!)
+
+**8.** Render your file as a .html. Make sure you have "embed-resources: true" in your header. Please ask if you have questions! Once your file renders and saves it may open automatically (so you can check it). It also may not pop up automatically but you can find the .html in your working directory. If you get an error or the file doesn't render, there is an error in your code somewhere (quarto docs ONLY render if there are no code errors).
 
 
 

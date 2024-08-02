@@ -355,8 +355,10 @@ Beyond course use, Quarto and markdown is excellent for creating professional lo
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    toc<span class="sc">:</span> true</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    colorlinks<span class="sc">:</span> true</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>editor<span class="sc">:</span> visual</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    embed<span class="sc">-</span>resources<span class="sc">:</span> true</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>editor<span class="sc">:</span> visual</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
@@ -683,7 +685,10 @@ dbl (5): site, lat, transect, diver, cc_percent
 <p><strong>2.</strong> Make a folder (directory) on your computer for this course and then make an Rstudio project for this course that runs from that folder</p>
 <p><strong>3.</strong> Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: “I installed R and Rstudio following this tutorial”), where “this” is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the “files” tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc.</p>
 <p><strong>4.</strong> Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. <strong>remember</strong> that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4.</p>
-<p><strong>5.</strong> Read in <a href="https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv">THESE data</a> and take a look at the shape of the data using head, tail, str,</p>
+<p><strong>5.</strong> Read in <a href="https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv">THESE data</a> and take a look at the shape of the data using a.) head, b.) tail, c.) str(), d.&nbsp;summary (of a numeric column), and e.) count the number of rows and columns (using code!)</p>
+<p><strong>6.</strong> Change a numeric column to a factor.</p>
+<p><strong>7.</strong> Write your dataframe to file (save your dataframe as a .csv on your computer). It should save in your working directory. Next, read that file back in to R (This seems silly, but we are practicing!)</p>
+<p><strong>8.</strong> Render your file as a .html. Make sure you have “embed-resources: true” in your header. Please ask if you have questions! Once your file renders and saves it may open automatically (so you can check it). It also may not pop up automatically but you can find the .html in your working directory. If you get an error or the file doesn’t render, there is an error in your code somewhere (quarto docs ONLY render if there are no code errors).</p>
 
 
 </section>
