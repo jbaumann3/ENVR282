@@ -198,6 +198,7 @@ cookieconsent.run({
   </ul></li>
   <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects"><strong>4.) RStudio Projects!</strong></a></li>
   <li><a href="#using-quarto" id="toc-using-quarto" class="nav-link" data-scroll-target="#using-quarto"><strong>5. Using Quarto</strong></a></li>
+  <li><a href="#packages-and-readingwriting-data" id="toc-packages-and-readingwriting-data" class="nav-link" data-scroll-target="#packages-and-readingwriting-data"><strong>6. Packages and reading/writing data</strong></a></li>
   <li><a href="#lab-0-assignment" id="toc-lab-0-assignment" class="nav-link" data-scroll-target="#lab-0-assignment"><strong>Lab 0 Assignment</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="getting_started.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -385,240 +386,296 @@ Bold: ‘<strong>’ on either end of a word, phrase, or line will make it bold!
 </div>
 </div>
 </div>
-<table class="table">
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"># <strong>6. Packages and reading/writing data</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">:::panel-tabset</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">## <strong>Installing and Loading libraries</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Libraries are packages of functions (and sometimes data) that we use to execute tasks in R. Packages are what make R so versatile! We can do almost anything with R if we learn how to utilize the right packages.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">If we do not have a package already installed (for example, if you have only just downloaded R/ RStudio), we will need to use install.packages(‘packagename’) to install each package that we need.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} install.packages(tidyverse)</code> :::</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">OR - We can use the ‘Packages’ tab in the bottom right quadrant to install packages. Simply navigate to ‘Packages’, select ‘install packages’ and enter the package names you need (separate each package by commas).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">In order for a <em>package to work</em>, we must first load it! We do this as with the code libary(packagename)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} library(tidyverse) #for data manipulation library(palmerpenguins) #for some fun data!</code> :::</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>It is best practice to load all of the packages you will need at the top of your script</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">In this course we will be following a best practices guide that utilizes a library called ‘Tidyverse’ for data manipulation and analysis. Tidyverse contains many packages all in one, including the very functional ‘dplyr’ and ‘ggplot2’ packages. You will almost always use Tidyverse, so make sure to load it in :)</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Note the ‘#’ with notes after them in the code chunk above. These are called comments. You can comment out any line of code in R by using a ‘#’. This is strongly recommended when you are programming. We will discuss more later!</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">## <strong>Looking at data!</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">R has integrated data sets that we can use to play around with code and learn. <br></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">examples: mtcars (a dataframe all about cars, this is available in R without loading a package), and iris (in the ‘vegan’ package, great for testing out ecology related functions and code)<br><br></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Load a dataset</strong> R has some test datasets built into it. Let’s load one and look at it!<br></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} mtcars</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>Using head() and tail()</strong> Now let’s look at the data frame (df) using head() and tail() <br> These tell us the column names, and let us see the top or bottom 6 rows of data.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} head(mtcars)</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} tail(mtcars) #tail shows the header and the last 6 rows</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><strong>column attributes</strong> If we want to see the attributes of each column we can use the str() function</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} str(mtcars) #str shows attributes of each column</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">str() is very important because it allows you to see the type of data in each column. Types include: integer, numeric, factor, date, and more. If the data in a column are factors instead of numbers you may have an issue in your data (your spreadsheet)<br></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Changing column attributes</strong> Importantly, you can change the type of the column. Here is an example</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} mtcars$mpg=as.factor(mtcars$mpg) # Makes mpg a factor instead of a number str(mtcars)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} mtcars$mpg=as.numeric(as.character(mtcars$mpg)) #Changes mpg back to a number str(mtcars)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Summary statistics</strong> To see summary statistics on each column (mean, median, min, max, range), we can use summary()</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} summary(mtcars) #summarizes each column</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Counting rows and columns</strong> To see the number of rows and columns we can use nrow() and ncol()</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} nrow(mtcars) #gives number of rows</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} ncol(mtcars) #gives number of columns</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>Naming dataframes</strong> Rename mtcars and view in Environment tab in Rstudio</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} a&lt;-mtcars a</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} head(a)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">## <strong>Write data to file (saving data)</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">We use the write.csv function here. a= the name of the dataframe and the name we want to give the file goes after ‘file=’ <br> The file name must be in quotes and must include an extension. Since we are using write.csv we MUST use .csv <br></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} write.csv(a, file='mtcars.csv')</code> :::</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">## <strong>Read a file in (import data into R)</strong></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">NOTE: if you have a .xls file make sure you convert to .csv. Ensure the file is clean and orderly (rows x columns). Only 1 excel tab can be in each .csv, so plan accordingly. Note that in order to read a file in to R from your computer (or cloud server), that file MUST be located within your working directory (or you must know and enter the file path).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><strong>IF</strong> your file is in your working directory, you can read it in like this:</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} b&lt;-read.csv('mtcars.csv') head(b)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">You are welcome to use other functions to read in data (including read_csv or read.xls). Especially for beginners, I strongly encourage you to use .csv format. Other file formats can get complicated (often unnecessarily complicated). That said, R can also handle .txt, .xls, images, shapefiles (for spatial analysis or GIS style work), etc. It is very versatile! Feel free to explore :)<br>
-A note on read_csv -&gt; I consider this to be the “best” option for reading in .csv files. It is a ‘smarter’ version of read.csv and can automatically figure out what kind of data (numeric, factor, date, etc) each column is. If you use read.csv, you have often have to manually change these options.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">## <strong>Read a file from an online source</strong></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">In some cases you may be using data you’ve found online. Perhaps you can download, save, and then read your file into R. Sometimes that is more work than we want to do. You can just call a file directly from it’s URL. Here is an example:</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">I have a dataframe on coral cover from Belize that I want to read in. It is located on my github <a href="https://github.com/jbaumann3/BIOL234_Biostats_MHC/blob/main/coralcover.csv">coral cover data</a>. Let’s read it directly into R! The URL you see above is <strong>NOT</strong> what we use in R. If you find a file on Github you want to locate the ‘raw’ version of the file. To do this:<br>
+</section>
+<section id="packages-and-readingwriting-data" class="level1">
+<h1><strong>6. Packages and reading/writing data</strong></h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><strong>Installing and Loading libraries</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><strong>Looking at data!</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false"><strong>Write data to file (saving data)</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false"><strong>Read a file in (import data into R)</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-5" role="tab" aria-controls="tabset-4-5" aria-selected="false"><strong>Read a file from an online source</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<p>Libraries are packages of functions (and sometimes data) that we use to execute tasks in R. Packages are what make R so versatile! We can do almost anything with R if we learn how to utilize the right packages.</p>
+<p>If we do not have a package already installed (for example, if you have only just downloaded R/ RStudio), we will need to use install.packages(‘packagename’) to install each package that we need.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>OR - We can use the ‘Packages’ tab in the bottom right quadrant to install packages. Simply navigate to ‘Packages’, select ‘install packages’ and enter the package names you need (separate each package by commas).</p>
+<p>In order for a <em>package to work</em>, we must first load it! We do this as with the code libary(packagename)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse) <span class="co">#for data manipulation</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins) <span class="co">#for some fun data!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>It is best practice to load all of the packages you will need at the top of your script</strong></p>
+<p>In this course we will be following a best practices guide that utilizes a library called ‘Tidyverse’ for data manipulation and analysis. Tidyverse contains many packages all in one, including the very functional ‘dplyr’ and ‘ggplot2’ packages. You will almost always use Tidyverse, so make sure to load it in :)</p>
+<p>Note the ‘#’ with notes after them in the code chunk above. These are called comments. You can comment out any line of code in R by using a ‘#’. This is strongly recommended when you are programming. We will discuss more later!</p>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>R has integrated data sets that we can use to play around with code and learn. <br></p>
+<p>examples: mtcars (a dataframe all about cars, this is available in R without loading a package), and iris (in the ‘vegan’ package, great for testing out ecology related functions and code)<br><br></p>
+<p><strong>Load a dataset</strong> R has some test datasets built into it. Let’s load one and look at it!<br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mtcars </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+</div>
+</div>
+<p><strong>Using head() and tail()</strong> Now let’s look at the data frame (df) using head() and tail() <br> These tell us the column names, and let us see the top or bottom 6 rows of data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(mtcars) <span class="co">#tail shows the header and the last 6 rows </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                mpg cyl  disp  hp drat    wt qsec vs am gear carb
+Porsche 914-2  26.0   4 120.3  91 4.43 2.140 16.7  0  1    5    2
+Lotus Europa   30.4   4  95.1 113 3.77 1.513 16.9  1  1    5    2
+Ford Pantera L 15.8   8 351.0 264 4.22 3.170 14.5  0  1    5    4
+Ferrari Dino   19.7   6 145.0 175 3.62 2.770 15.5  0  1    5    6
+Maserati Bora  15.0   8 301.0 335 3.54 3.570 14.6  0  1    5    8
+Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.6  1  1    4    2</code></pre>
+</div>
+</div>
+<p><strong>column attributes</strong> If we want to see the attributes of each column we can use the str() function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars) <span class="co">#str shows attributes of each column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   32 obs. of  11 variables:
+ $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp: num  160 160 108 258 360 ...
+ $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec: num  16.5 17 18.6 19.4 17 ...
+ $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+ $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+</div>
+</div>
+<p>str() is very important because it allows you to see the type of data in each column. Types include: integer, numeric, factor, date, and more. If the data in a column are factors instead of numbers you may have an issue in your data (your spreadsheet)<br></p>
+<p><strong>Changing column attributes</strong> Importantly, you can change the type of the column. Here is an example</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg<span class="ot">=</span><span class="fu">as.factor</span>(mtcars<span class="sc">$</span>mpg) <span class="co"># Makes mpg a factor instead of a number</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   32 obs. of  11 variables:
+ $ mpg : Factor w/ 25 levels "10.4","13.3",..: 16 16 19 17 13 12 3 20 19 14 ...
+ $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp: num  160 160 108 258 360 ...
+ $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec: num  16.5 17 18.6 19.4 17 ...
+ $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+ $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mtcars<span class="sc">$</span>mpg<span class="ot">=</span><span class="fu">as.numeric</span>(<span class="fu">as.character</span>(mtcars<span class="sc">$</span>mpg)) <span class="co">#Changes mpg back to a number</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   32 obs. of  11 variables:
+ $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+ $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+ $ disp: num  160 160 108 258 360 ...
+ $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+ $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+ $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+ $ qsec: num  16.5 17 18.6 19.4 17 ...
+ $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+ $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+ $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+ $ carb: num  4 4 1 1 2 1 4 2 2 4 ...</code></pre>
+</div>
+</div>
+<p><strong>Summary statistics</strong> To see summary statistics on each column (mean, median, min, max, range), we can use summary()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars) <span class="co">#summarizes each column</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mpg             cyl             disp             hp       
+ Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+ 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+ Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+ Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+ 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+ Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+      drat             wt             qsec             vs        
+ Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+ 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+ Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+ Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+ 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+ Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+       am              gear            carb      
+ Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :0.0000   Median :4.000   Median :2.000  
+ Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+ 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :5.000   Max.   :8.000  </code></pre>
+</div>
+</div>
+<p><strong>Counting rows and columns</strong> To see the number of rows and columns we can use nrow() and ncol()</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(mtcars) <span class="co">#gives number of rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 32</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(mtcars) <span class="co">#gives number of columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p><strong>Naming dataframes</strong> Rename mtcars and view in Environment tab in Rstudio</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>a<span class="ot">&lt;-</span>mtcars</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>a</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                   mpg cyl disp  hp drat    wt  qsec vs am gear carb
+Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<p>We use the write.csv function here. a= the name of the dataframe and the name we want to give the file goes after ‘file=’ <br> The file name must be in quotes and must include an extension. Since we are using write.csv we MUST use .csv <br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(a, <span class="at">file=</span><span class="st">'mtcars.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<p>NOTE: if you have a .xls file make sure you convert to .csv. Ensure the file is clean and orderly (rows x columns). Only 1 excel tab can be in each .csv, so plan accordingly. Note that in order to read a file in to R from your computer (or cloud server), that file MUST be located within your working directory (or you must know and enter the file path).</p>
+<p><strong>IF</strong> your file is in your working directory, you can read it in like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>b<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">'mtcars.csv'</span>)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  X  mpg cyl disp  hp drat    wt  qsec vs am gear carb
+1         Mazda RX4 21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+2     Mazda RX4 Wag 21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+3        Datsun 710 22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+4    Hornet 4 Drive 21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+5 Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+6           Valiant 18.1   6  225 105 2.76 3.460 20.22  1  0    3    1</code></pre>
+</div>
+</div>
+<p>You are welcome to use other functions to read in data (including read_csv or read.xls). Especially for beginners, I strongly encourage you to use .csv format. Other file formats can get complicated (often unnecessarily complicated). That said, R can also handle .txt, .xls, images, shapefiles (for spatial analysis or GIS style work), etc. It is very versatile! Feel free to explore :)<br>
+A note on read_csv -&gt; I consider this to be the “best” option for reading in .csv files. It is a ‘smarter’ version of read.csv and can automatically figure out what kind of data (numeric, factor, date, etc) each column is. If you use read.csv, you have often have to manually change these options.</p>
+</div>
+<div id="tabset-4-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-5-tab">
+<p>In some cases you may be using data you’ve found online. Perhaps you can download, save, and then read your file into R. Sometimes that is more work than we want to do. You can just call a file directly from it’s URL. Here is an example:</p>
+<p>I have a dataframe on coral cover from Belize that I want to read in. It is located on my github <a href="https://github.com/jbaumann3/BIOL234_Biostats_MHC/blob/main/coralcover.csv">coral cover data</a>. Let’s read it directly into R! The URL you see above is <strong>NOT</strong> what we use in R. If you find a file on Github you want to locate the ‘raw’ version of the file. To do this:<br>
 1.) Click the link above (or find a data file on github)<br>
 2.) Navigate to the top right menu and look for the box that says “Raw” in it. You can click on that and open the raw file and then copy the URL. OR, you can click the box next to the “Raw” box to copy the link to the raw file. We use this link to read our data into R. This will work for any .csv you find on github. I like to get practice data from the TidyTuesday project on Github. You can find their data at the following link:<br>
 <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data">Tidy Tuesday Data</a><br>
-</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell}</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>{.r .cell-code} coralcover&lt;- read_csv('https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/coralcover.csv')</code></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">::: {.cell-output .cell-output-stderr} ``` Rows: 77 Columns: 6 ── Column specification ──────────────────────────────────────────────────────── Delimiter: “,” chr (1): type dbl (5): site, lat, transect, diver, cc_percent</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">ℹ Use <code>spec()</code> to retrieve the full column specification for this data. ℹ Specify the column types or set <code>show_col_types = FALSE</code> to quiet this message. ``` :::</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>{.r .cell-code} head(coralcover)</code></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">:::</td>
-</tr>
-</tbody>
-</table>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>coralcover<span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/coralcover.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 77 Columns: 6
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (1): type
+dbl (5): site, lat, transect, diver, cc_percent
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(coralcover)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+   site type         lat transect diver cc_percent
+  &lt;dbl&gt; &lt;chr&gt;      &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;
+1     1 Back Reef      3        1     4      5.84 
+2     1 Back Reef      3        2     4      0.951
+3     1 Back Reef      3        3     4      5.24 
+4     1 Back Reef      3        4     5      5.00 
+5     1 Back Reef      3        5     5      5.90 
+6     2 Patch Reef     3        1     4      5.28 </code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="lab-0-assignment" class="level1">
 <h1><strong>Lab 0 Assignment</strong></h1>

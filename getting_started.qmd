@@ -199,7 +199,7 @@ To actually render into an html or pdf document, you must click "Render". You ca
 
 :::
 
-------------------------------------------------------------------------
+
 # **6. Packages and reading/writing data**
 
 :::panel-tabset
@@ -326,7 +326,7 @@ head(coralcover)
 ```
 :::
 
-------------------------------------------------------------------------
+
 
 # **Lab 0 Assignment** 
 
