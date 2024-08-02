@@ -189,7 +189,6 @@ cookieconsent.run({
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
   <li><a href="#additional-tutorials-and-resources" id="toc-additional-tutorials-and-resources" class="nav-link" data-scroll-target="#additional-tutorials-and-resources">Additional Tutorials and Resources</a></li>
-  <li><a href="#install-r-and-rstudio" id="toc-install-r-and-rstudio" class="nav-link" data-scroll-target="#install-r-and-rstudio"><strong>1.) Install R and RStudio</strong></a></li>
   <li><a href="#rstudio-layout" id="toc-rstudio-layout" class="nav-link" data-scroll-target="#rstudio-layout"><strong>2.) RStudio Layout</strong></a></li>
   <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
   <li><a href="#the-working-directory---what-is-it-how-to-check-it-and-how-to-set-it" id="toc-the-working-directory---what-is-it-how-to-check-it-and-how-to-set-it" class="nav-link" data-scroll-target="#the-working-directory---what-is-it-how-to-check-it-and-how-to-set-it"><strong>3.) The Working Directory</strong> - What is it, how to check it, and how to set it!</a>
@@ -204,6 +203,7 @@ cookieconsent.run({
   <li><a href="#making-a-code-chunk" id="toc-making-a-code-chunk" class="nav-link" data-scroll-target="#making-a-code-chunk"><strong>Making a code chunk</strong></a></li>
   <li><a href="#rendering-your-report" id="toc-rendering-your-report" class="nav-link" data-scroll-target="#rendering-your-report"><strong>Rendering your report</strong></a></li>
   </ul></li>
+  <li><a href="#lab-0-assignment" id="toc-lab-0-assignment" class="nav-link" data-scroll-target="#lab-0-assignment"><strong>Lab 0 Assignment</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="getting_started.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -249,52 +249,59 @@ cookieconsent.run({
 <p><a href="https://www.youtube.com/watch?v=JtQfXY0lIzc">Video Tidyverse tutorial</a></p>
 <p><a href="https://rstudio.cloud/learn/primers">Want to TRY some stuff on your own? Use the RStudio.cloud primers</a></p>
 <p>The best way to learn is to GOOGLE IT and try stuff</p>
-<hr>
-</section>
-<section id="install-r-and-rstudio" class="level1">
-<h1><strong>1.) Install R and RStudio</strong></h1>
-<p>In this course we will learn how to program in R (a coding language) using RStudio (a coding environment). RStudio makes using R easier and more user friendly!<br>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">::: panel-tabset # <strong>1.) Install R and RStudio</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In this course we will learn how to program in R (a coding language) using RStudio (a coding environment). RStudio makes using R easier and more user friendly!<br>
 We will also learn how to make pdf and html output files that include code and outputs (tables and graphs).<br>
 These are handy tools for reporting data and even for writing papers! We will use Quarto to do this (a new tool from the folks who designed RStudio).<br>
-Your lab reports will all be built using Quarto.</p>
-<p><strong>You have options:</strong><br>
+Your lab reports will all be built using Quarto.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>You have options:</strong><br>
 1. Install R and RStudio on your device(s) and use it locally<br>
-2. Sign up for a posit cloud account here: https://posit.cloud/plans/free. Posit Cloud is a way to access RStudio online without downloading and installing anything.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Install R</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Install RStudio</strong></a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<p>To install R, we will use this link: <a href="https://cran.r-project.org/bin/">install R</a><br>
+2. Sign up for a posit cloud account here: https://posit.cloud/plans/free. Posit Cloud is a way to access RStudio online without downloading and installing anything.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: panel-tabset ## <strong>Install R</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">To install R, we will use this link: <a href="https://cran.r-project.org/bin/">install R</a><br>
 1.) Choose the operating system you use (macosx or windows)<br>
 2.) Click the blue .pkg link that aligns with your computer and operating system (ask questions if needed)<br>
-3.) Follow instructions</p>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>1.) Click <a href="https://www.rstudio.com/products/rstudio/download/#download">this link</a> and follow instructions<br>
-2.) OPEN RStudio (not R). Click on the logo that is a white R inside a blue circle (RStudio). We never need to open R, we can use RStudio.</p>
-</div>
-</div>
-</div>
-<hr>
+3.) Follow instructions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">## <strong>Install RStudio</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">1.) Click <a href="https://www.rstudio.com/products/rstudio/download/#download">this link</a> and follow instructions<br>
+2.) OPEN RStudio (not R). Click on the logo that is a white R inside a blue circle (RStudio). We never need to open R, we can use RStudio. :::</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="rstudio-layout" class="level1">
 <h1><strong>2.) RStudio Layout</strong></h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>Top Left</strong>: Script</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>Bottom Left</strong>: Console/terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>Top Right</strong>: Environment, History, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>Bottom Right</strong>: Files, Plots, Packages, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false"><strong>Top Bar</strong>: File, Edit, Etc…</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Top Left</strong>: Script</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Bottom Left</strong>: Console/terminal</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Top Right</strong>: Environment, History, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><strong>Bottom Right</strong>: Files, Plots, Packages, etc…</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false"><strong>Top Bar</strong>: File, Edit, Etc…</a></li></ul>
 <div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>Where you will write your script(s). This is where we should be writing our code! It can be run, commented, and saved here.</p>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <p>Here you can run single lines of code and/or see error messages, warnings, and other outputs. Code should not be written here unless it is simple / for testing! Anything worth keeping should go in the script at the top left!</p>
 </div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
 <p>Here you will be able to see the dataframes you have read into R or created (using the “Environment tab”). The other tabs are less useful for us at this stage, but feel free to explore them! Note: The Broom icon can be used to clear dataframes from your environment. You can minimize or maximize this and each other quadrant using the symbols at the top right of the quadrant (a collapsed page next to a full page)</p>
 </div>
-<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
 <p>This is the second most important quadrant (behind top left) and we can change the working directory here very easily. Here we can see the files in our present working directory (we will learn about that next!) We can also see any plots we make in the plots tab. VERY importantly, we can see the packages we have loaded or installed in the packages tab. This will be useful to you! You can also use this tab to search the internal Help dictionary, though I will note that the internet is often more helpful!</p>
 </div>
-<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
 <p>You can use the top bar in RStudio much like in any other program. I’ll let you explore that on your own. Notably, in the top right corner of the top bar you will see an ‘R’ in a blue box. This is where you can set the project you are working form. Using projects is great because it allows you an easy way to compartmentalize your code, data, figures, and working directory for a single project all in one place! We will get to this shortly.</p>
 </div>
 </div>
@@ -336,7 +343,234 @@ Your lab reports will all be built using Quarto.</p>
 1.) Create a folder on your computer (or cloud storage) that will serve as the MAIN directory for your project. Within that folder I recommend you make subdirectories for all of your R related inputs and outputs. Maybe something like I have here:</p>
 <p><img src="images/projectex.png" class="img-fluid"></p>
 <p>2.) Once you have a MAIN directory folder created (whether you’ve made subdirectories or not) you can create a project! Set your main folder as your working directory. Next, navigate to the TOP RIGHT of your screen and select the down arrow next to the Big “R” in a blue box. NOW, select “New Project” –&gt; Existing directory –&gt; Name the project and hit done! At this point you will see a .Rproj file appear in your MAIN directory. This means you did it right :) This .Rproj file is how you save all of your project info. It autosaves and when you select your project (Again, TOP RIGHT of your screen, select the down arrow next to the R in the blue box and then select your project name) it will load up your scripts, environment, and set your working directory as the MAIN folder. You can navigate VERY easily from here :)</p>
-<hr>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"># <strong>Packages and reading/writing data</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">## <strong>Installing and Loading libraries</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Libraries are packages of functions (and sometimes data) that we use to execute tasks in R. Packages are what make R so versatile! We can do almost anything with R if we learn how to utilize the right packages.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">If we do not have a package already installed (for example, if you have only just downloaded R/ RStudio), we will need to use install.packages(‘packagename’) to install each package that we need.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} install.packages(tidyverse)</code> :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">OR - We can use the ‘Packages’ tab in the bottom right quadrant to install packages. Simply navigate to ‘Packages’, select ‘install packages’ and enter the package names you need (separate each package by commas).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In order for a <em>package to work</em>, we must first load it! We do this as with the code libary(packagename)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} library(tidyverse) #for data manipulation library(palmerpenguins) #for some fun data!</code> :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>It is best practice to load all of the packages you will need at the top of your script</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In this course we will be following a best practices guide that utilizes a library called ‘Tidyverse’ for data manipulation and analysis. Tidyverse contains many packages all in one, including the very functional ‘dplyr’ and ‘ggplot2’ packages. You will almost always use Tidyverse, so make sure to load it in :)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Note the ‘#’ with notes after them in the code chunk above. These are called comments. You can comment out any line of code in R by using a ‘#’. This is strongly recommended when you are programming. We will discuss more later!</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">## <strong>Looking at data!</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">R has integrated data sets that we can use to play around with code and learn. <br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">examples: mtcars (a dataframe all about cars, this is available in R without loading a package), and iris (in the ‘vegan’ package, great for testing out ecology related functions and code)<br><br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Load a dataset</strong> R has some test datasets built into it. Let’s load one and look at it!<br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} mtcars</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Using head() and tail()</strong> Now let’s look at the data frame (df) using head() and tail() <br> These tell us the column names, and let us see the top or bottom 6 rows of data.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} head(mtcars)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} tail(mtcars) #tail shows the header and the last 6 rows</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>column attributes</strong> If we want to see the attributes of each column we can use the str() function</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} str(mtcars) #str shows attributes of each column</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">str() is very important because it allows you to see the type of data in each column. Types include: integer, numeric, factor, date, and more. If the data in a column are factors instead of numbers you may have an issue in your data (your spreadsheet)<br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Changing column attributes</strong> Importantly, you can change the type of the column. Here is an example</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} mtcars$mpg=as.factor(mtcars$mpg) # Makes mpg a factor instead of a number str(mtcars)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} mtcars$mpg=as.numeric(as.character(mtcars$mpg)) #Changes mpg back to a number str(mtcars)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Summary statistics</strong> To see summary statistics on each column (mean, median, min, max, range), we can use summary()</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} summary(mtcars) #summarizes each column</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Counting rows and columns</strong> To see the number of rows and columns we can use nrow() and ncol()</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} nrow(mtcars) #gives number of rows</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} ncol(mtcars) #gives number of columns</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Naming dataframes</strong> Rename mtcars and view in Environment tab in Rstudio</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} a&lt;-mtcars a</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} head(a)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">## <strong>Write data to file (saving data)</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">We use the write.csv function here. a= the name of the dataframe and the name we want to give the file goes after ‘file=’ <br> The file name must be in quotes and must include an extension. Since we are using write.csv we MUST use .csv <br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} write.csv(a, file='mtcars.csv')</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">## <strong>Read a file in (import data into R)</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">NOTE: if you have a .xls file make sure you convert to .csv. Ensure the file is clean and orderly (rows x columns). Only 1 excel tab can be in each .csv, so plan accordingly. Note that in order to read a file in to R from your computer (or cloud server), that file MUST be located within your working directory (or you must know and enter the file path).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>IF</strong> your file is in your working directory, you can read it in like this:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} b&lt;-read.csv('mtcars.csv') head(b)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">You are welcome to use other functions to read in data (including read_csv or read.xls). Especially for beginners, I strongly encourage you to use .csv format. Other file formats can get complicated (often unnecessarily complicated). That said, R can also handle .txt, .xls, images, shapefiles (for spatial analysis or GIS style work), etc. It is very versatile! Feel free to explore :)<br>
+A note on read_csv -&gt; I consider this to be the “best” option for reading in .csv files. It is a ‘smarter’ version of read.csv and can automatically figure out what kind of data (numeric, factor, date, etc) each column is. If you use read.csv, you have often have to manually change these options.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">## <strong>Read a file from an online source</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">In some cases you may be using data you’ve found online. Perhaps you can download, save, and then read your file into R. Sometimes that is more work than we want to do. You can just call a file directly from it’s URL. Here is an example:</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">I have a dataframe on coral cover from Belize that I want to read in. It is located on my github <a href="https://github.com/jbaumann3/BIOL234_Biostats_MHC/blob/main/coralcover.csv">coral cover data</a>. Let’s read it directly into R! The URL you see above is <strong>NOT</strong> what we use in R. If you find a file on Github you want to locate the ‘raw’ version of the file. To do this:<br>
+1.) Click the link above (or find a data file on github)<br>
+2.) Navigate to the top right menu and look for the box that says “Raw” in it. You can click on that and open the raw file and then copy the URL. OR, you can click the box next to the “Raw” box to copy the link to the raw file. We use this link to read our data into R. This will work for any .csv you find on github. I like to get practice data from the TidyTuesday project on Github. You can find their data at the following link:<br>
+<a href="https://github.com/rfordatascience/tidytuesday/tree/master/data">Tidy Tuesday Data</a><br>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} coralcover&lt;- read_csv('https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/coralcover.csv')</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stderr} ``` Rows: 77 Columns: 6 ── Column specification ──────────────────────────────────────────────────────── Delimiter: “,” chr (1): type dbl (5): site, lat, transect, diver, cc_percent</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ℹ Use <code>spec()</code> to retrieve the full column specification for this data. ℹ Specify the column types or set <code>show_col_types = FALSE</code> to quiet this message. ``` :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} head(coralcover)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="using-quarto" class="level1">
 <h1><strong>Using Quarto</strong></h1>
@@ -386,11 +620,20 @@ Beyond course use, Quarto and markdown is excellent for creating professional lo
 <h2 class="anchored" data-anchor-id="rendering-your-report"><strong>Rendering your report</strong></h2>
 <p>To Visualize what your report will look like, click the ‘visual’ tab in the top bar (on the left). Note that if you do this, it CAN change your code–so be careful. You can also use the GUI to alter your report in the visual tab. This provides a nice alternative to the code based formatting options in the ‘source’ tab.<br>
 </p>
-<p>To actually render into an html or pdf document, you must click “Render”. You can use the arrow to the right of “Render” to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfull Render your quarto document into an html or pdf report in order to turn in your labs!</p>
+<p>To actually render into an html or pdf document, you must click “Render”. You can use the arrow to the right of “Render” to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfully Render your quarto document into an html or pdf report in order to turn in your labs! :::</p>
 <hr>
-
-
 </section>
+</section>
+<section id="lab-0-assignment" class="level1">
+<h1><strong>Lab 0 Assignment</strong></h1>
+<p><br>
+## <strong>1.</strong> Install R and Rstudio. Get Rstudio running on your computer and get familiar with the layout.<br>
+## <strong>2.</strong> Make a folder (directory) on your computer for this course and then make an Rstudio project for this course that runs from that folder<br>
+## <strong>3.</strong> Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: “I installed R and Rstudio following this tutorial”), where “this” is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the “files” tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc.<br>
+## <strong>4.</strong> Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. <strong>remember</strong> that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4.<br>
+## <strong>5.</strong> Read in THESE data and take a look at the shape of the data using head, tail, str,</p>
+
+
 </section>
 
 </main> <!-- /main -->
