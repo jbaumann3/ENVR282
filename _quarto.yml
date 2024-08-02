@@ -7,9 +7,9 @@ website:
     type: express
     style: headline
     palette: dark  
-  title: "THIS IS A TEST"
+  title: "ENVR 282: Research Methods in Environmental Science"
   navbar:
-    background: primary
+    background: "#881124"
     search: true
     left:
       - href: index.qmd
@@ -20,7 +20,7 @@ website:
     - id: Labs
       title: "Labs"
       style: "docked"
-      background: light
+      background: "#B2B3B2"
       contents: 
        - getting_started.qmd
 
@@ -28,7 +28,6 @@ format:
   html:
     theme: flatly
     mainfont: arial
-    navbar-bg: "#881124"
     css: styles.css
     toc: true
 
