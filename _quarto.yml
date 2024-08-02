@@ -27,6 +27,8 @@ website:
 format:
   html:
     theme: flatly
+    mainfont: arial
+    title-block-banner-color: "#881124"
     css: styles.css
     toc: true
 
