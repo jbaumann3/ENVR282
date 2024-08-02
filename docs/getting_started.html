@@ -197,7 +197,7 @@ cookieconsent.run({
   <li><a href="#how-to-set-the-working-directory" id="toc-how-to-set-the-working-directory" class="nav-link" data-scroll-target="#how-to-set-the-working-directory"><strong>How to SET the working directory</strong></a></li>
   </ul></li>
   <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects"><strong>4.) RStudio Projects!</strong></a></li>
-  <li><a href="#using-quarto" id="toc-using-quarto" class="nav-link" data-scroll-target="#using-quarto"><strong>Using Quarto</strong></a></li>
+  <li><a href="#using-quarto" id="toc-using-quarto" class="nav-link" data-scroll-target="#using-quarto"><strong>5. Using Quarto</strong></a></li>
   <li><a href="#lab-0-assignment" id="toc-lab-0-assignment" class="nav-link" data-scroll-target="#lab-0-assignment"><strong>Lab 0 Assignment</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="getting_started.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -334,12 +334,12 @@ Your lab reports will all be built using Quarto.</p>
 <hr>
 </section>
 <section id="using-quarto" class="level1">
-<h1><strong>Using Quarto</strong></h1>
+<h1><strong>5. Using Quarto</strong></h1>
 <p>Quarto is a report building software that is integrated into RStudio. It replaces RMarkdown, if you have used that in the past, and is usable with python, julia, and R. Thus, learning it is a transferable skill. Quarto is designed to allow you to easily write documents that integrate text, hyperlinks, code, and images into a one neat file. This website, for example, is made entirely in Quarto! Quarto documents, or markdown documents as they are more generically known, are common in data science. these documents are great for courses, as you can do your programming, share your code, results, figures, stats, and explanations all in one document. Instead of the instructor downloading your code and running it line by line, we can see the results of the code you write just below the code itself! Super nice for assessing work. Plus, Quarto documents will not render unless the code is error free, so this is a nice way for students to check their own work.<br>
 Beyond course use, Quarto and markdown is excellent for creating professional looking data driven reports as well as online resources (like this website :) ). Learning Quarto is a great skill for anyone interested in programming, data, or the sciences! So, let’s learn how to use it!<br>
 </p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">To make a Quarto document</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><strong>Formatting text</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><strong>Making a code chunk</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false"><strong>Rendering your report</strong></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><strong>To make a Quarto document</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><strong>Formatting text</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><strong>Making a code chunk</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false"><strong>Rendering your report</strong></a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <p>click file -&gt; new file -&gt; Quarto document / Complete the pop up prompts and then wait for the document to load. / We want to replace the top bit (our YAML header, everything between the two lines that contains just — at the top) with the following (use your name and title!)</p>
@@ -385,7 +385,240 @@ Bold: ‘<strong>’ on either end of a word, phrase, or line will make it bold!
 </div>
 </div>
 </div>
-<hr>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"># <strong>6. Packages and reading/writing data</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">:::panel-tabset</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">## <strong>Installing and Loading libraries</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Libraries are packages of functions (and sometimes data) that we use to execute tasks in R. Packages are what make R so versatile! We can do almost anything with R if we learn how to utilize the right packages.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">If we do not have a package already installed (for example, if you have only just downloaded R/ RStudio), we will need to use install.packages(‘packagename’) to install each package that we need.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} install.packages(tidyverse)</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">OR - We can use the ‘Packages’ tab in the bottom right quadrant to install packages. Simply navigate to ‘Packages’, select ‘install packages’ and enter the package names you need (separate each package by commas).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">In order for a <em>package to work</em>, we must first load it! We do this as with the code libary(packagename)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} library(tidyverse) #for data manipulation library(palmerpenguins) #for some fun data!</code> :::</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>It is best practice to load all of the packages you will need at the top of your script</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">In this course we will be following a best practices guide that utilizes a library called ‘Tidyverse’ for data manipulation and analysis. Tidyverse contains many packages all in one, including the very functional ‘dplyr’ and ‘ggplot2’ packages. You will almost always use Tidyverse, so make sure to load it in :)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Note the ‘#’ with notes after them in the code chunk above. These are called comments. You can comment out any line of code in R by using a ‘#’. This is strongly recommended when you are programming. We will discuss more later!</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">## <strong>Looking at data!</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">R has integrated data sets that we can use to play around with code and learn. <br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">examples: mtcars (a dataframe all about cars, this is available in R without loading a package), and iris (in the ‘vegan’ package, great for testing out ecology related functions and code)<br><br></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Load a dataset</strong> R has some test datasets built into it. Let’s load one and look at it!<br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} mtcars</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Using head() and tail()</strong> Now let’s look at the data frame (df) using head() and tail() <br> These tell us the column names, and let us see the top or bottom 6 rows of data.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} head(mtcars)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} tail(mtcars) #tail shows the header and the last 6 rows</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>column attributes</strong> If we want to see the attributes of each column we can use the str() function</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} str(mtcars) #str shows attributes of each column</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">str() is very important because it allows you to see the type of data in each column. Types include: integer, numeric, factor, date, and more. If the data in a column are factors instead of numbers you may have an issue in your data (your spreadsheet)<br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Changing column attributes</strong> Importantly, you can change the type of the column. Here is an example</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} mtcars$mpg=as.factor(mtcars$mpg) # Makes mpg a factor instead of a number str(mtcars)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} mtcars$mpg=as.numeric(as.character(mtcars$mpg)) #Changes mpg back to a number str(mtcars)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Summary statistics</strong> To see summary statistics on each column (mean, median, min, max, range), we can use summary()</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} summary(mtcars) #summarizes each column</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Counting rows and columns</strong> To see the number of rows and columns we can use nrow() and ncol()</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} nrow(mtcars) #gives number of rows</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} ncol(mtcars) #gives number of columns</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Naming dataframes</strong> Rename mtcars and view in Environment tab in Rstudio</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} a&lt;-mtcars a</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} head(a)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">## <strong>Write data to file (saving data)</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">We use the write.csv function here. a= the name of the dataframe and the name we want to give the file goes after ‘file=’ <br> The file name must be in quotes and must include an extension. Since we are using write.csv we MUST use .csv <br></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} write.csv(a, file='mtcars.csv')</code> :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">## <strong>Read a file in (import data into R)</strong></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NOTE: if you have a .xls file make sure you convert to .csv. Ensure the file is clean and orderly (rows x columns). Only 1 excel tab can be in each .csv, so plan accordingly. Note that in order to read a file in to R from your computer (or cloud server), that file MUST be located within your working directory (or you must know and enter the file path).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>IF</strong> your file is in your working directory, you can read it in like this:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} b&lt;-read.csv('mtcars.csv') head(b)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">You are welcome to use other functions to read in data (including read_csv or read.xls). Especially for beginners, I strongly encourage you to use .csv format. Other file formats can get complicated (often unnecessarily complicated). That said, R can also handle .txt, .xls, images, shapefiles (for spatial analysis or GIS style work), etc. It is very versatile! Feel free to explore :)<br>
+A note on read_csv -&gt; I consider this to be the “best” option for reading in .csv files. It is a ‘smarter’ version of read.csv and can automatically figure out what kind of data (numeric, factor, date, etc) each column is. If you use read.csv, you have often have to manually change these options.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">## <strong>Read a file from an online source</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">In some cases you may be using data you’ve found online. Perhaps you can download, save, and then read your file into R. Sometimes that is more work than we want to do. You can just call a file directly from it’s URL. Here is an example:</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">I have a dataframe on coral cover from Belize that I want to read in. It is located on my github <a href="https://github.com/jbaumann3/BIOL234_Biostats_MHC/blob/main/coralcover.csv">coral cover data</a>. Let’s read it directly into R! The URL you see above is <strong>NOT</strong> what we use in R. If you find a file on Github you want to locate the ‘raw’ version of the file. To do this:<br>
+1.) Click the link above (or find a data file on github)<br>
+2.) Navigate to the top right menu and look for the box that says “Raw” in it. You can click on that and open the raw file and then copy the URL. OR, you can click the box next to the “Raw” box to copy the link to the raw file. We use this link to read our data into R. This will work for any .csv you find on github. I like to get practice data from the TidyTuesday project on Github. You can find their data at the following link:<br>
+<a href="https://github.com/rfordatascience/tidytuesday/tree/master/data">Tidy Tuesday Data</a><br>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell}</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>{.r .cell-code} coralcover&lt;- read_csv('https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/coralcover.csv')</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">::: {.cell-output .cell-output-stderr} ``` Rows: 77 Columns: 6 ── Column specification ──────────────────────────────────────────────────────── Delimiter: “,” chr (1): type dbl (5): site, lat, transect, diver, cc_percent</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ℹ Use <code>spec()</code> to retrieve the full column specification for this data. ℹ Specify the column types or set <code>show_col_types = FALSE</code> to quiet this message. ``` :::</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>{.r .cell-code} head(coralcover)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">::: {.cell-output .cell-output-stdout}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">:::</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="lab-0-assignment" class="level1">
 <h1><strong>Lab 0 Assignment</strong></h1>
