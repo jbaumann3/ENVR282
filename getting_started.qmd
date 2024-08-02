@@ -199,15 +199,15 @@ To actually render into an html or pdf document, you must click "Render". You ca
 
 # **Lab 0 Assignment** 
 
-## **1.** Install R and Rstudio. Get Rstudio running on your computer and get familiar with the layout. 
+**1.** Install R and Rstudio. Get Rstudio running on your computer and get familiar with the layout. 
 
-## **2.** Make a folder (directory) on your computer for this course and then make an Rstudio project for this course that runs from that folder
+**2.** Make a folder (directory) on your computer for this course and then make an Rstudio project for this course that runs from that folder
 
-## **3.** Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: "I installed R and Rstudio following this tutorial"), where "this" is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the "files" tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc. 
+**3.** Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: "I installed R and Rstudio following this tutorial"), where "this" is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the "files" tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc. 
 
-## **4.** Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. **remember** that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4. 
+**4.** Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. **remember** that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4. 
 
-## **5.** Read in [THESE data](https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv) and take a look at the shape of the data using head, tail, str, 
+**5.** Read in [THESE data](https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv) and take a look at the shape of the data using head, tail, str, 
 
 
 
