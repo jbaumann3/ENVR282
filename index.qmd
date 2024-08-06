@@ -3,3 +3,4 @@ title: "ENVR 282"
 ---
 
 Welcome to ENVR 282: Research Methods in Environmental Science.\
+

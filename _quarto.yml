@@ -23,6 +23,7 @@ website:
       background: "#B2B3B2"
       contents: 
        - getting_started.qmd
+       - Lab_1.qmd
 
 format:
   html:

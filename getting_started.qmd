@@ -19,7 +19,9 @@ IN THIS TUTORIAL YOU WILL LEARN:\
 1.) How to access and/or install R and RStudio\
 2.) How to navigate RStudio\
 3.) How to set and change the working directory\
-4.) How to setup an RStudio Project
+4.) How to setup an RStudio Project\
+5.) How to make a quarto doc\
+6.) Some R basics\
 
 # Additional Tutorials and Resources
 
@@ -138,14 +140,12 @@ RStudio Projects are a great way to compartmentalize your coding work! You can s
 
 ------------------------------------------------------------------------
 
-
 # **5. Using Quarto**
 
 Quarto is a report building software that is integrated into RStudio. It replaces RMarkdown, if you have used that in the past, and is usable with python, julia, and R. Thus, learning it is a transferable skill. Quarto is designed to allow you to easily write documents that integrate text, hyperlinks, code, and images into a one neat file. This website, for example, is made entirely in Quarto! Quarto documents, or markdown documents as they are more generically known, are common in data science. these documents are great for courses, as you can do your programming, share your code, results, figures, stats, and explanations all in one document. Instead of the instructor downloading your code and running it line by line, we can see the results of the code you write just below the code itself! Super nice for assessing work. Plus, Quarto documents will not render unless the code is error free, so this is a nice way for students to check their own work.\
 Beyond course use, Quarto and markdown is excellent for creating professional looking data driven reports as well as online resources (like this website :) ). Learning Quarto is a great skill for anyone interested in programming, data, or the sciences! So, let's learn how to use it!\
 
 ::: panel-tabset
-
 ## **To make a Quarto document**
 
 click file -\> new file -\> Quarto document / Complete the pop up prompts and then wait for the document to load. / We want to replace the top bit (our YAML header, everything between the two lines that contains just --- at the top) with the following (use your name and title!)
@@ -172,7 +172,7 @@ editor: visual
 
 Unlike in a regular R script, using the '\#' at the start of a line will not comment that line out. Instead, you can type as you would normally in an R Markdown (Rmd) document. We can format our text in the following ways:
 
-![](images/RMD_formatting.png) \
+![](images/RMD_formatting.png)\
 Bold: '**' on either end of a word, phrase, or line will make it bold!** this is in bold\*\* ='**'this is in bold'**' without the quotes around the \*\*\
 
 Line breaks: DO you want text to be on different lines? Insert a '' at the end of a line to make a line break!
@@ -198,14 +198,11 @@ Once you have a code chunk inserted you will notice that the background of the c
 To Visualize what your report will look like, click the 'visual' tab in the top bar (on the left). Note that if you do this, it CAN change your code--so be careful. You can also use the GUI to alter your report in the visual tab. This provides a nice alternative to the code based formatting options in the 'source' tab.\
 
 To actually render into an html or pdf document, you must click "Render". You can use the arrow to the right of "Render" to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfully Render your quarto document into an html or pdf report in order to turn in your labs!
-
 :::
-
 
 # **6. Packages and reading/writing data**
 
-:::panel-tabset
-
+::: panel-tabset
 ## **Installing and Loading libraries**
 
 Libraries are packages of functions (and sometimes data) that we use to execute tasks in R. Packages are what make R so versatile! We can do almost anything with R if we learn how to utilize the right packages.
@@ -216,7 +213,7 @@ If we do not have a package already installed (for example, if you have only jus
 install.packages(tidyverse)
 ```
 
-OR - We can use the 'Packages' tab in the bottom right quadrant to install packages. Simply navigate to 'Packages', select 'install packages' and enter the package names you need (separate each package by commas). 
+OR - We can use the 'Packages' tab in the bottom right quadrant to install packages. Simply navigate to 'Packages', select 'install packages' and enter the package names you need (separate each package by commas).
 
 In order for a *package to work*, we must first load it! We do this as with the code libary(packagename)
 
@@ -328,26 +325,20 @@ head(coralcover)
 ```
 :::
 
+# **Lab 0 Assignment**
 
-
-# **Lab 0 Assignment** 
-
-**1.** Install R and Rstudio. Get Rstudio running on your computer and get familiar with the layout. 
+**1.** Install R and Rstudio. Get Rstudio running on your computer and get familiar with the layout.
 
 **2.** Make a folder (directory) on your computer for this course and then make an Rstudio project for this course that runs from that folder
 
-**3.** Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: "I installed R and Rstudio following this tutorial"), where "this" is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the "files" tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc. 
+**3.** Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: "I installed R and Rstudio following this tutorial"), where "this" is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the "files" tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc.
 
-**4.** Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. **remember** that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4. 
+**4.** Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. **remember** that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4.
 
 **5.** Read in [THESE data](https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv) and take a look at the shape of the data using a.) head, b.) tail, c.) str(), d. summary (of a numeric column), and e.) count the number of rows and columns (using code!)
 
-**6.** Change a numeric column to a factor. 
+**6.** Change a numeric column to a factor.
 
 **7.** Write your dataframe to file (save your dataframe as a .csv on your computer). It should save in your working directory. Next, read that file back in to R (This seems silly, but we are practicing!)
 
 **8.** Render your file as a .html. Make sure you have "embed-resources: true" in your header. Please ask if you have questions! Once your file renders and saves it may open automatically (so you can check it). It also may not pop up automatically but you can find the .html in your working directory. If you get an error or the file doesn't render, there is an error in your code somewhere (quarto docs ONLY render if there are no code errors).
-
-
-
-
