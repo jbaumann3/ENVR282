@@ -198,11 +198,9 @@ cookieconsent.run({
    
   <ul>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives"><strong>Learning Objectives</strong></a></li>
-  <li><a href="#introduction-to-the-tidyverse" id="toc-introduction-to-the-tidyverse" class="nav-link" data-scroll-target="#introduction-to-the-tidyverse"><strong>Introduction to the Tidyverse</strong></a>
-  <ul class="collapse">
-  <li><a href="#read-in-some-data" id="toc-read-in-some-data" class="nav-link" data-scroll-target="#read-in-some-data"><strong>Read in some data</strong></a></li>
-  </ul></li>
-  <li><a href="#tidyverse-data-wrangling" id="toc-tidyverse-data-wrangling" class="nav-link" data-scroll-target="#tidyverse-data-wrangling"><strong>Tidyverse data wrangling</strong></a></li>
+  <li><a href="#introduction-to-the-tidyverse" id="toc-introduction-to-the-tidyverse" class="nav-link" data-scroll-target="#introduction-to-the-tidyverse"><strong>1.) Introduction to the Tidyverse</strong></a></li>
+  <li><a href="#prepare-data-for-wrangling" id="toc-prepare-data-for-wrangling" class="nav-link" data-scroll-target="#prepare-data-for-wrangling"><strong>2.) Prepare data for wrangling</strong></a></li>
+  <li><a href="#tidyverse-data-wrangling" id="toc-tidyverse-data-wrangling" class="nav-link" data-scroll-target="#tidyverse-data-wrangling"><strong>3.) Tidyverse data wrangling</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab_1.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -234,15 +232,14 @@ cookieconsent.run({
 
 <section id="learning-objectives" class="level1">
 <h1><strong>Learning Objectives</strong></h1>
-<p><br>
-In this tutorial we will learn:<br>
+<p>In this tutorial we will learn:<br>
 1.) Basic data wrangling functions in the tidyverse framework<br>
 2.) Pivoting data<br>
 3.) How to deal with date / time formats in R<br>
 </p>
 </section>
 <section id="introduction-to-the-tidyverse" class="level1">
-<h1><strong>Introduction to the Tidyverse</strong></h1>
+<h1><strong>1.) Introduction to the Tidyverse</strong></h1>
 <p>The Tidyverse is a collection of R packages that can be used together for many different data science practices. They share syntax and are very versatile. For most users, the Tidyverse provides a structure of “best practices” that will allow a user to do just about anything with data.</p>
 <p>We can load the Tidyverse as a single package in R:</p>
 <div class="cell">
@@ -259,8 +256,13 @@ In this tutorial we will learn:<br>
 This section contains some worked examples of Tidyverse best practices for data manipulation. If you just want a quick refresher, you can take a look at the <strong>cheat sheet</strong> below!</p>
 <p><img src="images/tidyverse_cheat_sheet-01.png" class="img-fluid"></p>
 <hr>
-<section id="read-in-some-data" class="level2">
-<h2 class="anchored" data-anchor-id="read-in-some-data"><strong>Read in some data</strong></h2>
+</section>
+<section id="prepare-data-for-wrangling" class="level1">
+<h1><strong>2.) Prepare data for wrangling</strong></h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Read in some data</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>We can mess with a few data sets that are built into R or into R packages.</p>
 <p>A common one is mtcars, which is part of base R (attributes of a bunch of cars)</p>
 <div class="cell">
@@ -319,14 +321,16 @@ Here’s how we do that:</p>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins<span class="ot">&lt;-</span>penguins </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Here, the name of the new dataframe we want in our environment is to the left of the arrow and the name of the object we are calling is to the right. In simpler terms, we are defining a new dataframe called penguins (or any name we want) and it is defined as just an exact copy of penguins (the object that is already defined within palmerpenguins. This is the simplest example – we will quickly move on to more complex things. You will see that when you run this the dataframe ‘penguins’ appears in the local environment. You can call your local file anything you want, it does not need to be an exact copy of the orignal name! Choose names that are meaningful to you, but keep the names short and avoid spaces and other special characters as much as possible.</p>
-</section>
+</div>
+</div>
+</div>
 </section>
 <section id="tidyverse-data-wrangling" class="level1">
-<h1><strong>Tidyverse data wrangling</strong></h1>
+<h1><strong>3.) Tidyverse data wrangling</strong></h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Select or remove columns/rows</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Subsetting and filtering data</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Add new columns or change existing ones</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false"><strong>Pivot data (wide to long / long to wide)</strong></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>Select or remove columns/rows</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>Subsetting and filtering data</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>Add new columns or change existing ones</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>Pivot data (wide to long / long to wide)</strong></a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>Let’s look at penguins</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -438,7 +442,7 @@ Here’s how we do that:</p>
 </div>
 <hr>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Sometimes we only want to look at data from a subset of the data frame<br>
 </p>
 <p>For example, maybe we only want to examine data from chinstrap penguins in the penguins data. OR perhaps we only care about 4 cylinder cars in mtcars. We can filter out the data we don’t want easily using Tidyverse (filter) or base R (subset)</p>
@@ -534,7 +538,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 </div>
 <hr>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p><strong>Adding a new column</strong> Sometimes we may want to do some math on a column (or a series of columns). Maybe we want to calculate a ratio, volume, or area. Maybe we just want to scale a variable by taking the log or changing it from cm to mm. We can do all of this with the mutate() function in Tidyverse!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#convert bill length to cm (and make a new column)</span></span>
@@ -615,7 +619,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
 <p>‘Pivoting’ data means changing the format of the data. Tidyverse and ggplot in particular tend to like data in ‘long’ format. <strong>Long format</strong> means few columns and many rows. <strong>Wide format</strong> is the opposite- many columns and fewer rows.</p>
 <p>Wide format is usually how the human brain organizes data. For example, a spreadsheet in which every species is in its own column is wide format. You might take this sheet to the field and record present/absence or count of each species at each site or something. This is great but it might be easier for us to calculate averages or do group based analysis in R if we have a column called ‘species’ in which every single species observation is a row. This leads to A LOT of repeated categorical variables (site, date, etc), which is fine.</p>
 <p><strong>Example of Long Format</strong> The built in dataset ‘fish_encounters’ is a simple example of long format data. Penguins, iris, and others are also in long format but are more complex</p>

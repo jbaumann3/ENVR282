@@ -14,13 +14,13 @@ editor: visual
 ---
 
 # **Learning Objectives**
-\
-In this tutorial we will learn: \
+
+In this tutorial we will learn:\
 1.) Basic data wrangling functions in the tidyverse framework\
 2.) Pivoting data\
-3.) How to deal with date / time formats in R \
+3.) How to deal with date / time formats in R\
 
-# **Introduction to the Tidyverse**
+# **1.) Introduction to the Tidyverse**
 
 The Tidyverse is a collection of R packages that can be used together for many different data science practices. They share syntax and are very versatile. For most users, the Tidyverse provides a structure of "best practices" that will allow a user to do just about anything with data.
 
@@ -45,6 +45,9 @@ This section contains some worked examples of Tidyverse best practices for data 
 
 ------------------------------------------------------------------------
 
+# **2.) Prepare data for wrangling**
+
+::: panel-tabset
 ## **Read in some data**
 
 We can mess with a few data sets that are built into R or into R packages.
@@ -82,8 +85,9 @@ penguins<-penguins
 ```
 
 Here, the name of the new dataframe we want in our environment is to the left of the arrow and the name of the object we are calling is to the right. In simpler terms, we are defining a new dataframe called penguins (or any name we want) and it is defined as just an exact copy of penguins (the object that is already defined within palmerpenguins. This is the simplest example -- we will quickly move on to more complex things. You will see that when you run this the dataframe 'penguins' appears in the local environment. You can call your local file anything you want, it does not need to be an exact copy of the orignal name! Choose names that are meaningful to you, but keep the names short and avoid spaces and other special characters as much as possible.
+:::
 
-# **Tidyverse data wrangling**
+# **3.) Tidyverse data wrangling**
 
 ::: panel-tabset
 ## **Select or remove columns/rows**
