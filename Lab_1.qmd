@@ -69,7 +69,7 @@ You are welcome to use these to practice with or you can choose from any of the 
 You can also load in your own data or pick something from online, as we learned how to do last time.\
 Let's stick with what we know for now-- I will use the penguins data from the palmerpenguins package
 
-**load the data**
+## **load the data**
 
 ```{r}
 library(palmerpenguins)
@@ -273,3 +273,5 @@ And now we are back to our original data frame! The '!fish' means simply that we
 
 ------------------------------------------------------------------------
 :::
+
+
