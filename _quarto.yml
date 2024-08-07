@@ -25,6 +25,7 @@ website:
        - getting_started.qmd
        - Lab_1.qmd
        - Lab_2.qmd
+       - Lab_3.qmd
 
 format:
   html:
