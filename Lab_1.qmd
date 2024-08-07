@@ -366,36 +366,15 @@ ggplot(exdat, aes(x=date, y=value))+
 ------------------------------------------------------------------------
 
 # **5.) Lab 1 Assignment**
+
 \
-**1.)** Make a new data frame called 'trees_dat' from the data 'trees' that is pre-loaded in R. Note that there are 3 columns in this data frame. 'Girth' is the estimated diameter of the tree in inches measured at 4.5 feet off the ground. 'Height' is the height of the tree in feet and 'Volume' is the volume of the tree in feet. We will use our knowledge of geometry to see how cylindrical the trees are.
-\
-**2.)** Using the 'trees' data, calculate the diameter and radius of the trees in feet (you will need to make new columns and use math).
-\
-**3.)** Now, convert your calculated diameter to inches and compare to the 'girth' column. Does it match? If not, what might explain the differences?
-\
-**4.)** Next, make a new data frame called 'pens' in your local environment from the 'penguins' data in the PalmerPenguins package. Subset the data to only include Adele penguins. 
-\
-**5.)** Now, subset that data again so that you only have Adele penguins from the island called 'Dream'. \
-**6.)** Trim the dataset so that we only have the columns 'species', 'island', and 'bill_length_mm'.
-\
-**7.)** Make a new data frame called 'lobs' from the 'Loblolly' data that is pre-loaded in R. These data show height (ft) and age (yr) of trees, identified by a numerical code (Seed). 
-\
-**8.)** Pivot this data wider such that every row is an age and every column is a different 'Seed'. We should see height data across ages for each individual 'Seed' (tree) in each column. 
-\
-**9.)** Once you successful pivot the data wider, let's pivot it back to long format. This should give us just three columns again (age, seed, and height). Note that when you pivot_longer you will need to name your new columns. See help for pivot_longer() for some examples. This should look similar or the same as our original 'lobs' data frame. 
-\
+**1.)** Make a new data frame called 'trees_dat' from the data 'trees' that is pre-loaded in R. Note that there are 3 columns in this data frame. 'Girth' is the estimated diameter of the tree in inches measured at 4.5 feet off the ground. 'Height' is the height of the tree in feet and 'Volume' is the volume of the tree in feet. We will use our knowledge of geometry to see how cylindrical the trees are.\
+**2.)** Using the 'trees' data, calculate the diameter and radius of the trees in feet (you will need to make new columns and use math).\
+**3.)** Now, convert your calculated diameter to inches and compare to the 'girth' column. Does it match? If not, what might explain the differences?\
+**4.)** Next, make a new data frame called 'pens' in your local environment from the 'penguins' data in the PalmerPenguins package. Subset the data to only include Adele penguins.\
+**5.)** Now, subset that data again so that you only have Adele penguins from the island called 'Dream'.\
+**6.)** Trim the dataset so that we only have the columns 'species', 'island', and 'bill_length_mm'.\
+**7.)** Make a new data frame called 'lobs' from the 'Loblolly' data that is pre-loaded in R. These data show height (ft) and age (yr) of trees, identified by a numerical code (Seed).\
+**8.)** Pivot this data wider such that every row is an age and every column is a different 'Seed'. We should see height data across ages for each individual 'Seed' (tree) in each column.\
+**9.)** Once you successful pivot the data wider, let's pivot it back to long format. This should give us just three columns again (age, seed, and height). Note that when you pivot_longer you will need to name your new columns. See help for pivot_longer() for some examples. This should look similar or the same as our original 'lobs' data frame.\
 **10.)** Render your document and turn in your .html file on Moodle. Don't forget embed-resources: true in your header!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
