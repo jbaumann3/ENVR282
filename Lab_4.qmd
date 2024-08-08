@@ -675,7 +675,30 @@ SO, when is a t-test actually useful and when isn't it? We use a T-test **ONLY**
 :::
 
 # **4: Lab 4 Assignment**
+
+**Remember: When you run a statistical test, it is important to check assumptions. So, when you are asked to run a test below, do not forget to assess assumptions (when possible)**
+
 \
-**1.)** 
+**1.)** Using the penguins data (make a data frame :) ), test for correlation between flipper length and bill length. Make a graph, run the appropriate correlation test, and interpret the results. 
+\
+\
+**2.)** Run an analysis for multiple correlations between all of the numerical variables in penguins. Make a nice looking table of the statistical outputs (r and p) using kable (we have not learned this-- this is a test of your ability to use your new R problem solving skills). Interpret your statistical results (what is and what isn't correlated, is the correlation strong, weak, positive, negative). A multiple correlation plot may help. 
+\
+\
+**3.)** Filter the penguins data so there is only 1 species. Test the hypothesis "There is no relationship between bill length and bill depth" for this species. Make a graph, use the appropriate statistical test, and assess whether the hypothesis is rejected or whether we fail to reject it (and why). Repeat for each of the 3 species. 
+\
+\
+**4.)** Filter out chinstrap penguins so we only have 2 species. Now, assess the following hypothesis: "There is no difference in flipper length between gentoo and adelie penguins." Make a graph that is a good visual hypothesis test, run the appropriate stats, report the results, and use those results to assess the hypothesis. 
+\
+\
+**5.)** Render your document and submit on moodle. 
+
+
+
+
+
+
+
+
 
 
