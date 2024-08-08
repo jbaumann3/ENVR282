@@ -12,6 +12,7 @@ format:
 
 editor: visual
 ---
+
 # Tutorials and Resources for graphs in ggplot
 
 [Basics of ggplot](http://www.cookbook-r.com/graphs)
@@ -19,7 +20,6 @@ editor: visual
 [Colors with ggsci](https://cran.r-project.org/web/packages/ggsci/vignettes/ggsci.html)
 
 [Many plots, 1 page w/ Patchwork](https://github.com/thomasp85/patchwork)
-
 
 # **1.) Load packages we need**
 
@@ -92,7 +92,6 @@ plot1+
 
 Before we get too excited about making perfect graphs, let's take a look at the types of graphs we have available to us...
 
-
 ## **histogram**
 
 Histograms are used to explore the frequency distribution of a single variable. We can check for normality (a bell curve) using this feature. We can also look for means, skewed data, and other trends.
@@ -129,7 +128,6 @@ ggplot(data=penguins, aes(x=species, y= bill_length_mm)) +
  
 ```
 
-
 ## **bar graph**
 
 We can make bar graphs in ggplot using geom_bar(). There are some tricks to getting bar graphs to work exactly right, which I will try to detail below. **NOTE** Bar graphs are very rarely useful. If we want to show means, why not just use points + error bars? What does the bar actually represent? There aren't that many cases where we really need bar graphs. There are exceptions, like when we have a population and we want to see the demographics of that population by count or percentage (see example below)
@@ -157,7 +155,6 @@ ggplot(data=penguins, aes(island)) +
 
 We learned when the best (only) times to use bar graphs are. Do you remember what those were? Are the examples above representative of that?
 
-
 ## **line graph**
 
 A line graph can be extremely useful, especially if we are looking at time series data or rates!
@@ -178,8 +175,6 @@ We can change the aesthetics of the lines using color, linetype, size, etc. Here
 ggplot(data=CO2, aes(x=conc, y= uptake, color=Plant)) +
   geom_line(aes(linetype=Plant),size=2)
 ```
-
-
 
 ## **scatter plot**
 
@@ -203,8 +198,6 @@ Sometimes we don't want to plot all of our points on the same vertical line. If 
 ggplot(data=penguins, aes(x=species, y= bill_length_mm)) +
   geom_jitter()
 ```
-
-
 
 ## **Adding error bars**
 
@@ -261,13 +254,11 @@ ggplot(sumpens, aes(x=species, y= meanbill, color=island))+
   geom_point(size=3,position=pd)+ #this is the averages
   geom_errorbar(aes(ymin=meanbill-se, ymax=meanbill+se), width=0.2, position=pd)
 ```
-
 :::
 
 # **4.) Intermediate Aesthetics**
 
-:::panel-tabset
-
+::: panel-tabset
 ## **titles and axis labels**
 
 Titles and axis labels are easy to add and change in ggplot! We simply add another line to our code. **NOTE** you can also add a subtitle, caption, or change the legend title using labs!
@@ -280,7 +271,6 @@ ggplot(data=penguins, aes(x=species, y= bill_length_mm)) +
   labs(x = 'Species', y='Bill length (mm)', title='Penguin bill length by species', fill='Species')+ #here I change the x-axis and y-axis labels, add a title, and change the legend label (to capitalize the 'S' in 'species')
   theme(text=element_text(size=18))
 ```
-
 
 ## **Colors**
 
@@ -393,8 +383,8 @@ ggplot(data=mtcars, aes(x=cyl, y=mpg, color=cyl))+
 ```
 
 ## **Facets**
-Often in science we are interested in comparing several graphs at once or looking at 3 or 4 variables at a time. This means we may want to have multi-panel graphs or multiple graphs on the same page. While it is common to produce graphs in R and combine them into "final" manuscript ready version in other programs, such as Adobe Illustrator or Inkscape (a free alternative to Illustrator), producing manuscript quality figures in R is possible! In fact, it is only getting easier, thanks to some new packages (like patchwork). Below I will show you how to make multipanel figures (aka facets) and how to put many figures on one page (using the patchwork package-- the easiest of the many options for doing this).
-\
+
+Often in science we are interested in comparing several graphs at once or looking at 3 or 4 variables at a time. This means we may want to have multi-panel graphs or multiple graphs on the same page. While it is common to produce graphs in R and combine them into "final" manuscript ready version in other programs, such as Adobe Illustrator or Inkscape (a free alternative to Illustrator), producing manuscript quality figures in R is possible! In fact, it is only getting easier, thanks to some new packages (like patchwork). Below I will show you how to make multipanel figures (aka facets) and how to put many figures on one page (using the patchwork package-- the easiest of the many options for doing this).\
 Facets allow us to produce multiple graph panels with one ggplot code. We can separate out a variable for easier viewing or even create a grid of graphs using multiple variables.
 
 facet_wrap() allows us to make multiple panels. The panels are aligned in columns and rows. We need to use '\~' in our facet_wrap code. The '\~' essentially means "by"
@@ -434,7 +424,6 @@ ggplot(data=penguins, aes(x=island, y= bill_length_mm, fill=species)) +
   scale_color_aaas()+
   theme_classic()
 ```
-
 
 ## **Multiple plots on the same page**
 
@@ -498,7 +487,6 @@ We can also combine addition and division (order of operations is still a thing!
 ```
 
 There are other functions in patchwork that allow us to annotate plots, give them labels, move/combine legends, etc.
-
 
 ## **Themes**
 
@@ -568,48 +556,29 @@ ggplot(data=penguins, aes(x=species, y= bill_length_mm)) +
 :::
 
 # **5.) Lab 2 Assignment**
-**1.** Make a new dataframe called 'irisdata' from the 'iris' date built into R. 
-\
-\
-**2.** Make a histogram of Sepal.Length that compares distributions for all 3 species in the same graph. Note that color= changes the color of lines and fill= changes the color of the fill!
-\
-\
-**3.)** Make a boxplot that shows how Sepal.Length differs by Species. Remove the gray background (there are many ways to do that-- any way you want is fine).
-\
-\
-**4.)** Make a bar graph that shows Sepal.Length by species. Is this a good graph or no? Consider the aspects of good vs bad graphs in the tutorial. 
-\
-\
-**5.)** Make a scatter plot that shows Sepal.Length by species. Compare this to your bar graph. Which is more useful and why?
-\
-\
-**6.)** Make a line graph comparing Sepal.Length and Sepal.Width by species. What do you see? This is often the kind of graph we pair with a linear regression, so thinking about what it shows us is important. 
-\
-\
-**ALL graphs below should not have a grey background. Use a theme to remove that**
-\
-\
-**7.)** Pick any of your above graphs. Change the colors away from default to something else. You can either make your own palette or use a scale_color_manual(). Next, do the same using the ggsci package. 
-\
-\
-**8.)** Next, take the graph from 7 and make each species a different shape. 
-\
-\
-**9.)** Take the graph from 8, add a title, change the axes titles, and make the text larger (I like font size 18).
-\
-\
-**10.)** Take the graph from 6 and facet_wrap() it by species. 
-\
-\
-**11.)** Using the patchwork package, take any three of your graphs and panel them so that they all fit together on one page. 
-\
-\
-**12.)** Render your quarto doc and submit your .html file on moodle. 
 
-
-
-
-
-
-
-
+**1.** Make a new dataframe called 'irisdata' from the 'iris' date built into R.\
+\
+**2.** Make a histogram of Sepal.Length that compares distributions for all 3 species in the same graph. Note that color= changes the color of lines and fill= changes the color of the fill!\
+\
+**3.)** Make a boxplot that shows how Sepal.Length differs by Species. Remove the gray background (there are many ways to do that-- any way you want is fine).\
+\
+**4.)** Make a bar graph that shows Sepal.Length by species. Is this a good graph or no? Consider the aspects of good vs bad graphs in the tutorial.\
+\
+**5.)** Make a scatter plot that shows Sepal.Length by species. Compare this to your bar graph. Which is more useful and why?\
+\
+**6.)** Make a line graph comparing Sepal.Length and Sepal.Width by species. What do you see? This is often the kind of graph we pair with a linear regression, so thinking about what it shows us is important.\
+\
+**ALL graphs below should not have a grey background. Use a theme to remove that**\
+\
+**7.)** Pick any of your above graphs. Change the colors away from default to something else. You can either make your own palette or use a scale_color_manual(). Next, do the same using the ggsci package.\
+\
+**8.)** Next, take the graph from 7 and make each species a different shape.\
+\
+**9.)** Take the graph from 8, add a title, change the axes titles, and make the text larger (I like font size 18).\
+\
+**10.)** Take the graph from 6 and facet_wrap() it by species.\
+\
+**11.)** Using the patchwork package, take any three of your graphs and panel them so that they all fit together on one page.\
+\
+**12.)** Render your quarto doc and submit your .html file on moodle.
