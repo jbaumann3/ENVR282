@@ -1,0 +1,14 @@
+---
+title: "Lab 4: Beginner Stats"
+author: "Justin Baumann"
+format: 
+  html:
+    toc: true
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    embed-resources: true
+
+editor: visual
+---
