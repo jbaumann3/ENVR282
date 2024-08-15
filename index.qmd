@@ -2,4 +2,4 @@
 title: "ENVR 282"
 ---
 
-Welcome to ENVR 282: Research Methods in Environmental Science. This is a class that you are in. WOW/..
+Welcome to ENVR 282: Research Methods in Environmental Science. All of your lab assignments and lecture slides are available here! Check Lyceum for additional details and to turn in work.
