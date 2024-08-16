@@ -23,14 +23,13 @@ library(patchwork)
 library(ggsci)
 ```
 
-
 # **1.) How to combine functions together and build data science pipelines using Pipe syntax and Tidyverse**
 
 ## **What is a pipe?**
 
 The pipe, denoted as '\|' in most programming languages but as '%\>%' in R, is used to link functions together. This is an oversimplification, but it works for our needs.
 
-A pipe (%\>% OR |>) is useful when we want to do a sequence of actions to an original data frame. For example, maybe we want to select() some columns and then filter() the resulting selection before finally calculating an average (or something). We can do all of those steps individually or we can use pipes to do them all at once and create one output.
+A pipe (%\>% OR \|\>) is useful when we want to do a sequence of actions to an original data frame. For example, maybe we want to select() some columns and then filter() the resulting selection before finally calculating an average (or something). We can do all of those steps individually or we can use pipes to do them all at once and create one output.
 
 We can think of the pipe as the phrase "and then." I will show examples in the next section.
 
@@ -38,7 +37,7 @@ When not to use a pipe: 1.) When you want to do manipulate multiple data frames 
 
 ## **How to use the pipe**
 
-The pipe is coded as '%\>%' or '|>' and should have a single space on either side of it at all times.
+The pipe is coded as '%\>%' or '\|\>' and should have a single space on either side of it at all times.
 
 Let's do an example with penguins. Here we will select only species and bill length and then we will filter so that we only have chinstrap penguins.
 
@@ -73,7 +72,7 @@ There are three steps: 1.) Manipulate the data as needed (correct format, select
 
 3.) Do your calculations!
 
-:::panel-tabset
+::: panel-tabset
 ## **Example 1**
 
 Here's what that looks like in code form:
@@ -100,6 +99,7 @@ head(mpgdf)
 ```
 
 ## **Example 2**
+
 Let's do one more using penguins. This time, I want to know how bill length various between species, islands, and sex. I also prefer to use standard error of the mean in my error bars over standard deviation. So I want to calculate that in my summarize function.
 
 ```{r}
@@ -118,6 +118,7 @@ As you can see, this is complex but with just a few lines we have all of the inf
 Some notes on the pieces of the summarize function I used up there: meanbill is just a mean() calculation. sd is just a standard deviation calculation- sd(). n=n() calculate the sample size for each group. Standard error cannot be calculated with a built in function in R (without packages that we aren't using here) so I wrote the formula for it myself. Standard Error = standard deviation / squareroot(sample size) in other words: se=sd/sqrt(n)
 
 ## **A more complex example**
+
 PS: here's the payoff... we can use the dataframe we just made to build a really nice plot, like the one below. You will be learning ggplot next time! NOTE: this plot is about as complex as we'd ever expect you to get. So don't worry, we aren't starting with this kind of plot.
 
 ```{r echo=FALSE}
@@ -136,23 +137,15 @@ ggplot(sumpens, aes(x=island, y=meanbill))+
 :::
 
 # **3.) Lab 3 Assignment**
+
 \
 \
-**1.)** Using your dataframe 'pens' from Lab 1, do lab 1 steps 4-6 in one step (using pipe). So, take pens, filter so we only have Adelie from Dream and only have the columns species, island, and bill length. 
+**1.)** Using your dataframe 'pens' from Lab 1, do lab 1 steps 4-6 in one step (using pipe). So, take pens, filter so we only have Adelie from Dream and only have the columns species, island, and bill length.\
 \
+**2.)** Summarize! Calculate mean flipper_length_mm by species and sex. Make sure you calculate mean and standard error.\
 \
-**2.)** Summarize! Calculate mean flipper_length_mm by species and sex. Make sure you calculate mean and standard error. 
+**3.)** Graph your summarized data! Include your error bars. Ensure you use a "good" graph format (this should not be a bar graph). Your graph should look nice! Use a theme, remove the gray background, add a title, get your text to a good size, change colors away from defaults, etc.\
 \
-\
-**3.)** Graph your summarized data! Include your error bars. Ensure you use a "good" graph format (this should not be a bar graph). Your graph should look nice! Use a theme, remove the gray background, add a title, get your text to a good size, change colors away from defaults, etc. 
-\
-\
-**4.)** Add the raw data as geom_point() to your graph for 3. Make these geom_point() smaller than the means you've plotted and make them somewhat transparent ('greyed out') out using alpha=. 
-\
+**4.)** Add the raw data as geom_point() to your graph for 3. Make these geom_point() smaller than the means you've plotted and make them somewhat transparent ('greyed out') out using alpha=.\
 \
 **5.)** Render your document and submit the .html on moodle!
-
-
-
-
-
