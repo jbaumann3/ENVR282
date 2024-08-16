@@ -29,6 +29,19 @@ website:
        - Lab_4.qmd
        - Lab_5.qmd
       
+    - id: Lectures
+      title: "Lectures"
+      style: "docked"
+      background: #B2B3B2"
+      contents: 
+       - lec_1.qmd
+       - lec_2.qmd
+       - lec_3.qmd
+       - lec_4.qmd
+       - lec_5.qmd
+       - lec_6.qmd
+       - lec_7.qmd
+       - lec_8.qmd
 
 format:
   html:
