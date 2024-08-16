@@ -22,5 +22,3 @@ editor: visual
 ```{=html}
 <iframe src="https://bates0-my.sharepoint.com/personal/jbaumann2_bcis_bates_edu/_layouts/15/Doc.aspx?sourcedoc={2c318cb2-e118-4536-957e-6e4f3130627e}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="900px" height="650px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
 ```
-
-

@@ -35,6 +35,9 @@ website:
       background: "#B2B3B2"
       contents: 
        - lec_1.qmd
+       - lec_2.qmd
+       - lec_3.qmd
+       - lec_4.qmd
 
 format:
   html:
