@@ -1,0 +1,24 @@
+---
+title: "1 - Intro to data and stats"
+author: "Justin Baumann"
+format: 
+  html:
+    toc: true
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    embed-resources: true
+
+editor: visual
+---
+
+# **Recording**
+
+{{< video https://www.youtube.com/watch?v=fSw5DqGPlAQ >}}
+
+# **Slides**
+
+```{=html}
+<iframe src="https://bates0-my.sharepoint.com/personal/jbaumann2_bcis_bates_edu/_layouts/15/Doc.aspx?sourcedoc={a6ba5ab3-9772-447e-bb60-ced7342e31ad}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="900px" height="650px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
+```
