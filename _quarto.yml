@@ -37,7 +37,6 @@ website:
        - lec_1.qmd
        - lec_2.qmd
        - lec_3.qmd
-       - lec_4.qmd
 
 format:
   html:

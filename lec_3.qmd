@@ -15,7 +15,7 @@ editor: visual
 
 # **Recording**
 
-{{< video URLHERE >}}
+{{< video https://youtu.be/7qjydjB8lnA >}}
 
 # **Slides**
 
