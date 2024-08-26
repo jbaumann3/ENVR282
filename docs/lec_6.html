@@ -42,8 +42,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
-<link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -84,7 +82,7 @@ cookieconsent.run({
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -145,6 +143,26 @@ cookieconsent.run({
     <a class="dropdown-item" href="./lec_1.html" rel="" target="">
  <span class="dropdown-text">1 - Intro to data and stats</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_2.html" rel="" target="">
+ <span class="dropdown-text">2 - Distributions and Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_3.html" rel="" target="">
+ <span class="dropdown-text">3 - Probability</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_4.html" rel="" target="">
+ <span class="dropdown-text">4 - Experimental Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_5.html" rel="" target="">
+ <span class="dropdown-text">5 - Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_6.html" rel="" target="">
+ <span class="dropdown-text">6 - Normal Distribution and t-test</span></a>
+  </li>  
     </ul>
   </li>
 </ul>
@@ -153,10 +171,63 @@ cookieconsent.run({
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lec_5.html">5 - Hypothesis Testing</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1 - Intro to data and stats</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2 - Distributions and Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3 - Probability</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4 - Experimental Design</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5 - Hypothesis Testing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec_6.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">6 - Normal Distribution and t-test</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -196,7 +267,7 @@ cookieconsent.run({
 
 <section id="recording" class="level1">
 <h1><strong>Recording</strong></h1>
-<div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="URLHERE"></video></div>
+<div class="quarto-video ratio ratio-16x9"><iframe data-external="1" src="https://www.youtube.com/embed/jgFXVYBrYXY?si=Suz1GgtuXPq3-LpO" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div>
 </section>
 <section id="slides" class="level1">
 <h1><strong>Slides</strong></h1>
@@ -451,7 +522,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-<script>videojs(video_shortcode_videojs_video1);</script>
 
 
 

@@ -15,13 +15,10 @@ editor: visual
 
 # **Recording**
 
-{{< video URLHERE >}}
+{{< video https://youtu.be/hYsA9NOB-9o?si=GOd-7T6f8Hj1qDD7 >}}
 
 # **Slides**
 
 ```{=html}
 <iframe src="https://bates0-my.sharepoint.com/personal/jbaumann2_bcis_bates_edu/_layouts/15/Doc.aspx?sourcedoc={aa553f8d-1bfa-4c5b-bd36-05723a690365}&amp;action=embedview&amp;wdAr=1.7777777777777777" width="900px" height="650px" frameborder="0">This is an embedded <a target="_blank" href="https://office.com">Microsoft Office</a> presentation, powered by <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe>
 ```
-
-
-
