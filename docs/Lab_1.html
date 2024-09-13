@@ -168,8 +168,45 @@ cookieconsent.run({
   </li>  
     </ul>
   </li>
-  <li class="dropdown-header">
- <span class="menu-text">sidebar:Lectures</span></li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="./lec_1.html" rel="" target="">
+ <span class="dropdown-text">1 - Intro to data and stats</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_2.html" rel="" target="">
+ <span class="dropdown-text">2 - Distributions and Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_3.html" rel="" target="">
+ <span class="dropdown-text">3 - Probability</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_4.html" rel="" target="">
+ <span class="dropdown-text">4 - Experimental Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_5.html" rel="" target="">
+ <span class="dropdown-text">5 - Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_6.html" rel="" target="">
+ <span class="dropdown-text">6 - Normal Distribution and t-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_7.html" rel="" target="">
+ <span class="dropdown-text">7 - Correlation and Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_8.html" rel="" target="">
+ <span class="dropdown-text">8 - ANOVA</span></a>
+  </li>  
+    </ul>
+  </li>
 </ul>
             <div class="quarto-navbar-tools ms-auto">
 </div>
@@ -834,8 +871,8 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <strong>1.)</strong> Make a new data frame called ‘trees_dat’ from the data ‘trees’ that is pre-loaded in R. Note that there are 3 columns in this data frame. ‘Girth’ is the estimated diameter of the tree in inches measured at 4.5 feet off the ground. ‘Height’ is the height of the tree in feet and ‘Volume’ is the volume of the tree in feet. We will use our knowledge of geometry to see how cylindrical the trees are.<br>
 <strong>2.)</strong> Using the ‘trees’ data, calculate the diameter and radius of the trees in feet (you will need to make new columns and use math).<br>
 <strong>3.)</strong> Now, convert your calculated diameter to inches and compare to the ‘girth’ column. Does it match? If not, what might explain the differences?<br>
-<strong>4.)</strong> Next, make a new data frame called ‘pens’ in your local environment from the ‘penguins’ data in the PalmerPenguins package. Subset the data to only include Adele penguins.<br>
-<strong>5.)</strong> Now, subset that data again so that you only have Adele penguins from the island called ‘Dream’.<br>
+<strong>4.)</strong> Next, make a new data frame called ‘pens’ in your local environment from the ‘penguins’ data in the PalmerPenguins package. Subset the data to only include Adelie penguins.<br>
+<strong>5.)</strong> Now, subset that data again so that you only have Adelie penguins from the island called ‘Dream’.<br>
 <strong>6.)</strong> Trim the dataset so that we only have the columns ‘species’, ‘island’, and ‘bill_length_mm’.<br>
 <strong>7.)</strong> Make a new data frame called ‘lobs’ from the ‘Loblolly’ data that is pre-loaded in R. These data show height (ft) and age (yr) of trees, identified by a numerical code (Seed).<br>
 <strong>8.)</strong> Pivot this data wider such that every row is an age and every column is a different ‘Seed’. We should see height data across ages for each individual ‘Seed’ (tree) in each column.<br>
