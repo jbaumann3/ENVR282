@@ -310,7 +310,12 @@ TukeyHSD(aovtest)
 The Tukey shows us comparisons of each cylinder category with one another. We see that There are significant differences between all 3 groups! This tells us definitely, that MPG is highest with 4 cylinders and lowest with 8.
 
 # **6.) Lab 5 Assignment**
-
+\
+**General Instructions** \
+1.) Please label your responses with a number and organize your assignment file in a neat and easy to read fashion! You should be able to explain what every line of code does -- please do include some writing in the document so I (and future you) can follow your logic and work. \
+\
+2.) IF you modify a data frame, make a graph, or DO anything with a line of code, you should check your work! A visual check to make sure that what you did worked and actually worked as intended is very important. When you modify a dataframe you should give the resulting dataframe a name and then have a look at it (you can use head(df) or glimpse(df) in most cases). If you make a graph, make sure it will show up below. I need to see a confirmation step for all of your work. This will also help you, so when you go back over this work you can understand what everything does. \
+\
 \
 \
 **1.)** Grab your trusty penguins data frame and test the following hypothesis: "There is no effect of species on bill length in penguins." Show a useful graphical representation of the data, run the appropriate stats, and interpret the results. Put the stats into a table! Don't forget to check assumptions.\
@@ -321,11 +326,6 @@ The Tukey shows us comparisons of each cylinder category with one another. We se
 \
 **4.)** Read in [These data](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-05/trashwheel.csv) about trash cleanup in Baltimore Harbor. ![Mr. Trash Wheel doing his job](https://upload.wikimedia.org/wikipedia/commons/2/20/Mr._Trash_Wheel_%2827582099121%29.jpg)
 
-Mr. Trash Wheel and friends collect pollution from tributaries and Baltimore Harbor. There are now 4 such trash wheels in the area. Let's see if we can figure out which of these wheels does the most cleaning! Using the data you just read in, test the following hypothesis: 
-"There is no difference in plastic bottle collection across months or trashwheels." Remember, you will need to make a useful graph, run your stats, test assumptions, and intrepret. 
+Mr. Trash Wheel and friends collect pollution from tributaries and Baltimore Harbor. There are now 4 such trash wheels in the area. Let's see if we can figure out which of these wheels does the most cleaning! Using the data you just read in, test the following hypothesis: "There is no difference in plastic bottle collection across months or trashwheels." Remember, you will need to make a useful graph, run your stats, test assumptions, and intrepret.\
 \
-\
-**5.)** Render your document and submit on moodle. 
-
-
-
+**5.)** Render your document and submit on moodle.

@@ -137,7 +137,12 @@ ggplot(sumpens, aes(x=island, y=meanbill))+
 :::
 
 # **3.) Lab 3 Assignment**
-
+\
+\
+**General Instructions** \
+1.) Please label your responses with a number and organize your assignment file in a neat and easy to read fashion! You should be able to explain what every line of code does -- please do include some writing in the document so I (and future you) can follow your logic and work. \
+\
+2.) IF you modify a data frame, make a graph, or DO anything with a line of code, you should check your work! A visual check to make sure that what you did worked and actually worked as intended is very important. When you modify a dataframe you should give the resulting dataframe a name and then have a look at it (you can use head(df) or glimpse(df) in most cases). If you make a graph, make sure it will show up below. I need to see a confirmation step for all of your work. This will also help you, so when you go back over this work you can understand what everything does. \
 \
 \
 **1.)** Using your dataframe 'pens' from Lab 1, do lab 1 steps 4-6 in one step (using pipe). So, take pens, filter so we only have Adelie from Dream and only have the columns species, island, and bill length.\

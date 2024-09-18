@@ -13,7 +13,6 @@ format:
 editor: visual
 ---
 
-
 # **Load packages**
 
 ```{r}
@@ -31,14 +30,14 @@ library(car) #contains some statistical tests we need to assess assumptions
 
 
 ```
+
 # **A note on statistics and experimental design**
 
 Statistics is a complex field with a long history. We could spend an entire course or even an entire career focusing on the intricate details of statistical decisions and ideas. We've already spent some time on this! I want you to have the statistical grounding necessary to plan your experiments and analyze your data. For biologists, statistics are a tool we can leverage to perform the best possible experiments and test our hypotheses. The T-test is the start of our stats journey. It's a simple test and one that you may not use often, but the theory behind it sets the stage for what is to come!
 
 # **1.) Correlation between numerical variables**
 
-:::panel-tabset
-
+::: panel-tabset
 Often in science, it can be useful to assess the correlation between numerical variables (how does a change in one variable impact a change in another?). We may use these correlations to tell us which variables to include or exclude from more complex models and we can also use these correlations to understand relationships between variables and thus, possibly search for mechanisms to explain said relationships.
 
 ## Correlation Coefficients
@@ -61,7 +60,6 @@ ggplot(virg, aes(x=Sepal.Length, y=Sepal.Width))+
   theme_classic()
 ```
 
-
 ## **Calculate a correlation coeficient (r)**
 
 ```{r}
@@ -72,8 +70,7 @@ This value (r=0.45) positive and middle of the road/strong. This tells us that s
 
 ## **Spearman's Test**
 
-**A hypothesis test on the correlation** 
-H0: The correlation between these two variables is 0\
+**A hypothesis test on the correlation** H0: The correlation between these two variables is 0\
 Ha: The correlation != 0\
 
 ```{r}
@@ -150,13 +147,13 @@ chisq.test(mtcars$carb, mtcars$cyl)
 ```
 
 Both tests above are the same (just two options for you). We see that p\<0.05, thus we have evidence to reject H0 and suggest that carb and cyl are dependent / correlated.
-
 :::
 
 # **2.) Simple Linear Regression**
+
 A linear regression essentially compares the correlation of one variable with another. The closer the relationship is to 1:1 (a diagonal line at 45 degrees from the x and y axis) the more correlated the two variables are. Does correlation imply causation? NO, it does not. But this type of analysis driven by hypotheses can help us seek causation/ mechanisms and statistically assess relationships.
 
-Let's take a look at a simple linear regression. To do this, we will use the lm() function in R. The syntax should always be reponse variable ~ explanatory variable We will do this with the iris data.
+Let's take a look at a simple linear regression. To do this, we will use the lm() function in R. The syntax should always be reponse variable \~ explanatory variable We will do this with the iris data.
 
 ```{r}
 lm1<-lm(Sepal.Length ~ Petal.Length, data=iris)
@@ -218,7 +215,8 @@ If assumptions of normality and equal variance are met, a residual plot should h
 
 The residual plot above shows meets all assumptions, though this analysis is somewhat subjective.
 
-## **An alternative assumption check** 
+## **An alternative assumption check**
+
 I think it is easier to do a more comprehensive visual check with the performance package in R. We can easily visually check the first 3 assumptions using check_model(). Assumption 4 requires us to think about experimental design.
 
 ```{r}
@@ -321,7 +319,7 @@ Here we see some concern about Homoscedasticity and homogeneity of variance. We 
 
 Remember our hypothesis (null) was: "There will be no effect of cylinder on horsepower." We are able to reject this null hypothesis and suggest that indeed horsepower increases as cylinder increases. We might also add caveats that homoscedasticity was not confirmed due to low sample size, but the result seems clear enough that this likely doesn't matter.\
 \
-# **3.) T-test**
+\# **3.) T-test**
 
 The t-test (or students' t-test) is a basic statistical test used to assess whether or not the means of two groups are different from one another. In this test, the null hypothesis is that the two means are equal (or that there is no difference between the two means).
 
@@ -345,9 +343,7 @@ We will use these data for our examples today. T-test requires *only* 2 groups/p
 
 But first, we must **test our assumptions**
 
-:::panel-tabset
-
-
+::: panel-tabset
 ## **Assumption 1.) Assessing normality**
 
 *Method 1: the Shapiro-Wilk Test* If p \< 0.05 then the distribution is significantly different from normal.
@@ -671,34 +667,24 @@ t4
 ```
 
 SO, when is a t-test actually useful and when isn't it? We use a T-test **ONLY** when we want to compare two means / two populations. If we have more than 2 groups, a T-test is not appropriate! Instead, we need to use an analysis of variance (ANOVA) or possibly something more complex!
-
 :::
 
 # **4: Lab 4 Assignment**
-
+\
+**General Instructions** \
+1.) Please label your responses with a number and organize your assignment file in a neat and easy to read fashion! You should be able to explain what every line of code does -- please do include some writing in the document so I (and future you) can follow your logic and work. \
+\
+2.) IF you modify a data frame, make a graph, or DO anything with a line of code, you should check your work! A visual check to make sure that what you did worked and actually worked as intended is very important. When you modify a dataframe you should give the resulting dataframe a name and then have a look at it (you can use head(df) or glimpse(df) in most cases). If you make a graph, make sure it will show up below. I need to see a confirmation step for all of your work. This will also help you, so when you go back over this work you can understand what everything does. \
+\
 **Remember: When you run a statistical test, it is important to check assumptions. So, when you are asked to run a test below, do not forget to assess assumptions (when possible)**
 
 \
-**1.)** Using the penguins data (make a data frame :) ), test for correlation between flipper length and bill length. Make a graph, run the appropriate correlation test, and interpret the results. 
+**1.)** Using the penguins data (make a data frame :) ), test for correlation between flipper length and bill length. Make a graph, run the appropriate correlation test, and interpret the results.\
 \
+**2.)** Run an analysis for multiple correlations between all of the numerical variables in penguins. Make a nice looking table of the statistical outputs (r and p) using kable (we have not learned this-- this is a test of your ability to use your new R problem solving skills). Interpret your statistical results (what is and what isn't correlated, is the correlation strong, weak, positive, negative). A multiple correlation plot may help.\
 \
-**2.)** Run an analysis for multiple correlations between all of the numerical variables in penguins. Make a nice looking table of the statistical outputs (r and p) using kable (we have not learned this-- this is a test of your ability to use your new R problem solving skills). Interpret your statistical results (what is and what isn't correlated, is the correlation strong, weak, positive, negative). A multiple correlation plot may help. 
+**3.)** Filter the penguins data so there is only 1 species. Test the hypothesis "There is no relationship between bill length and bill depth" for this species. Make a graph, use the appropriate statistical test, and assess whether the hypothesis is rejected or whether we fail to reject it (and why). Repeat for each of the 3 species.\
 \
+**4.)** Filter out chinstrap penguins so we only have 2 species. Now, assess the following hypothesis: "There is no difference in flipper length between gentoo and adelie penguins." Make a graph that is a good visual hypothesis test, run the appropriate stats, report the results, and use those results to assess the hypothesis.\
 \
-**3.)** Filter the penguins data so there is only 1 species. Test the hypothesis "There is no relationship between bill length and bill depth" for this species. Make a graph, use the appropriate statistical test, and assess whether the hypothesis is rejected or whether we fail to reject it (and why). Repeat for each of the 3 species. 
-\
-\
-**4.)** Filter out chinstrap penguins so we only have 2 species. Now, assess the following hypothesis: "There is no difference in flipper length between gentoo and adelie penguins." Make a graph that is a good visual hypothesis test, run the appropriate stats, report the results, and use those results to assess the hypothesis. 
-\
-\
-**5.)** Render your document and submit on moodle. 
-
-
-
-
-
-
-
-
-
-
+**5.)** Render your document and submit on moodle.
