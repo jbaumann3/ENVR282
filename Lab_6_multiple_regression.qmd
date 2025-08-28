@@ -13,7 +13,7 @@ format:
 editor: visual
 ---
 
-# **Lab 7: Multiple Regression and Model Selection**
+# **Lab 6: Multiple Regression and Model Selection**
 
 ### load packages
 
