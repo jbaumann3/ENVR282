@@ -1,0 +1,406 @@
+---
+title: "Lab 6: Multiple Regression"
+author: "Justin Baumann"
+format: 
+  html:
+    toc: true
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+    self-contained: true
+
+editor: visual
+---
+
+# **Lab 7: Multiple Regression and Model Selection**
+
+### load packages
+
+```{r, warning=FALSE, output=FALSE}
+library(palmerpenguins)
+library(tidyverse)
+library(broom)
+library(data.table)
+library(performance)
+library(patchwork)
+library(car) 
+library(rsample)
+library(moderndive) #helps us make useful regression tables
+
+```
+
+Multiple Regression is a powerful tool that allows us to investigate the effects of multiple varibles on our response variable of choice. This is great for real world data, as it is almost never the case that we have the effect of a single variable on another. Instead, we often have so many that we need to dig into mixed effects modeling, which is the next step up from multiple regression.
+\
+My favorite mixed models selection tutorial: [Our Coding Club](https://ourcodingclub.github.io/tutorials/mixed-models/)
+\
+\
+We will see examples of how to use multiple regression on real data in this tutorial. To start with, multiple regression can come in multiple forms. The first is **additive** and the second is **interactive**. Let's look at an example. 
+\
+
+# **1.) Using regression to understand the relationship between weight and surface in corals -- An example**
+
+::::panel-tabset
+
+## Prepare data
+
+Read in the data
+
+```{r}
+bz<-read_csv('https://raw.githubusercontent.com/jbaumann3/Belize-RT-Baumann-et-al-2021/main/rt_master_data.csv')
+
+```
+
+Make surface area into one word for ease of use or make a new column with a better title. up to you!
+```{r}
+bz$surface_area<-bz$`surface area`
+head(bz)
+```
+
+## Simple lm
+We will first run a simple lm to check the relationship between weight (bw) and surface are for each of our two species, separately. 
+\
+We will start with SSID (one of our species)
+```{r}
+#simple lm surface area x bw (for SSID)
+ssid<- bz |>
+  filter(species=='SSID')
+
+ggplot(ssid, aes(x=surface_area, y=bw))+
+  geom_point()+
+  theme_classic()+
+  geom_smooth(method='lm')
+#p=2*10-16, R2=.3439-> SO, not bad. But a lot of spread in the data. 
+
+lm1<-lm(bw~surface_area, data=ssid)
+summary(lm1)
+```
+Here we can see that the R-squared is 0.344 and the p-value is <0.05, so we have a significant positive relationship between X and Y, though there is considerable spread.
+\
+And now for PSTR (the other species)
+```{r}
+#simple lm surface area x bw (for PSTR)
+pstr<- bz |>
+  filter(species=='PSTR')
+
+ggplot(pstr, aes(x=surface_area, y=bw))+
+  geom_point()+
+  theme_classic()+
+  geom_smooth(method='lm')
+#p=2*10-16, R2=.3439-> SO, not bad. But a lot of spread in the data. 
+
+lm2<-lm(bw~surface_area, data=pstr)
+summary(lm2)
+```
+Here we see that the lm is better of PSTR (better fit because of the higher R-squared). From these analyses, we can generally conclude that there is a relationship between surface area and weight, but that it maybe varies by species. 
+\
+## additive regression
+Since we are interested in considering the effect of species on this relationship quantitatively, we need to run a regression model that include species in the model! We can do in two ways-- an additive model or an interactive model. Let's start with additive
+
+```{r}
+lm3<-lm(bw~surface_area+species, data=bz)
+summary(lm3)
+```
+
+**Let's hold off on interpretation until we make a graph. Here, I am showing you a REALLY POWERFUL trick, which is using the augment() function in the broom package to pass model fits directly to ggplot.**
+
+```{r}
+lm3g<-lm3 %>% 
+  augment() %>%
+  ggplot(aes(x=surface_area, y=bw, color=species))+
+  geom_point(alpha=0.3)+
+  geom_line(aes(y=.fitted), size=1)+
+  theme_classic()
+
+lm3g
+```
+**We can view tables of our multiple regression data in similar ways to how we view our simple lm**
+```{r}
+summary(lm3) #check R2 and p-value! How well does the model fit?
+
+summary(lm3)$coefficient #just the coef table from the summary!
+```
+However, you may find these difficult to interpret. We still see our R squared and p-value for the model itself, which is still important. But, we also have a more complex coefficients table to read. This table shows us an intercept and the effects of surface area and speciesSSID. Where is PSTR? Confusing, huh?
+In R, the Intercept is something called a 'base case for comparison' in which R takes the first category (in alphabetical order) in each categorical variable and isolates it. Here, we only have 1 categorical variable (species) and PSTR comes first. So, intercept is showing us the model for bw~surface area within PSTR only. The ESTIMATE is the y intercept of the PSTR model. 
+0.82782 is the slope of surface area for the intercept model. 
+And 2.89076 is the offset between the PSTR model and the SSID model. Since it is positive, the offset of the intercepts is 2.89076. Thus, the SSID line should be HIGHER on the y-axis. 
+
+Notably, since this is an additive model, the slopes of the lines for each category should ALWAYS be parallel. This is also called a parallel slopes model. Let's look at the graph (above) to confirm!
+\
+\
+Finally, since we understand ANOVA better, we might try this approach
+```{r}
+anova(lm3) # an ANOVA table of our lm
+
+confint(lm3) #CIs for our model predictors!
+```
+
+The confint shows us 95% confidence intervals for our model predictors, which is something we will learn about a little later. 
+
+
+## interactive regression
+Now, sometimes we care about the effects of 2 variables at the same time and not only how 2 variables (separately) impact our response variable. In this case, we need interactive regression...
+
+Interactive models include multiplication in the formula instead of addition. In interactive models, both the slope and y intercept of the model can vary, so the slopes will no longer be parallel (automatically). Let's look at the interactive model of the same data we just used. 
+
+```{r}
+lm4<-lm(bw~surface_area*species, data=bz)
+summary(lm4)
+
+```
+**And the other tables**
+```{r}
+anova(lm4)
+confint(lm4)
+get_regression_table(lm4)
+
+```
+We read this regression table the same way we read the additive model one. Except this time, we also have an interactive term. 
+We are interested in how surface area impacts bw, how species impacts bw, and how the relationship between surface area (x) and bw (y) varies by species -- basically, do these two regression lines look different in slope, intercept, or both?
+The last line of the get_regression_table shows us the offset of the slope of surface area in SSID relative to PSTR (the SSID slope is lower). Notably, the p-value is not significant here, so this interaction does not have a significant effect. 
+
+**Finally, the graph**
+```{r}
+lm4g<-lm4 %>% 
+  augment() %>%
+  ggplot(aes(x=surface_area, y=bw, color=species))+
+  geom_point(alpha=0.3)+
+  geom_line(aes(y=.fitted),size=1)+
+  theme_classic()
+
+lm4g
+```
+
+## Comparing additive to interactive
+Our interactive model suggests that the interaction term does not have a significant effect. Thus, the additive and interactive models should not really signifiacntly differ. AND, the relationship between x and y would then not change based on species. 
+\
+Let's compare the graphs side by side to confirm
+```{r}
+lm3g+lm4g
+```
+And if you prefer to have them stacked...
+```{r}
+lm3g/lm4g
+```
+
+Remember that our eyes are often the most valuable tool! We can see that there are only slight differences between these two models and that there are only slight differences between the two species (if that). It turns out that there is a difference between the two species and there is an effect of surface area on bw, BUT there is not a significant interaction (the relationship between surface area and bw does not differ by species). 
+Given that the two models are essentially showing us the same thing, but the additive model is simpler (less complexity because there is not an interaction to calcualte), we would generally prefer to pick the less complex option. 
+\
+While this is a great rule of thumb, we can also do model selection quantitatively, which we will get to in our model selection section later on...
+\
+:::
+
+# **Model fit assessment and model selection**
+
+:::panel-tabset
+
+## **Checking models**
+Here, we want to know how well the models represent the data. We need: 1. The R2 value of the models (closer to 1 is best) 2. The p-value of the models (\<0.05 is required for there to be a relationship) 3. We can calculate residual standard error. Lower = more accurate!
+
+The R2 and p are in the summary! Below is the formula for RMSE
+
+```{r}
+summary(lm3)
+#R2=0.5294, p<0.001
+
+summary(lm4)
+#R2=0.5297, p<0.01
+
+#RSE: <- LOWER RSE= more accurate the model!
+sigma(lm3)
+sigma(lm4)
+
+mean(bz$bw, na.rm=T)
+
+sigma(lm3)/mean(bz$bw, na.rm=T)
+#0.3300672
+
+sigma(lm4)/mean(bz$bw, na.rm=T)
+#0.3299438
+
+
+```
+When we look at R2, p, and RMSE, we see that these two models are nearly identical! Not suprising. As we discussed earlier, the "simpler" model is typically the choice when the models are about the same. 
+
+
+We can also get this information from the performance package using model_performance(). This function tells us many things, including R2 and RMSE. We will discuss the rest of this later
+
+```{r}
+model_performance(lm3)
+```
+```{r}
+model_performance(lm4)
+```
+Here we see two tables of MANY values. /
+The first is **AIC** or Akaike Information Criterion. AIC is an estimator of prediction error and is generally thought of as a way to rank the relative quality of statistical models. LOWER AIC is best. In our case, the AIC scores are almost exactly the same!
+**AICc** is a corrected version of AIC that is better suited for use with small sample sizes.
+**BIC** is Bayesian Information Criterion, another way to assess models. Again, lower is better. In our case, we seee that lm4 has a very slightly lower BIC score, but it likely isn't enough to matter. 
+**R2 and adjusted R2* are familiar to use. 
+*RMSE* and *Sigma* are similar to what we just calculated by hand. RMSE = Root mean squared error, which is the square root of the variance of the residuals. It indicates the absolute fit of the model to the data and is a difference between observed data and models predicted values. 
+Sigma is the residual standard deviation. More deviation is less ideal. 
+\
+We are pretty new to stats, so it is great to have some quick ways to evaluate a model, BUT, we are likely to struggle to interpret this output. Luckily, we can compare performance pretty easily... 
+
+## **test assumptions**
+We can use check_model to check our assumptions. We care most about collinearity, homogeneity of variance, and outliers (influential observations). Collinearity is often assess with Variance Inflation Factor (VIF). VIF >5 is a potential issue and VIF >10 is a problem that means the model is too complex! 
+
+```{r}
+model_performance(lm3)
+check_model(lm3)#things look good, including low collinearity (VIF)
+vif(lm3)
+
+```
+Here, we are good. Let's check on lm4
+\
+```{r}
+model_performance(lm4)
+check_model(lm4) #things look good, but we have VIF that look a little high...
+check_collinearity(lm4) #a table of collinearity results - we see a few VIF above 5..
+vif(lm4) #gives us a simpler table---again, some VIF above 5. That is cause for concern (model is overfit/too complex)
+```
+From these results, we would say that lm4 is perhaps overfit or too complex, which would cause us to hesitate to use it. BUT, for the sake of learning, let's keep going and compare the performance of the models. 
+
+
+## **comparing models**
+
+```{r}
+compare_performance(lm3,lm4, rank=TRUE)
+```
+Here, the performance package has given us a ranking and has chosen Model 4, the more complex model, ahead of Model 3. We did some sleuthing earlier and chose model 3 over model 4 because it was simpler and they showed the same results. 
+
+Interesting, huh? 
+**So, what is right? Which model do we choose?**
+You can make a case for either decision and being able to back up your decision with data is the key. That said, since there really is not a difference and model 3 is simpler, I'd stick with it. EVEN if the model evaluation materials I have suggest that model 4 could be ever so slightly "better."\
+Keep in mind that stats are tool! A useful one. But, without being driven by human decision making and our hypotheses, they can become unnecessarily complex. If you have a few models and one of them fits your hypotheses and allows you to evaluate them and the others do not, that is probably the "best" model for you even if it is not the "best" model statistically. As long as it is a valid model, it is worth using. There are a lot of exceptions and special circumstances to consider and I am sure you will encounter these as you progress in science. For now, we have at least learned a simple pipeline for doing regression!
+\
+If we remember, the VIF are a little high in model 4-- just above 5 is really not THAT high, but it may be some cause for concern if we have low sample sizes. So, we might pick lm3 instead on that basis alone. 
+
+
+## **A 95% CI plot of model coefficients**
+
+Sometimes we want to visualize the effects of our model predictors. This is especially key when we have super complex models with a lot of variables! This is not one of those cases, but you will encounter these later in your life (possible in your assignment here!).
+
+combine data! Use tidy() from the broom package to get nice neat dataframes from models
+
+```{r}
+#make a neat data frame
+coefs<-tidy(lm3, quick=FALSE)
+coefs
+
+#make confint into a dataframe
+ci<-data.table(confint(lm3), keep.rownames='term')
+ci
+
+#bind the coefs data frame with the ci dataframe
+cidf<-cbind(coefs,ci)
+cidf
+
+colnames(cidf)
+
+#remove a column we don't need
+cidf<-cidf[,-6]
+
+#rename the % columnns to uppper and lower because it is easier to use
+cidf<- cidf %>%
+  rename("lower"="2.5 %",
+         "upper"="97.5 %")
+
+cidf
+
+#make term into a factor
+cidf$term=as.factor(cidf$term)
+```
+
+Now make a plot!
+
+```{r}
+ggplot(data=cidf, aes(x=estimate, y=term))+
+  geom_vline(xintercept = 0, linetype=2)+
+  geom_point(size=3)+
+  geom_errorbarh(aes(xmax=lower, xmin=upper),height=0.2)+
+  theme_classic()
+```
+
+Note that there are many ways to build a dataframe and plot for these. This is just one example. What we see in this kind of plot, called a coefficient or 'coef' plot, is the estimated effect of each term of the model. A trick here is that some of these estimates (from our coefficient table) are slopes and others may be intercepts. You can see them with 95% confidence intervals displayed here. Generally, there is a significant effect if the mean and error do not overlap with the 0 line (check this with p values from the table). I wonder if lm4 looks different?
+\
+\
+**Coef plot for lm4**
+```{r}
+#make a neat data frame
+coefs<-tidy(lm4, quick=FALSE)
+coefs
+
+#make confint into a dataframe
+ci<-data.table(confint(lm4), keep.rownames='term')
+ci
+
+#bind the coefs data frame with the ci dataframe
+cidf<-cbind(coefs,ci)
+cidf
+
+colnames(cidf)
+
+#remove a column we don't need
+cidf<-cidf[,-6]
+
+#rename the % columnns to uppper and lower because it is easier to use
+cidf<- cidf %>%
+  rename("lower"="2.5 %",
+         "upper"="97.5 %")
+
+cidf
+
+#make term into a factor
+cidf$term=as.factor(cidf$term)
+
+ggplot(data=cidf, aes(x=estimate, y=term))+
+  geom_vline(xintercept = 0, linetype=2)+
+  geom_point(size=3)+
+  geom_errorbarh(aes(xmax=lower, xmin=upper),height=0.2)+
+  theme_classic()
+
+
+```
+
+As before, the interaction term does not have a significant effect! While it can be a bit hard to interpret these, at least we can quickly see a visual of statistical significance. When we have 10 terms in out model, this is super helpful!
+
+:::
+
+# **Lab 7 Assignment:**
+\
+**1.)** Load the penguins data from palmerpenguins and build an additive and interactive model for the effects of species and sex on bill_length_mm.
+\
+**2.** Generate model summary tables using summary() and get_regression_table. Interpret these. 
+\
+**2.)** Make representative graphs for each model and plot them side by side to compare them visually. Make a visual assessment of the models. Do your visual assessments agree with your stats tables? Why or why not?
+\
+**3.)** Make coef plots for each model. How do these compare to your tables? 
+\
+**4.)** Head over to the TidyTuesdsay database and grab a dataset to do more practice with. Your data MUST have at least 2 numerical variables and at least 2 useful categorical variables. Show me clear evidence that this is the case in your data. DO NOT just type the name of the df here. I don't need to see 100 pages of data, just show me that you have a few useful categorical and numrical variables. 
+*HINT* if you are trying to use a dataset that is all of the lines from a tv show or something similar, this is probably not appropriate data...
+\
+**5.)** Pick a response variable (must be numeric) and build a series of models using a top-down modeling approach. You will start by using all of your variables (you have 4, 1 is the response, so the other 3 are explanatory- likely 2 categorical and 1 numeric). Your "top" model will be y~ x*a*b, you will then replace one * with + in an iterative way until you reach y~x+a+b. 
+For each model, generate the appropriate table(s), a useful graph using augment() (if possible), and a coef plot. 
+You will need to CHECK each model to see if the models violate assumptions or not (check_model() is from the performance package, and is pretty easy to use-- it generates a series of graphs of each assumption check and tells you what to look for in the subtitle of the graph). Do a visual assumption check for each assumption. If a model violates assumptions and is invalid, you should not use it in your model performance assessment. Each model that passes a model check needs to be compared to the others. 
+Which model is the best fit? Is this the model you would use? Why or why not?
+\
+**6.)** Render and submit on Lyceum
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

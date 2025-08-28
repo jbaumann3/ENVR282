@@ -116,7 +116,7 @@ cookieconsent.run({
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-sidebar docked nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -143,7 +143,7 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="./getting_started.html" rel="" target="">
+    <a class="dropdown-item" href="./Lab_0.html" rel="" target="">
  <span class="dropdown-text">Lab 0: Getting Started</span></a>
   </li>  
         <li>
@@ -213,10 +213,63 @@ cookieconsent.run({
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_0.html">Lab 0: Getting Started</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_0.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 0: Getting Started</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Intro to Data Wrangling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Intro to graphing in ggplot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Advanced data wrangling and graphing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Beginner Stats</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: ANOVA</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -769,15 +822,15 @@ In this section I will teach you a few ways to comment code:<br>
 <dl class="code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-lines="6" data-code-cell="annotated-cell-4" data-code-annotation="1">this line loads tidyverse</span>
+<span data-code-annotation="1" data-code-cell="annotated-cell-4" data-code-lines="6">this line loads tidyverse</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-lines="7" data-code-cell="annotated-cell-4" data-code-annotation="2">this line loads palmerpenguins</span>
+<span data-code-annotation="2" data-code-cell="annotated-cell-4" data-code-lines="7">this line loads palmerpenguins</span>
 </dd>
 <dt data-target-cell="annotated-cell-4" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-lines="10" data-code-cell="annotated-cell-4" data-code-annotation="3">reads the dataframe ‘penguins’ from palmerpenguins and saves it in my environment as ‘pens’<br>
+<span data-code-annotation="3" data-code-cell="annotated-cell-4" data-code-lines="10">reads the dataframe ‘penguins’ from palmerpenguins and saves it in my environment as ‘pens’<br>
 <br>
 Here is what the code for the above footnotes looks like <img src="images/annotation.jpg" class="img-fluid" alt="code"></span>
 </dd>

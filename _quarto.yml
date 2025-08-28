@@ -29,6 +29,7 @@ website:
        - Lab_3.qmd
        - Lab_4.qmd
        - Lab_5.qmd
+       - Lab_6_multiple_regression.qmd
     - id: Lectures
       title: "Lectures"
       style: "docked"

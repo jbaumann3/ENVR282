@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Justin Baumann">
+
+<title>ENVR 282: Research Methods in Environmental Science - Lab 6: Multiple Regression</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/cookie-consent/cookie-consent.js"></script>
+<link href="site_libs/cookie-consent/cookie-consent.css" rel="stylesheet">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+<script type="text/javascript" charset="UTF-8">
+document.addEventListener('DOMContentLoaded', function () {
+cookieconsent.run({
+  "notice_banner_type":"headline",
+  "consent_type":"express",
+  "palette":"dark",
+  "language":"en",
+  "page_load_consent_levels":["strictly-necessary"],
+  "notice_banner_reject_button_hide":false,
+  "preferences_center_close_button_hide":false,
+  "website_name":""
+  });
+});
+</script> 
+  
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ENVR 282: Research Methods in Environmental Science</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-labs" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Labs</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
+        <li>
+    <a class="dropdown-item" href="./Lab_0.html" rel="" target="">
+ <span class="dropdown-text">Lab 0: Getting Started</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lab_1.html" rel="" target="">
+ <span class="dropdown-text">Lab 1: Intro to Data Wrangling</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lab_2.html" rel="" target="">
+ <span class="dropdown-text">Lab 2: Intro to graphing in ggplot</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lab_3.html" rel="" target="">
+ <span class="dropdown-text">Lab 3: Advanced data wrangling and graphing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lab_4.html" rel="" target="">
+ <span class="dropdown-text">Lab 4: Beginner Stats</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lab_5.html" rel="" target="">
+ <span class="dropdown-text">Lab 5: ANOVA</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./Lab_6_multiple_regression.html" rel="" target="">
+ <span class="dropdown-text">Lab 6: Multiple Regression</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lectures" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">Lectures</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lectures">    
+        <li>
+    <a class="dropdown-item" href="./lec_1.html" rel="" target="">
+ <span class="dropdown-text">1 - Intro to data and stats</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_2.html" rel="" target="">
+ <span class="dropdown-text">2 - Distributions and Data</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_3.html" rel="" target="">
+ <span class="dropdown-text">3 - Probability</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_4.html" rel="" target="">
+ <span class="dropdown-text">4 - Experimental Design</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_5.html" rel="" target="">
+ <span class="dropdown-text">5 - Hypothesis Testing</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_6.html" rel="" target="">
+ <span class="dropdown-text">6 - Normal Distribution and t-test</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_7.html" rel="" target="">
+ <span class="dropdown-text">7 - Correlation and Linear Regression</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./lec_8.html" rel="" target="">
+ <span class="dropdown-text">8 - ANOVA</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools ms-auto">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_6_multiple_regression.html">Lab 6: Multiple Regression</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_0.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 0: Getting Started</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 1: Intro to Data Wrangling</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 2: Intro to graphing in ggplot</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 3: Advanced data wrangling and graphing</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 4: Beginner Stats</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lab 5: ANOVA</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Lab_6_multiple_regression.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Lab 6: Multiple Regression</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lab-7-multiple-regression-and-model-selection" id="toc-lab-7-multiple-regression-and-model-selection" class="nav-link active" data-scroll-target="#lab-7-multiple-regression-and-model-selection"><strong>Lab 7: Multiple Regression and Model Selection</strong></a>
+  <ul class="collapse">
+  <li><a href="#load-packages" id="toc-load-packages" class="nav-link" data-scroll-target="#load-packages">load packages</a></li>
+  </ul></li>
+  <li><a href="#using-regression-to-understand-the-relationship-between-weight-and-surface-in-corals-an-example" id="toc-using-regression-to-understand-the-relationship-between-weight-and-surface-in-corals-an-example" class="nav-link" data-scroll-target="#using-regression-to-understand-the-relationship-between-weight-and-surface-in-corals-an-example"><strong>1.) Using regression to understand the relationship between weight and surface in corals – An example</strong></a></li>
+  <li><a href="#model-fit-assessment-and-model-selection" id="toc-model-fit-assessment-and-model-selection" class="nav-link" data-scroll-target="#model-fit-assessment-and-model-selection"><strong>Model fit assessment and model selection</strong></a></li>
+  <li><a href="#lab-7-assignment" id="toc-lab-7-assignment" class="nav-link" data-scroll-target="#lab-7-assignment"><strong>Lab 7 Assignment:</strong></a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab_6_multiple_regression.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 6: Multiple Regression</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Justin Baumann </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="lab-7-multiple-regression-and-model-selection" class="level1">
+<h1><strong>Lab 7: Multiple Regression and Model Selection</strong></h1>
+<section id="load-packages" class="level3">
+<h3 class="anchored" data-anchor-id="load-packages">load packages</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(performance)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(patchwork)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(car) </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rsample)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moderndive) <span class="co">#helps us make useful regression tables</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Multiple Regression is a powerful tool that allows us to investigate the effects of multiple varibles on our response variable of choice. This is great for real world data, as it is almost never the case that we have the effect of a single variable on another. Instead, we often have so many that we need to dig into mixed effects modeling, which is the next step up from multiple regression.<br>
+My favorite mixed models selection tutorial: <a href="https://ourcodingclub.github.io/tutorials/mixed-models/">Our Coding Club</a><br>
+<br>
+We will see examples of how to use multiple regression on real data in this tutorial. To start with, multiple regression can come in multiple forms. The first is <strong>additive</strong> and the second is <strong>interactive</strong>. Let’s look at an example.<br>
+</p>
+</section>
+</section>
+<section id="using-regression-to-understand-the-relationship-between-weight-and-surface-in-corals-an-example" class="level1">
+<h1><strong>1.) Using regression to understand the relationship between weight and surface in corals – An example</strong></h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Prepare data</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Simple lm</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">interactive regression</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Comparing additive to interactive</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>Read in the data</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>bz<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/jbaumann3/Belize-RT-Baumann-et-al-2021/main/rt_master_data.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1064 Columns: 36
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (14): timepoint, bw_date, ID, species, colony, colony_ID, home_reef, tra...
+dbl (22): coralID, parent colony length, parent colony width, parent colony ...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>Make surface area into one word for ease of use or make a new column with a better title. up to you!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>bz<span class="sc">$</span>surface_area<span class="ot">&lt;-</span>bz<span class="sc">$</span><span class="st">`</span><span class="at">surface area</span><span class="st">`</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(bz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 37
+  timepoint bw_date    ID       species colony coralID colony_ID home_reef
+  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    
+1 T0        12/11/2017 PSTR 1 1 PSTR    P1           1 NSP1      NS       
+2 T0        12/11/2017 PSTR 1 2 PSTR    P1           2 NSP1      NS       
+3 T0        12/11/2017 PSTR 1 3 PSTR    P1           3 NSP1      NS       
+4 T0        12/11/2017 PSTR 1 4 PSTR    P1           4 NSP1      NS       
+5 T0        12/11/2017 PSTR 1 5 PSTR    P1           5 NSP1      NS       
+6 T0        12/11/2017 PSTR 1 6 PSTR    P1           6 NSP1      NS       
+# ℹ 29 more variables: transplant_reef &lt;chr&gt;, collection_site &lt;chr&gt;,
+#   transplant_site &lt;chr&gt;, transplant &lt;chr&gt;, `pale or bleached` &lt;chr&gt;,
+#   `partial mortality` &lt;chr&gt;, mortality &lt;chr&gt;, `parent colony length` &lt;dbl&gt;,
+#   `parent colony width` &lt;dbl&gt;, `parent colony height` &lt;dbl&gt;,
+#   `parent colony area` &lt;dbl&gt;, `parent colony volume` &lt;dbl&gt;, bw &lt;dbl&gt;,
+#   bw_sd &lt;dbl&gt;, bw_se &lt;dbl&gt;, `surface area` &lt;dbl&gt;, sa_sd &lt;dbl&gt;, sa_se &lt;dbl&gt;,
+#   chla &lt;dbl&gt;, symb_den &lt;dbl&gt;, symb_sd &lt;dbl&gt;, symb_se &lt;dbl&gt;, carbs_sa &lt;dbl&gt;, …</code></pre>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>We will first run a simple lm to check the relationship between weight (bw) and surface are for each of our two species, separately.<br>
+We will start with SSID (one of our species)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">#simple lm surface area x bw (for SSID)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>ssid<span class="ot">&lt;-</span> bz <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species<span class="sc">==</span><span class="st">'SSID'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ssid, <span class="fu">aes</span>(<span class="at">x=</span>surface_area, <span class="at">y=</span>bw))<span class="sc">+</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 62 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 62 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#p=2*10-16, R2=.3439-&gt; SO, not bad. But a lot of spread in the data. </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>lm1<span class="ot">&lt;-</span><span class="fu">lm</span>(bw<span class="sc">~</span>surface_area, <span class="at">data=</span>ssid)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area, data = ssid)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.150  -5.683  -0.730   4.351  32.856 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   8.39205    0.90971   9.225   &lt;2e-16 ***
+surface_area  0.77870    0.04951  15.727   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.858 on 469 degrees of freedom
+  (62 observations deleted due to missingness)
+Multiple R-squared:  0.3453,    Adjusted R-squared:  0.3439 
+F-statistic: 247.3 on 1 and 469 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Here we can see that the R-squared is 0.344 and the p-value is &lt;0.05, so we have a significant positive relationship between X and Y, though there is considerable spread.<br>
+And now for PSTR (the other species)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#simple lm surface area x bw (for PSTR)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pstr<span class="ot">&lt;-</span> bz <span class="sc">|&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(species<span class="sc">==</span><span class="st">'PSTR'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(pstr, <span class="fu">aes</span>(<span class="at">x=</span>surface_area, <span class="at">y=</span>bw))<span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()<span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">'lm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 15 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#p=2*10-16, R2=.3439-&gt; SO, not bad. But a lot of spread in the data. </span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>lm2<span class="ot">&lt;-</span><span class="fu">lm</span>(bw<span class="sc">~</span>surface_area, <span class="at">data=</span>pstr)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area, data = pstr)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-20.5937  -4.1412  -0.5371   3.0975  29.7465 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   4.21829    0.62256   6.776  3.4e-11 ***
+surface_area  0.84963    0.02665  31.877  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 6.349 on 514 degrees of freedom
+  (15 observations deleted due to missingness)
+Multiple R-squared:  0.6641,    Adjusted R-squared:  0.6634 
+F-statistic:  1016 on 1 and 514 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>Here we see that the lm is better of PSTR (better fit because of the higher R-squared). From these analyses, we can generally conclude that there is a relationship between surface area and weight, but that it maybe varies by species.<br>
+## additive regression Since we are interested in considering the effect of species on this relationship quantitatively, we need to run a regression model that include species in the model! We can do in two ways– an additive model or an interactive model. Let’s start with additive</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>lm3<span class="ot">&lt;-</span><span class="fu">lm</span>(bw<span class="sc">~</span>surface_area<span class="sc">+</span>species, <span class="at">data=</span>bz)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area + species, data = bz)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.888  -4.955  -0.625   3.795  32.245 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   4.67334    0.60574   7.715 2.96e-14 ***
+surface_area  0.82782    0.02485  33.319  &lt; 2e-16 ***
+speciesSSID   2.89076    0.46404   6.230 6.92e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.111 on 984 degrees of freedom
+  (77 observations deleted due to missingness)
+Multiple R-squared:  0.5303,    Adjusted R-squared:  0.5294 
+F-statistic: 555.5 on 2 and 984 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>Let’s hold off on interpretation until we make a graph. Here, I am showing you a REALLY POWERFUL trick, which is using the augment() function in the broom package to pass model fits directly to ggplot.</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>lm3g<span class="ot">&lt;-</span>lm3 <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>surface_area, <span class="at">y=</span>bw, <span class="at">color=</span>species))<span class="sc">+</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>.fitted), <span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>lm3g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>We can view tables of our multiple regression data in similar ways to how we view our simple lm</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm3) <span class="co">#check R2 and p-value! How well does the model fit?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area + species, data = bz)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.888  -4.955  -0.625   3.795  32.245 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   4.67334    0.60574   7.715 2.96e-14 ***
+surface_area  0.82782    0.02485  33.319  &lt; 2e-16 ***
+speciesSSID   2.89076    0.46404   6.230 6.92e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.111 on 984 degrees of freedom
+  (77 observations deleted due to missingness)
+Multiple R-squared:  0.5303,    Adjusted R-squared:  0.5294 
+F-statistic: 555.5 on 2 and 984 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm3)<span class="sc">$</span>coefficient <span class="co">#just the coef table from the summary!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              Estimate Std. Error   t value      Pr(&gt;|t|)
+(Intercept)  4.6733416 0.60574157  7.715075  2.957752e-14
+surface_area 0.8278243 0.02484574 33.318557 1.455258e-163
+speciesSSID  2.8907561 0.46404112  6.229526  6.923713e-10</code></pre>
+</div>
+</div>
+<p>However, you may find these difficult to interpret. We still see our R squared and p-value for the model itself, which is still important. But, we also have a more complex coefficients table to read. This table shows us an intercept and the effects of surface area and speciesSSID. Where is PSTR? Confusing, huh? In R, the Intercept is something called a ‘base case for comparison’ in which R takes the first category (in alphabetical order) in each categorical variable and isolates it. Here, we only have 1 categorical variable (species) and PSTR comes first. So, intercept is showing us the model for bw~surface area within PSTR only. The ESTIMATE is the y intercept of the PSTR model. 0.82782 is the slope of surface area for the intercept model. And 2.89076 is the offset between the PSTR model and the SSID model. Since it is positive, the offset of the intercepts is 2.89076. Thus, the SSID line should be HIGHER on the y-axis.</p>
+<p>Notably, since this is an additive model, the slopes of the lines for each category should ALWAYS be parallel. This is also called a parallel slopes model. Let’s look at the graph (above) to confirm!<br>
+<br>
+Finally, since we understand ANOVA better, we might try this approach</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm3) <span class="co"># an ANOVA table of our lm</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: bw
+              Df Sum Sq Mean Sq  F value    Pr(&gt;F)    
+surface_area   1  54224   54224 1072.239 &lt; 2.2e-16 ***
+species        1   1962    1962   38.807 6.924e-10 ***
+Residuals    984  49761      51                       
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lm3) <span class="co">#CIs for our model predictors!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 2.5 %   97.5 %
+(Intercept)  3.4846479 5.862035
+surface_area 0.7790675 0.876581
+speciesSSID  1.9801321 3.801380</code></pre>
+</div>
+</div>
+<p>The confint shows us 95% confidence intervals for our model predictors, which is something we will learn about a little later.</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>Now, sometimes we care about the effects of 2 variables at the same time and not only how 2 variables (separately) impact our response variable. In this case, we need interactive regression…</p>
+<p>Interactive models include multiplication in the formula instead of addition. In interactive models, both the slope and y intercept of the model can vary, so the slopes will no longer be parallel (automatically). Let’s look at the interactive model of the same data we just used.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lm4<span class="ot">&lt;-</span><span class="fu">lm</span>(bw<span class="sc">~</span>surface_area<span class="sc">*</span>species, <span class="at">data=</span>bz)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area * species, data = bz)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.150  -4.871  -0.570   3.781  32.856 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)               4.21829    0.69708   6.051 2.04e-09 ***
+surface_area              0.84963    0.02984  28.470  &lt; 2e-16 ***
+speciesSSID               4.17376    1.07855   3.870 0.000116 ***
+surface_area:speciesSSID -0.07092    0.05383  -1.318 0.187925    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.109 on 983 degrees of freedom
+  (77 observations deleted due to missingness)
+Multiple R-squared:  0.5311,    Adjusted R-squared:  0.5297 
+F-statistic: 371.2 on 3 and 983 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>And the other tables</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Variance Table
+
+Response: bw
+                      Df Sum Sq Mean Sq   F value    Pr(&gt;F)    
+surface_area           1  54224   54224 1073.0408 &lt; 2.2e-16 ***
+species                1   1962    1962   38.8360 6.828e-10 ***
+surface_area:species   1     88      88    1.7362    0.1879    
+Residuals            983  49674      51                        
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                              2.5 %     97.5 %
+(Intercept)               2.8503641 5.58621772
+surface_area              0.7910625 0.90819063
+speciesSSID               2.0572380 6.29028297
+surface_area:speciesSSID -0.1765531 0.03470322</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_regression_table</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+  term                    estimate std_error statistic p_value lower_ci upper_ci
+  &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1 intercept                  4.22      0.697      6.05   0        2.85     5.59 
+2 surface_area               0.85      0.03      28.5    0        0.791    0.908
+3 species: SSID              4.17      1.08       3.87   0        2.06     6.29 
+4 surface_area:speciesSS…   -0.071     0.054     -1.32   0.188   -0.177    0.035</code></pre>
+</div>
+</div>
+<p>We read this regression table the same way we read the additive model one. Except this time, we also have an interactive term. We are interested in how surface area impacts bw, how species impacts bw, and how the relationship between surface area (x) and bw (y) varies by species – basically, do these two regression lines look different in slope, intercept, or both? The last line of the get_regression_table shows us the offset of the slope of surface area in SSID relative to PSTR (the SSID slope is lower). Notably, the p-value is not significant here, so this interaction does not have a significant effect.</p>
+<p><strong>Finally, the graph</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>lm4g<span class="ot">&lt;-</span>lm4 <span class="sc">%&gt;%</span> </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">augment</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>surface_area, <span class="at">y=</span>bw, <span class="at">color=</span>species))<span class="sc">+</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha=</span><span class="fl">0.3</span>)<span class="sc">+</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>.fitted),<span class="at">size=</span><span class="dv">1</span>)<span class="sc">+</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>lm4g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</div>
+<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
+<p>Our interactive model suggests that the interaction term does not have a significant effect. Thus, the additive and interactive models should not really signifiacntly differ. AND, the relationship between x and y would then not change based on species.<br>
+Let’s compare the graphs side by side to confirm</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>lm3g<span class="sc">+</span>lm4g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>And if you prefer to have them stacked…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>lm3g<span class="sc">/</span>lm4g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Remember that our eyes are often the most valuable tool! We can see that there are only slight differences between these two models and that there are only slight differences between the two species (if that). It turns out that there is a difference between the two species and there is an effect of surface area on bw, BUT there is not a significant interaction (the relationship between surface area and bw does not differ by species). Given that the two models are essentially showing us the same thing, but the additive model is simpler (less complexity because there is not an interaction to calcualte), we would generally prefer to pick the less complex option.<br>
+While this is a great rule of thumb, we can also do model selection quantitatively, which we will get to in our model selection section later on…<br>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="model-fit-assessment-and-model-selection" class="level1">
+<h1><strong>Model fit assessment and model selection</strong></h1>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>Checking models</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>test assumptions</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>comparing models</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>A 95% CI plot of model coefficients</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>Here, we want to know how well the models represent the data. We need: 1. The R2 value of the models (closer to 1 is best) 2. The p-value of the models (&lt;0.05 is required for there to be a relationship) 3. We can calculate residual standard error. Lower = more accurate!</p>
+<p>The R2 and p are in the summary! Below is the formula for RMSE</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area + species, data = bz)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.888  -4.955  -0.625   3.795  32.245 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   4.67334    0.60574   7.715 2.96e-14 ***
+surface_area  0.82782    0.02485  33.319  &lt; 2e-16 ***
+speciesSSID   2.89076    0.46404   6.230 6.92e-10 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.111 on 984 degrees of freedom
+  (77 observations deleted due to missingness)
+Multiple R-squared:  0.5303,    Adjusted R-squared:  0.5294 
+F-statistic: 555.5 on 2 and 984 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co">#R2=0.5294, p&lt;0.001</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bw ~ surface_area * species, data = bz)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-24.150  -4.871  -0.570   3.781  32.856 
+
+Coefficients:
+                         Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)               4.21829    0.69708   6.051 2.04e-09 ***
+surface_area              0.84963    0.02984  28.470  &lt; 2e-16 ***
+speciesSSID               4.17376    1.07855   3.870 0.000116 ***
+surface_area:speciesSSID -0.07092    0.05383  -1.318 0.187925    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 7.109 on 983 degrees of freedom
+  (77 observations deleted due to missingness)
+Multiple R-squared:  0.5311,    Adjusted R-squared:  0.5297 
+F-statistic: 371.2 on 3 and 983 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="co">#R2=0.5297, p&lt;0.01</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#RSE: &lt;- LOWER RSE= more accurate the model!</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sigma</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.111301</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sigma</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.108642</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(bz<span class="sc">$</span>bw, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 21.54501</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sigma</span>(lm3)<span class="sc">/</span><span class="fu">mean</span>(bz<span class="sc">$</span>bw, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3300672</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co">#0.3300672</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sigma</span>(lm4)<span class="sc">/</span><span class="fu">mean</span>(bz<span class="sc">$</span>bw, <span class="at">na.rm=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3299438</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co">#0.3299438</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When we look at R2, p, and RMSE, we see that these two models are nearly identical! Not suprising. As we discussed earlier, the “simpler” model is typically the choice when the models are about the same.</p>
+<p>We can also get this information from the performance package using model_performance(). This function tells us many things, including R2 and RMSE. We will discuss the rest of this later</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_performance</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Indices of model performance
+
+AIC      |     AICc |      BIC |    R2 | R2 (adj.) |  RMSE | Sigma
+------------------------------------------------------------------
+6678.347 | 6678.387 | 6697.925 | 0.530 |     0.529 | 7.100 | 7.111</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_performance</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Indices of model performance
+
+AIC      |     AICc |      BIC |    R2 | R2 (adj.) |  RMSE | Sigma
+------------------------------------------------------------------
+6678.605 | 6678.666 | 6703.078 | 0.531 |     0.530 | 7.094 | 7.109</code></pre>
+</div>
+</div>
+<p>Here we see two tables of MANY values. / The first is <strong>AIC</strong> or Akaike Information Criterion. AIC is an estimator of prediction error and is generally thought of as a way to rank the relative quality of statistical models. LOWER AIC is best. In our case, the AIC scores are almost exactly the same! <strong>AICc</strong> is a corrected version of AIC that is better suited for use with small sample sizes. <strong>BIC</strong> is Bayesian Information Criterion, another way to assess models. Again, lower is better. In our case, we seee that lm4 has a very slightly lower BIC score, but it likely isn’t enough to matter. **R2 and adjusted R2* are familiar to use. <em>RMSE</em> and <em>Sigma</em> are similar to what we just calculated by hand. RMSE = Root mean squared error, which is the square root of the variance of the residuals. It indicates the absolute fit of the model to the data and is a difference between observed data and models predicted values. Sigma is the residual standard deviation. More deviation is less ideal.<br>
+We are pretty new to stats, so it is great to have some quick ways to evaluate a model, BUT, we are likely to struggle to interpret this output. Luckily, we can compare performance pretty easily…</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>We can use check_model to check our assumptions. We care most about collinearity, homogeneity of variance, and outliers (influential observations). Collinearity is often assess with Variance Inflation Factor (VIF). VIF &gt;5 is a potential issue and VIF &gt;10 is a problem that means the model is too complex!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_performance</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Indices of model performance
+
+AIC      |     AICc |      BIC |    R2 | R2 (adj.) |  RMSE | Sigma
+------------------------------------------------------------------
+6678.347 | 6678.387 | 6697.925 | 0.530 |     0.529 | 7.100 | 7.111</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm3)<span class="co">#things look good, including low collinearity (VIF)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(lm3)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>surface_area      species 
+      1.0485       1.0485 </code></pre>
+</div>
+</div>
+<p>Here, we are good. Let’s check on lm4<br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">model_performance</span>(lm4)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Indices of model performance
+
+AIC      |     AICc |      BIC |    R2 | R2 (adj.) |  RMSE | Sigma
+------------------------------------------------------------------
+6678.605 | 6678.666 | 6703.078 | 0.531 |     0.530 | 7.094 | 7.109</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_model</span>(lm4) <span class="co">#things look good, but we have VIF that look a little high...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_collinearity</span>(lm4) <span class="co">#a table of collinearity results - we see a few VIF above 5..</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Check for Multicollinearity
+
+Low Correlation
+
+         Term  VIF   VIF 95% CI Increased SE Tolerance Tolerance 95% CI
+ surface_area 1.51 [1.40, 1.66]         1.23      0.66     [0.60, 0.71]
+
+Moderate Correlation
+
+                 Term  VIF   VIF 95% CI Increased SE Tolerance Tolerance 95% CI
+              species 5.67 [5.07, 6.36]         2.38      0.18     [0.16, 0.20]
+ surface_area:species 5.45 [4.88, 6.11]         2.34      0.18     [0.16, 0.20]</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(lm4) <span class="co">#gives us a simpler table---again, some VIF above 5. That is cause for concern (model is overfit/too complex)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>there are higher-order terms (interactions) in this model
+consider setting type = 'predictor'; see ?vif</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        surface_area              species surface_area:species 
+            1.513859             5.668388             5.454545 </code></pre>
+</div>
+</div>
+<p>From these results, we would say that lm4 is perhaps overfit or too complex, which would cause us to hesitate to use it. BUT, for the sake of learning, let’s keep going and compare the performance of the models.</p>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compare_performance</span>(lm3,lm4, <span class="at">rank=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># Comparison of Model Performance Indices
+
+Name | Model |    R2 | R2 (adj.) |  RMSE | Sigma | AIC weights | AICc weights | BIC weights | Performance-Score
+---------------------------------------------------------------------------------------------------------------
+lm4  |    lm | 0.531 |     0.530 | 7.094 | 7.109 |       0.468 |        0.465 |       0.071 |            57.14%
+lm3  |    lm | 0.530 |     0.529 | 7.100 | 7.111 |       0.532 |        0.535 |       0.929 |            42.86%</code></pre>
+</div>
+</div>
+<p>Here, the performance package has given us a ranking and has chosen Model 4, the more complex model, ahead of Model 3. We did some sleuthing earlier and chose model 3 over model 4 because it was simpler and they showed the same results.</p>
+<p>Interesting, huh? <strong>So, what is right? Which model do we choose?</strong> You can make a case for either decision and being able to back up your decision with data is the key. That said, since there really is not a difference and model 3 is simpler, I’d stick with it. EVEN if the model evaluation materials I have suggest that model 4 could be ever so slightly “better.”<br>
+Keep in mind that stats are tool! A useful one. But, without being driven by human decision making and our hypotheses, they can become unnecessarily complex. If you have a few models and one of them fits your hypotheses and allows you to evaluate them and the others do not, that is probably the “best” model for you even if it is not the “best” model statistically. As long as it is a valid model, it is worth using. There are a lot of exceptions and special circumstances to consider and I am sure you will encounter these as you progress in science. For now, we have at least learned a simple pipeline for doing regression!<br>
+If we remember, the VIF are a little high in model 4– just above 5 is really not THAT high, but it may be some cause for concern if we have low sample sizes. So, we might pick lm3 instead on that basis alone.</p>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<p>Sometimes we want to visualize the effects of our model predictors. This is especially key when we have super complex models with a lot of variables! This is not one of those cases, but you will encounter these later in your life (possible in your assignment here!).</p>
+<p>combine data! Use tidy() from the broom package to get nice neat dataframes from models</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a neat data frame</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>coefs<span class="ot">&lt;-</span><span class="fu">tidy</span>(lm3, <span class="at">quick=</span><span class="cn">FALSE</span>)</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>coefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 5
+  term         estimate std.error statistic   p.value
+  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)     4.67     0.606       7.72 2.96e- 14
+2 surface_area    0.828    0.0248     33.3  1.46e-163
+3 speciesSSID     2.89     0.464       6.23 6.92e- 10</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make confint into a dataframe</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>ci<span class="ot">&lt;-</span><span class="fu">data.table</span>(<span class="fu">confint</span>(lm3), <span class="at">keep.rownames=</span><span class="st">'term'</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           term     2.5 %   97.5 %
+         &lt;char&gt;     &lt;num&gt;    &lt;num&gt;
+1:  (Intercept) 3.4846479 5.862035
+2: surface_area 0.7790675 0.876581
+3:  speciesSSID 1.9801321 3.801380</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bind the coefs data frame with the ci dataframe</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>cidf<span class="ot">&lt;-</span><span class="fu">cbind</span>(coefs,ci)</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>cidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          term  estimate  std.error statistic       p.value         term
+1  (Intercept) 4.6733416 0.60574157  7.715075  2.957752e-14  (Intercept)
+2 surface_area 0.8278243 0.02484574 33.318557 1.455258e-163 surface_area
+3  speciesSSID 2.8907561 0.46404112  6.229526  6.923713e-10  speciesSSID
+      2.5 %   97.5 %
+1 3.4846479 5.862035
+2 0.7790675 0.876581
+3 1.9801321 3.801380</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cidf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "term"      "estimate"  "std.error" "statistic" "p.value"   "term"     
+[7] "2.5 %"     "97.5 %"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove a column we don't need</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>cidf<span class="ot">&lt;-</span>cidf[,<span class="sc">-</span><span class="dv">6</span>]</span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the % columnns to uppper and lower because it is easier to use</span></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>cidf<span class="ot">&lt;-</span> cidf <span class="sc">%&gt;%</span></span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"lower"</span><span class="ot">=</span><span class="st">"2.5 %"</span>,</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"upper"</span><span class="ot">=</span><span class="st">"97.5 %"</span>)</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>cidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          term  estimate  std.error statistic       p.value     lower    upper
+1  (Intercept) 4.6733416 0.60574157  7.715075  2.957752e-14 3.4846479 5.862035
+2 surface_area 0.8278243 0.02484574 33.318557 1.455258e-163 0.7790675 0.876581
+3  speciesSSID 2.8907561 0.46404112  6.229526  6.923713e-10 1.9801321 3.801380</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make term into a factor</span></span>
+<span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a>cidf<span class="sc">$</span>term<span class="ot">=</span><span class="fu">as.factor</span>(cidf<span class="sc">$</span>term)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now make a plot!</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>cidf, <span class="fu">aes</span>(<span class="at">x=</span>estimate, <span class="at">y=</span>term))<span class="sc">+</span></span>
+<span id="cb87-2"><a href="#cb87-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb87-3"><a href="#cb87-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb87-4"><a href="#cb87-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmax=</span>lower, <span class="at">xmin=</span>upper),<span class="at">height=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb87-5"><a href="#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Note that there are many ways to build a dataframe and plot for these. This is just one example. What we see in this kind of plot, called a coefficient or ‘coef’ plot, is the estimated effect of each term of the model. A trick here is that some of these estimates (from our coefficient table) are slopes and others may be intercepts. You can see them with 95% confidence intervals displayed here. Generally, there is a significant effect if the mean and error do not overlap with the 0 line (check this with p values from the table). I wonder if lm4 looks different?<br>
+<br>
+<strong>Coef plot for lm4</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make a neat data frame</span></span>
+<span id="cb88-2"><a href="#cb88-2" aria-hidden="true" tabindex="-1"></a>coefs<span class="ot">&lt;-</span><span class="fu">tidy</span>(lm4, <span class="at">quick=</span><span class="cn">FALSE</span>)</span>
+<span id="cb88-3"><a href="#cb88-3" aria-hidden="true" tabindex="-1"></a>coefs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  term                     estimate std.error statistic   p.value
+  &lt;chr&gt;                       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
+1 (Intercept)                4.22      0.697       6.05 2.04e-  9
+2 surface_area               0.850     0.0298     28.5  1.67e-130
+3 speciesSSID                4.17      1.08        3.87 1.16e-  4
+4 surface_area:speciesSSID  -0.0709    0.0538     -1.32 1.88e-  1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make confint into a dataframe</span></span>
+<span id="cb90-2"><a href="#cb90-2" aria-hidden="true" tabindex="-1"></a>ci<span class="ot">&lt;-</span><span class="fu">data.table</span>(<span class="fu">confint</span>(lm4), <span class="at">keep.rownames=</span><span class="st">'term'</span>)</span>
+<span id="cb90-3"><a href="#cb90-3" aria-hidden="true" tabindex="-1"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                       term      2.5 %     97.5 %
+                     &lt;char&gt;      &lt;num&gt;      &lt;num&gt;
+1:              (Intercept)  2.8503641 5.58621772
+2:             surface_area  0.7910625 0.90819063
+3:              speciesSSID  2.0572380 6.29028297
+4: surface_area:speciesSSID -0.1765531 0.03470322</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb92-1"><a href="#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="co">#bind the coefs data frame with the ci dataframe</span></span>
+<span id="cb92-2"><a href="#cb92-2" aria-hidden="true" tabindex="-1"></a>cidf<span class="ot">&lt;-</span><span class="fu">cbind</span>(coefs,ci)</span>
+<span id="cb92-3"><a href="#cb92-3" aria-hidden="true" tabindex="-1"></a>cidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      term    estimate  std.error statistic       p.value
+1              (Intercept)  4.21829090 0.69707532  6.051413  2.039310e-09
+2             surface_area  0.84962656 0.02984339 28.469509 1.666402e-130
+3              speciesSSID  4.17376049 1.07854863  3.869794  1.161104e-04
+4 surface_area:speciesSSID -0.07092496 0.05382656 -1.317657  1.879254e-01
+                      term      2.5 %     97.5 %
+1              (Intercept)  2.8503641 5.58621772
+2             surface_area  0.7910625 0.90819063
+3              speciesSSID  2.0572380 6.29028297
+4 surface_area:speciesSSID -0.1765531 0.03470322</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb94-1"><a href="#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(cidf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "term"      "estimate"  "std.error" "statistic" "p.value"   "term"     
+[7] "2.5 %"     "97.5 %"   </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb96-1"><a href="#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove a column we don't need</span></span>
+<span id="cb96-2"><a href="#cb96-2" aria-hidden="true" tabindex="-1"></a>cidf<span class="ot">&lt;-</span>cidf[,<span class="sc">-</span><span class="dv">6</span>]</span>
+<span id="cb96-3"><a href="#cb96-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-4"><a href="#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co">#rename the % columnns to uppper and lower because it is easier to use</span></span>
+<span id="cb96-5"><a href="#cb96-5" aria-hidden="true" tabindex="-1"></a>cidf<span class="ot">&lt;-</span> cidf <span class="sc">%&gt;%</span></span>
+<span id="cb96-6"><a href="#cb96-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"lower"</span><span class="ot">=</span><span class="st">"2.5 %"</span>,</span>
+<span id="cb96-7"><a href="#cb96-7" aria-hidden="true" tabindex="-1"></a>         <span class="st">"upper"</span><span class="ot">=</span><span class="st">"97.5 %"</span>)</span>
+<span id="cb96-8"><a href="#cb96-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-9"><a href="#cb96-9" aria-hidden="true" tabindex="-1"></a>cidf</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                      term    estimate  std.error statistic       p.value
+1              (Intercept)  4.21829090 0.69707532  6.051413  2.039310e-09
+2             surface_area  0.84962656 0.02984339 28.469509 1.666402e-130
+3              speciesSSID  4.17376049 1.07854863  3.869794  1.161104e-04
+4 surface_area:speciesSSID -0.07092496 0.05382656 -1.317657  1.879254e-01
+       lower      upper
+1  2.8503641 5.58621772
+2  0.7910625 0.90819063
+3  2.0572380 6.29028297
+4 -0.1765531 0.03470322</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb98-1"><a href="#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="co">#make term into a factor</span></span>
+<span id="cb98-2"><a href="#cb98-2" aria-hidden="true" tabindex="-1"></a>cidf<span class="sc">$</span>term<span class="ot">=</span><span class="fu">as.factor</span>(cidf<span class="sc">$</span>term)</span>
+<span id="cb98-3"><a href="#cb98-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb98-4"><a href="#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>cidf, <span class="fu">aes</span>(<span class="at">x=</span>estimate, <span class="at">y=</span>term))<span class="sc">+</span></span>
+<span id="cb98-5"><a href="#cb98-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">linetype=</span><span class="dv">2</span>)<span class="sc">+</span></span>
+<span id="cb98-6"><a href="#cb98-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">3</span>)<span class="sc">+</span></span>
+<span id="cb98-7"><a href="#cb98-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbarh</span>(<span class="fu">aes</span>(<span class="at">xmax=</span>lower, <span class="at">xmin=</span>upper),<span class="at">height=</span><span class="fl">0.2</span>)<span class="sc">+</span></span>
+<span id="cb98-8"><a href="#cb98-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="Lab_6_multiple_regression_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>As before, the interaction term does not have a significant effect! While it can be a bit hard to interpret these, at least we can quickly see a visual of statistical significance. When we have 10 terms in out model, this is super helpful!</p>
+</div>
+</div>
+</div>
+</section>
+<section id="lab-7-assignment" class="level1">
+<h1><strong>Lab 7 Assignment:</strong></h1>
+<p><br>
+<strong>1.)</strong> Load the penguins data from palmerpenguins and build an additive and interactive model for the effects of species and sex on bill_length_mm.<br>
+<strong>2.</strong> Generate model summary tables using summary() and get_regression_table. Interpret these.<br>
+<strong>2.)</strong> Make representative graphs for each model and plot them side by side to compare them visually. Make a visual assessment of the models. Do your visual assessments agree with your stats tables? Why or why not?<br>
+<strong>3.)</strong> Make coef plots for each model. How do these compare to your tables?<br>
+<strong>4.)</strong> Head over to the TidyTuesdsay database and grab a dataset to do more practice with. Your data MUST have at least 2 numerical variables and at least 2 useful categorical variables. Show me clear evidence that this is the case in your data. DO NOT just type the name of the df here. I don’t need to see 100 pages of data, just show me that you have a few useful categorical and numrical variables. <em>HINT</em> if you are trying to use a dataset that is all of the lines from a tv show or something similar, this is probably not appropriate data…<br>
+<strong>5.)</strong> Pick a response variable (must be numeric) and build a series of models using a top-down modeling approach. You will start by using all of your variables (you have 4, 1 is the response, so the other 3 are explanatory- likely 2 categorical and 1 numeric). Your “top” model will be y~ x<em>a</em>b, you will then replace one * with + in an iterative way until you reach y~x+a+b. For each model, generate the appropriate table(s), a useful graph using augment() (if possible), and a coef plot. You will need to CHECK each model to see if the models violate assumptions or not (check_model() is from the performance package, and is pretty easy to use– it generates a series of graphs of each assumption check and tells you what to look for in the subtitle of the graph). Do a visual assumption check for each assumption. If a model violates assumptions and is invalid, you should not use it in your model performance assessment. Each model that passes a model check needs to be compared to the others. Which model is the best fit? Is this the model you would use? Why or why not?<br>
+<strong>6.)</strong> Render and submit on Lyceum</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center"><div class="cookie-consent-footer"><a href="#" id="open_preferences_center">Cookie Preferences</a></div></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
