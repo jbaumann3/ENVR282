@@ -48,7 +48,7 @@ head(penguins)
 
 #pseudocode / logic: look at dataframe penguins AND THEN (%>%) select() species and bill length AND THEN (%>%) filter by chinstrap
 
-pipepen<- penguins %>% #first step of the pipe is to call the orignal dataframe so we can modify it!
+pipepen<- penguins %>% #first step of the pipe is to call the original dataframe so we can modify it!
   select(species, bill_length_mm)%>% #selected our columns
   filter(species == 'Chinstrap') #filtered for chinstrap
 
@@ -115,7 +115,7 @@ sumpens
 
 As you can see, this is complex but with just a few lines we have all of the info we might need to make some pretty cool plots and visually inspect for differences.
 
-Some notes on the pieces of the summarize function I used up there: meanbill is just a mean() calculation. sd is just a standard deviation calculation- sd(). n=n() calculate the sample size for each group. Standard error cannot be calculated with a built in function in R (without packages that we aren't using here) so I wrote the formula for it myself. Standard Error = standard deviation / squareroot(sample size) in other words: se=sd/sqrt(n)
+Some notes on the pieces of the summarize function I used up there: meanbill is just a mean() calculation. sd is just a standard deviation calculation- sd(). n=n() calculate the sample size for each group. Standard error cannot be calculated with a built in function in R (without packages that we aren't using here) so I wrote the formula for it myself. Standard Error = standard deviation / square root(sample size) in other words: se=sd/sqrt(n)
 
 ## **A more complex example**
 
@@ -153,4 +153,4 @@ ggplot(sumpens, aes(x=island, y=meanbill))+
 \
 **4.)** Add the raw data as geom_point() to your graph for 3. Make these geom_point() smaller than the means you've plotted and make them somewhat transparent ('greyed out') out using alpha=.\
 \
-**5.)** Render your document and submit the .html on moodle!
+**5.)** Render your document and submit the .html on Lyceum!

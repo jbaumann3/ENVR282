@@ -218,7 +218,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_1.html">Lab 1: Intro to Data Wrangling</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_2.html">Lab 2: Intro to graphing in ggplot</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -740,7 +740,7 @@ Ignoring unknown parameters: `width`</code></pre>
 </div>
 </div>
 <div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
-<p>ggplot gives us options to change point shape using the aesethic option ‘shape’ <br> We can either change shape based on a characterstic of the data (‘cyl’, for example), make all the shapes the same, or manually control shape</p>
+<p>ggplot gives us options to change point shape using the aesthetic option ‘shape’ <br> We can either change shape based on a characteristic of the data (‘cyl’, for example), make all the shapes the same, or manually control shape</p>
 <p>Below is a table of shape options:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -764,7 +764,7 @@ Ignoring unknown parameters: `width`</code></pre>
 <p><strong>Change all shapes to triangles</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">y=</span>mpg, <span class="at">color=</span>cyl))<span class="sc">+</span></span>
-<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">17</span>) <span class="co">#Here 'shape=' is inside the settings for geom_point. Note that it is outside the aes() function, as that applied aesethics conditionally)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">shape=</span><span class="dv">17</span>) <span class="co">#Here 'shape=' is inside the settings for geom_point. Note that it is outside the aes() function, as that applied aesthetics conditionally)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="Lab_2_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid" width="672"></p>
 </div>
@@ -1111,7 +1111,7 @@ Facets allow us to produce multiple graph panels with one ggplot code. We can se
 <br>
 <strong>11.)</strong> Using the patchwork package, take any three of your graphs and panel them so that they all fit together on one page.<br>
 <br>
-<strong>12.)</strong> Render your quarto doc and submit your .html file on moodle.</p>
+<strong>12.)</strong> Render your quarto doc and submit your .html file on Lyceum.</p>
 
 
 </section>

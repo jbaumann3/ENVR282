@@ -143,7 +143,7 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="./getting_started.html" rel="" target="">
+    <a class="dropdown-item" href="./Lab_0.html" rel="" target="">
  <span class="dropdown-text">Lab 0: Getting Started</span></a>
   </li>  
         <li>
@@ -232,7 +232,7 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="./Lab_0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 0: Getting Started</span></a>
   </div>
 </li>
@@ -458,7 +458,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </section>
 <section id="one-way-anova" class="level1">
 <h1><strong>3.) One-way Anova</strong></h1>
-<p>The simplest ANOVA is a one-way ANOVA, which is just an extension of a t-test. T-tests can only compare 2 means, but ANOVA can compare more than 2 groups. The simplest example of an ANOVA is when we have data organized by one grouping variable (hence, one-way). For example, if we want to know how mpg varies by cyl in mtcars, we would use a one-way anova. NOTE: if variance differs significantly between our groups, we want to run a welch_anova_test() instead of a one way anove (aov). welch_anova_test() is available in the rstatix package that we loaded above. aov() is present in base R.</p>
+<p>The simplest ANOVA is a one-way ANOVA, which is just an extension of a t-test. T-tests can only compare 2 means, but ANOVA can compare more than 2 groups. The simplest example of an ANOVA is when we have data organized by one grouping variable (hence, one-way). For example, if we want to know how mpg varies by cyl in mtcars, we would use a one-way anova. NOTE: if variance differs significantly between our groups, we want to run a welch_anova_test() instead of a one way anova (aov). welch_anova_test() is available in the rstatix package that we loaded above. aov() is present in base R.</p>
 <p>So, let’s plot the data and then do some stats!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data=</span>mtcars, <span class="fu">aes</span>(<span class="at">x=</span>cyl, <span class="at">y=</span>mpg, <span class="at">group=</span>cyl))<span class="sc">+</span></span>
@@ -488,7 +488,7 @@ Residuals   29  301.3    10.4
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">welch_anova_test</span>(mpg<span class="sc">~</span>cyl, <span class="at">data=</span>mtcars) <span class="co">#here, we do get a p-value that is &lt;0.05, suggesting that there is an effect of cylinders onf mpg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">welch_anova_test</span>(mpg<span class="sc">~</span>cyl, <span class="at">data=</span>mtcars) <span class="co">#here, we do get a p-value that is &lt;0.05, suggesting that there is an effect of cylinders on mpg</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 7
   .y.       n statistic   DFn   DFd          p method     
@@ -523,7 +523,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p><br>
 Our plot shows us that there is almost certainly an effect of species on petal length. But, let’s check that with an anova.</p>
 <p><strong>Second step</strong>: Check ANOVA assumptions.</p>
-<p>Independence: We will assume this is fine. We can’t possibly know for sure given the source of the data. Outliers: We already checkd visually. Nothing stands out as an extreme outlier. But let’s confirm</p>
+<p>Independence: We will assume this is fine. We can’t possibly know for sure given the source of the data. Outliers: We already checked visually. Nothing stands out as an extreme outlier. But let’s confirm</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>iris <span class="sc">%&gt;%</span> </span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Species) <span class="sc">%&gt;%</span></span>
@@ -676,7 +676,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>This shows us that there is a significant effect of cylinder on mpg. However, there is no effect of gear of of the interaction of cyl and gear (cyl:gear). This type of ANOVA is called an interactive two-way anova.</p>
-<p>When building an ANOVA (or any statistical model) there are two ways to look at multiple factors. We can do additive (+) or interactive (*). Additive tests the effects of each variable seperately. Interactive does the same plus an interaction term.</p>
+<p>When building an ANOVA (or any statistical model) there are two ways to look at multiple factors. We can do additive (+) or interactive (*). Additive tests the effects of each variable separately. Interactive does the same plus an interaction term.</p>
 <p>Let’s look at the difference</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>aov1<span class="ot">&lt;-</span><span class="fu">aov</span>(mpg<span class="sc">~</span>cyl<span class="sc">*</span>gear, <span class="at">data=</span>mtcars)</span>
@@ -729,7 +729,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>Great, we know about that effect. But which number of cylinders gives us the best mpg? It looks like 4 is the answer. But we still don’t know! That is really what our hypothesis is most likely the be!</p>
-<p>To test that, we need to do a post-hoc test. I like the TUKEY honest significant difference test (which functions like a bnunch of t-tests all at once)</p>
+<p>To test that, we need to do a post-hoc test. I like the TUKEY honest significant difference test (which functions like a bunch of t-tests all at once)</p>
 <p>Here is how we do it!</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>aovtest<span class="ot">&lt;-</span><span class="fu">aov</span>(mpg<span class="sc">~</span>cyl, <span class="at">data=</span>mtcars)</span>
@@ -766,9 +766,9 @@ $cyl
 <strong>3.)</strong> Repeat the process for the following hypothesis: “There is no difference in flipper length between binary biological sexes and/or penguin species.” Include an optimal graph (means+error at least- raw data in the background is best). Keep in mind that you now have 3 variables and only 2 dimensions, so you will need to figure out how to represent the 3rd variable. Run the appropriate stats and interpret. Don’t forget about assumptions.<br>
 <br>
 <strong>4.)</strong> Read in <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-05/trashwheel.csv">These data</a> about trash cleanup in Baltimore Harbor. <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Mr._Trash_Wheel_%2827582099121%29.jpg" class="img-fluid" alt="Mr.&nbsp;Trash Wheel doing his job"></p>
-<p>Mr.&nbsp;Trash Wheel and friends collect pollution from tributaries and Baltimore Harbor. There are now 4 such trash wheels in the area. Let’s see if we can figure out which of these wheels does the most cleaning! Using the data you just read in, test the following hypothesis: “There is no difference in plastic bottle collection across months or trashwheels.” Remember, you will need to make a useful graph, run your stats, test assumptions, and intrepret.<br>
+<p>Mr.&nbsp;Trash Wheel and friends collect pollution from tributaries and Baltimore Harbor. There are now 4 such trash wheels in the area. Let’s see if we can figure out which of these wheels does the most cleaning! Using the data you just read in, test the following hypothesis: “There is no difference in plastic bottle collection across months or trashwheels.” Remember, you will need to make a useful graph, run your stats, test assumptions, and interpret.<br>
 <br>
-<strong>5.)</strong> Render your document and submit on moodle.</p>
+<strong>5.)</strong> Render your document and submit on Lyceum.</p>
 
 
 </section>

@@ -1,5 +1,5 @@
 ---
-title: "Lab 0: getting started"
+title: "Lab 0: Getting Started"
 author: "Justin Baumann"
 format: 
   html:
@@ -12,3 +12,397 @@ format:
 
 editor: visual
 ---
+
+# **Learning Objectives**
+
+IN THIS TUTORIAL YOU WILL LEARN:\
+1.) How to access and/or install R and RStudio\
+2.) How to navigate RStudio\
+3.) How to set and change the working directory\
+4.) How to setup an RStudio Project\
+5.) How to make a quarto doc\
+6.) Some R basics\
+7.) How to annotate code\
+
+# Additional Tutorials and Resources
+
+[Datacamp Tidyverse tutorial](https://www.datacamp.com/community/tutorials/tidyverse-tutorial-r)
+
+[Books and workshops for learning tidyverse](https://www.tidyverse.org/learn/)
+
+[A nice step by step walkthough of Tidyverse functions](https://and.netlify.app/tutorials/02/)
+
+[Video Tidyverse tutorial](https://www.youtube.com/watch?v=JtQfXY0lIzc)
+
+[Want to TRY some stuff on your own? Use the RStudio.cloud primers](https://rstudio.cloud/learn/primers)
+
+The best way to learn is to GOOGLE IT and try stuff
+
+------------------------------------------------------------------------
+
+# **1.) Install R and RStudio**
+
+In this course we will learn how to program in R (a coding language) using RStudio (a coding environment). RStudio makes using R easier and more user friendly!\
+We will also learn how to make pdf and html output files that include code and outputs (tables and graphs).\
+These are handy tools for reporting data and even for writing papers! We will use Quarto to do this (a new tool from the folks who designed RStudio).\
+Your lab reports will all be built using Quarto.
+
+**You have options:**\
+1. Install R and RStudio on your device(s) and use it locally\
+2. Sign up for a posit cloud account here: https://posit.cloud/plans/free. Posit Cloud is a way to access RStudio online without downloading and installing anything.
+
+::: panel-tabset
+## **Install R**
+
+To install R, we will use this link: [install R](https://cran.r-project.org/bin/)\
+1.) Choose the operating system you use (macosx or windows)\
+2.) Click the blue .pkg link that aligns with your computer and operating system (ask questions if needed)\
+3.) Follow instructions
+
+## **Install RStudio**
+
+1.) Click [this link](https://www.rstudio.com/products/rstudio/download/#download) and follow instructions\
+2.) OPEN RStudio (not R). Click on the logo that is a white R inside a blue circle (RStudio). We never need to open R, we can use RStudio.
+:::
+
+------------------------------------------------------------------------
+
+# **2.) RStudio Layout**
+
+::: panel-tabset
+RStudio looks like the image below. The screen can be divided into 4 sections. Use the tabs above to navigate to info about each section.
+
+## **Top Left**: Script
+
+Where you will write your script(s). This is where we should be writing our code! It can be run, commented, and saved here.
+
+## **Bottom Left**: Console/terminal
+
+Here you can run single lines of code and/or see error messages, warnings, and other outputs. Code should not be written here unless it is simple / for testing! Anything worth keeping should go in the script at the top left!
+
+## **Top Right**: Environment, History, etc...
+
+Here you will be able to see the dataframes you have read into R or created (using the "Environment tab"). The other tabs are less useful for us at this stage, but feel free to explore them! Note: The Broom icon can be used to clear dataframes from your environment. You can minimize or maximize this and each other quadrant using the symbols at the top right of the quadrant (a collapsed page next to a full page)
+
+## **Bottom Right**: Files, Plots, Packages, etc...
+
+This is the second most important quadrant (behind top left) and we can change the working directory here very easily. Here we can see the files in our present working directory (we will learn about that next!) We can also see any plots we make in the plots tab. VERY importantly, we can see the packages we have loaded or installed in the packages tab. This will be useful to you! You can also use this tab to search the internal Help dictionary, though I will note that the internet is often more helpful!
+
+## **Top Bar**: File, Edit, Etc...
+
+You can use the top bar in RStudio much like in any other program. I'll let you explore that on your own. Notably, in the top right corner of the top bar you will see an 'R' in a blue box. This is where you can set the project you are working form. Using projects is great because it allows you an easy way to compartmentalize your code, data, figures, and working directory for a single project all in one place! We will get to this shortly.
+:::
+
+#  {.unnumbered}
+
+![](images/RStudio_layout.png)
+
+------------------------------------------------------------------------
+
+# **3.) The Working Directory** - What is it, how to check it, and how to set it!
+
+1.) We can use the getwd() command!
+
+```{r}
+getwd()
+```
+
+2.) We can also use the Bottom Right "Files" tab
+
+![](images/files.png)
+
+Here our working directory (and it's file path) can be located in the black circle. We can manually change the working directory by using the '...' in the brown circle to find any folder on our computer (or attached cloud folders), navigating to it, and then using the 'More' Cog in the green circle to "Set as working directory"
+
+3.) An alternative approach to finding the working directory in the "Files" tab. Using the "More" cog, we can select "Go to working directory"
+
+## **How to SET the working directory**
+
+1.) Using the "Files" tab to set manually: a.) Using the '...' in the 'Files' tab you can select any directory (folder) on your computer. You can also set a google drive, box, dropbox, or other shared folder as your working directory if you'd like (as long as you are syncing a folder between the cloud and your computer -- ASK me if you have questions about this!) b.) Once you navigate to a directory you still need to **SET IT** as your working directory. You do this in the "More" cog-- select "Set as working directory"
+
+2.) Set working directory with code: We use the 'setwd()' function for this. Below is an example. You will need to replace the path details with your own!
+
+```{r}
+#| eval: false
+setwd("C:/Users/Justin Baumann/Teaching/Bates College/ENV 282 - Research Design in Env Sci")
+```
+
+# **4.) RStudio Projects!**
+
+![](images/projects.png)\
+
+RStudio Projects are a great way to compartmentalize your coding work! You can store your code, outputs, input files, figures, etc all in one directory (with subdirectories). When you load your R Project, R will automatically load the last scripts you were working with on that project as well as the dataframes and items you have read in (your environment will be ready to go!). It will also navigate to the correct working directory automatically :) This will make your life easier!
+
+*To make an RStudio Project*\
+1.) Create a folder on your computer (or cloud storage) that will serve as the MAIN directory for your project. Within that folder I recommend you make subdirectories for all of your R related inputs and outputs. Maybe something like I have here:
+
+![](images/projectex.png)
+
+2.) Once you have a MAIN directory folder created (whether you've made subdirectories or not) you can create a project! Set your main folder as your working directory. Next, navigate to the TOP RIGHT of your screen and select the down arrow next to the Big "R" in a blue box. NOW, select "New Project" --\> Existing directory --\> Name the project and hit done! At this point you will see a .Rproj file appear in your MAIN directory. This means you did it right :) This .Rproj file is how you save all of your project info. It autosaves and when you select your project (Again, TOP RIGHT of your screen, select the down arrow next to the R in the blue box and then select your project name) it will load up your scripts, environment, and set your working directory as the MAIN folder. You can navigate VERY easily from here :)
+
+------------------------------------------------------------------------
+
+# **5.) Using Quarto**
+
+Quarto is a report building software that is integrated into RStudio. It replaces RMarkdown, if you have used that in the past, and is usable with python, julia, and R. Thus, learning it is a transferable skill. Quarto is designed to allow you to easily write documents that integrate text, hyperlinks, code, and images into a one neat file. This website, for example, is made entirely in Quarto! Quarto documents, or markdown documents as they are more generically known, are common in data science. these documents are great for courses, as you can do your programming, share your code, results, figures, stats, and explanations all in one document. Instead of the instructor downloading your code and running it line by line, we can see the results of the code you write just below the code itself! Super nice for assessing work. Plus, Quarto documents will not render unless the code is error free, so this is a nice way for students to check their own work.\
+Beyond course use, Quarto and markdown is excellent for creating professional looking data driven reports as well as online resources (like this website :) ). Learning Quarto is a great skill for anyone interested in programming, data, or the sciences! So, let's learn how to use it!\
+
+::: panel-tabset
+## To make a Quarto document
+
+click file -\> new file -\> Quarto document / Complete the pop up prompts and then wait for the document to load. / We want to replace the top bit (our YAML header, everything between the two lines that contains just --- at the top) with the following (use your name and title!). We use this code for the header so we can have a table of contents and so that your document will format correctly as an html file for you to turn in. Editor is set to source because you can see the code you are writing in the source editor. Visual editor is also a useful tool, but we want to stick with source editor by default.
+
+```{r eval=FALSE}
+---
+title: "Lab 1: Intro to R, RStudio, and Quarto"
+author: "Justin Baumann"
+format: 
+  html:
+    toc: true
+  pdf:
+    toc: true
+    number-sections: true
+    colorlinks: true
+editor: source
+---
+
+```
+
+## **Formatting text**
+
+Unlike in a regular R script, using the '\#' at the start of a line will not comment that line out. Instead, you can type as you would normally in an R Markdown (Rmd) document. We can format our text in the following ways:
+
+![](images/RMD_formatting.png)
+
+Bold: '**' on either end of a word, phrase, or line will make it bold!** this is in bold\*\* ='**'this is in bold'**' without the quotes around the \*\*\
+
+Line breaks: DO you want text to be on different lines? Insert a '' at the end of a line to make a line break!
+
+## **Making a code chunk**
+
+Since qmd documents are text based, we need to tell RStudio when we want to actually include code. To do this, we will insert a code chunk. To insert a code chunk:\
+
+1.) Use the keyboard shortcut 'ctrl'+'alt'+'i' (PC) or 'cmd'+'alt'+'i' (Mac) to insert a code chunk.\
+
+2.) Navigate to the top bar (of the top left quadrant of RStudio), find "+c" at the right of the bar to insert an R code chink.
+
+Once you have a code chunk inserted you will notice that the background of the chunk is gray instead of your default background color (white or black if you are in dark mode)
+
+```{r}
+#this is an example code chunk
+
+# Using '#' at the start of a line indicates a comment, which is not runnable code!
+```
+
+## **Rendering your report**
+
+To Visualize what your report will look like, click the 'visual' tab in the top bar (on the left). Note that if you do this, it CAN change your code--so be careful. You can also use the GUI to alter your report in the visual tab. This provides a nice alternative to the code based formatting options in the 'source' tab.\
+
+To actually render into an html or pdf document, you must click "Render". You can use the arrow to the right of "Render" to choose render to html or render to pdf. I suggest using HTML most of the time but you can use pdf if you prefer. You will need to successfull Render your quarto document into an html or pdf report in order to turn in your labs!
+:::
+
+------------------------------------------------------------------------
+
+# **6.) Packages and reading/writing data!**
+
+::: panel-tabset
+## **Installing and Loading libraries**
+
+Libraries are packages of functions (and sometimes data) that we use to execute tasks in R. Packages are what make R so versatile! We can do almost anything with R if we learn how to utilize the right packages.
+
+If we do not have a package already installed (for example, if you have only just downloaded R/ RStudio), we will need to use install.packages('packagename') to install each package that we need.
+
+```{r eval=FALSE}
+install.packages(tidyverse)
+```
+
+OR - We can use the 'Packages' tab in the bottom right quadrant to install packages. Simply navigate to 'Packages', select 'install packages' and enter the package names you need (separate each package by commas). **NOTE** for users for rstudio.mtholyoke.edu -- You cannot install packages to the Mt Holyoke cloud instance of R. If we need something that isn't installed we will need to contact IT!
+
+In order for a *package to work*, we must first load it! We do this as with the code libary(packagename)
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse) #for data manipulation
+library(palmerpenguins) #for some fun data!
+```
+
+**It is best practice to load all of the packages you will need at the top of your script**
+
+In this course we will be following a best practices guide that utilizes a library called 'Tidyverse' for data manipulation and analysis. Tidyverse contains many packages all in one, including the very functional 'dplyr' and 'ggplot2' packages. You will almost always use Tidyverse, so make sure to load it in :)
+
+Note the '\#' with notes after them in the code chunk above. These are called comments. You can comment out any line of code in R by using a '\#'. This is strongly recommended when you are programming. We will discuss more later!
+
+## **Looking at data!**
+
+R has integrated data sets that we can use to play around with code and learn. </br>
+
+examples: mtcars (a dataframe all about cars, this is available in R without loading a package), and iris (in the 'vegan' package, great for testing out ecology related functions and code)</br></br>
+
+**Load a dataset** R has some test datasets built into it. Let's load one and look at it!</br>
+
+```{r}
+mtcars 
+```
+
+**Using head() and tail()** Now let's look at the data frame (df) using head() and tail() </br> These tell us the column names, and let us see the top or bottom 6 rows of data.
+
+```{r}
+head(mtcars) 
+
+tail(mtcars) #tail shows the header and the last 6 rows 
+```
+
+**column attributes** If we want to see the attributes of each column we can use the str() function
+
+```{r}
+str(mtcars) #str shows attributes of each column
+```
+
+str() is very important because it allows you to see the type of data in each column. Types include: integer, numeric, factor, date, and more. If the data in a column are factors instead of numbers you may have an issue in your data (your spreadsheet)</br>
+
+**Changing column attributes** Importantly, you can change the type of the column. Here is an example
+
+```{r}
+mtcars$mpg=as.factor(mtcars$mpg) # Makes mpg a factor instead of a number
+str(mtcars)
+
+mtcars$mpg=as.numeric(as.character(mtcars$mpg)) #Changes mpg back to a number
+str(mtcars)
+
+```
+
+**Summary statistics** To see summary statistics on each column (mean, median, min, max, range), we can use summary()
+
+```{r}
+summary(mtcars) #summarizes each column
+```
+
+**Counting rows and columns** To see the number of rows and columns we can use nrow() and ncol()
+
+```{r}
+nrow(mtcars) #gives number of rows
+ncol(mtcars) #gives number of columns
+```
+
+**Naming dataframes** Rename mtcars and view in Environment tab in Rstudio
+
+```{r}
+a<-mtcars
+a
+head(a)
+```
+
+## **Write data to file (saving data)**
+
+We use the write.csv function here. a= the name of the dataframe and the name we want to give the file goes after 'file=' </br> The file name must be in quotes and must include an extension. Since we are using write.csv we MUST use .csv </br>
+
+```{r}
+write.csv(a, file='mtcars.csv')
+```
+
+## **Read a file in (import data into R)**
+
+NOTE: if you have a .xls file make sure you convert to .csv. Ensure the file is clean and orderly (rows x columns). Only 1 excel tab can be in each .csv, so plan accordingly. Note that in order to read a file in to R from your computer (or cloud server), that file MUST be located within your working directory (or you must know and enter the file path).
+
+**IF** your file is in your working directory, you can read it in like this:
+
+```{r}
+b<-read.csv('mtcars.csv')
+head(b)
+```
+
+You are welcome to use other functions to read in data (including read_csv or read.xls). Especially for beginners, I strongly encourage you to use .csv format. Other file formats can get complicated (often unnecessarily complicated). That said, R can also handle .txt, .xls, images, shapefiles (for spatial analysis or GIS style work), etc. It is very versatile! Feel free to explore :)\
+A note on read_csv -\> I consider this to be the "best" option for reading in .csv files. It is a 'smarter' version of read.csv and can automatically figure out what kind of data (numeric, factor, date, etc) each column is. If you use read.csv, you have often have to manually change these options.
+
+## **Read a file from an online source**
+
+In some cases you may be using data you've found online. Perhaps you can download, save, and then read your file into R. Sometimes that is more work than we want to do. You can just call a file directly from it's URL. Here is an example:
+
+I have a dataframe on coral cover from Belize that I want to read in. It is located on my github [coral cover data](https://github.com/jbaumann3/BIOL234_Biostats_MHC/blob/main/coralcover.csv). Let's read it directly into R! The URL you see above is **NOT** what we use in R. If you find a file on Github you want to locate the 'raw' version of the file. To do this:\
+1.) Click the link above (or find a data file on github)\
+2.) Navigate to the top right menu and look for the box that says "Raw" in it. You can click on that and open the raw file and then copy the URL. OR, you can click the box next to the "Raw" box to copy the link to the raw file. We use this link to read our data into R. This will work for any .csv you find on github. I like to get practice data from the TidyTuesday project on Github. You can find their data at the following link:\
+[Tidy Tuesday Data](https://github.com/rfordatascience/tidytuesday/tree/master/data)\
+
+```{r}
+coralcover<- read_csv('https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/coralcover.csv')
+head(coralcover)
+```
+:::
+
+------------------------------------------------------------------------
+
+# **7.) Annotating (commenting) code**
+
+You will hear most experienced programmmers talking about commenting their code. This basically means taking notes on your code and writing down what the code does and how it works. I often say "Future you will thank you" about commenting code, as we often get in a hurry and just start trying stuff in an Rscript without taking the time to document what we are doing. It is VERY hard to go back to code after time away and remember what is going on if we don't organize our code. Writing comments, using section headers, formatting, etc is SO IMPORTANT. This is why you are learning how to use quarto before we learn much programming. I want you to be organized- it is going to make learning easier.\
+\
+In this section I will teach you a few ways to comment code:\
+:::panel-tabset
+
+## **in-line comments**
+
+Commenting on each line is the traditional way to comment code. This predates Rstudio and quarto and can be a bit clunky, but is still effective and is the only easy way to comment in a typical Rscript (note that you are using a quarto doc - .qmd, not an rscript - .R). You can see many examples of in-line commenting in these tutorials, as I use it all the time. To make a commennt on a line of code, you use the '\#'. Everything after the '\#' is a comment and should be green.
+
+```{r}
+#This is a comment
+
+#In this code chunk, I will load packages and read in some data from palmerpenguins
+
+# 1. load packages
+library(tidyverse) #this line loads tidyverse
+library(palmerpenguins) # this line loads palmerpenguins
+
+# 2. read data from penguins
+pens<-penguins #reads the dataframe 'penguins' from palmerpenguins and saves it in my environment as 'pens'
+
+```
+
+## **quarto as comments**
+
+Quarto and other markdown programs allow you to write a lot more text than a standard R script does. SO, USE IT! Write in sentences, paragraphs, etc about what you are doing. Use your formatting tricks (section headers, bold, italic, etc). Look at section 5 above for examples.
+
+## **code annotation in quarto**
+
+Quarto is very functional and allows you to make really nice looking annotations in a footnote style. Here is what that looks like, using the same code from the previous section:
+
+```{r}
+#This is a comment
+
+#In this code chunk, I will load packages and read in some data from palmerpenguins
+
+# 1. load packages
+library(tidyverse) # <1>
+library(palmerpenguins) # <2>
+
+# 2. read data from penguins
+pens<-penguins # <3>
+```
+
+1.  this line loads tidyverse
+
+2.  this line loads palmerpenguins
+
+3.  reads the dataframe 'penguins' from palmerpenguins and saves it in my environment as 'pens'\
+    \
+    Here is what the code for the above footnotes looks like ![code](images/annotation.jpg)
+
+------------------------------------------------------------------------
+
+# **Lab 0 Assignment**
+
+**1.** Install R and Rstudio. Get Rstudio running on your computer and get familiar with the layout.
+
+**2.** Make a folder (directory) on your computer for this course and then make an Rstudio project for this course that runs from that folder
+
+**3.** Make a new quarto document, this is where you will do the lab assignment that you will turn in. Make a title and subject headers for each question. Copy the instructions and then add your work below. Make the question numbers bold. For numberr 1 (install Rstudio)- write me a short description of what you did (i.e.: "I installed R and Rstudio following this tutorial"), where "this" is a hyperlink to the tutorial you used (this lab, for example). For number 2: Set your folder for this class as your working directory. Navigate to it in the "files" tab on Rstudio. Take a screenshot and insert that screenshot as an image into your quarto doc.
+
+**4.** Install the following packages: Tidyverse, lubridate, performance, palmerpenguins, patchwork, ggsci. Once installed, load them (using library()) in a code chunk in your quarto doc. **remember** that we generally want to load packages and any data at the top of our quarto doc, but for this assignment we will just do it in section 4.
+
+**5.** Read in [THESE data](https://raw.githubusercontent.com/jbaumann3/BIOL234_Biostats_MHC/main/belize_coral_survey_data_2016.csv) and take a look at the shape of the data using a.) head, b.) tail, c.) str(), d. summary (of a numeric column), and e.) count the number of rows and columns (using code!)
+
+**6.** Change a numeric column to a factor.
+
+**7.** Write your dataframe to file (save your dataframe as a .csv on your computer). It should save in your working directory. Next, read that file back in to R (This seems silly, but we are practicing!)
+
+**8.** Go back through your code and annotate it in two places using any style you like. Better yet, go in an reoganize your code into neat sections with clear formatted headers! Mess around with formatting and organizing tools until you get a structure that works for you. Remember, annotations show me that you are learning what your code does and how to write it -- this is what I really want to see for an E. 
+
+**9.** Render your file as a .html. Make sure you have "embed-resources: true" in your header. Please ask if you have questions! Once your file renders and saves it may open automatically (so you can check it). It also may not pop up automatically but you can find the .html in your working directory. If you get an error or the file doesn't render, there is an error in your code somewhere (quarto docs ONLY render if there are no code errors).
+
+------------------------------------------------------------------------

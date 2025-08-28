@@ -326,7 +326,8 @@ cookieconsent.run({
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>The tidyverse package contains the following packages: 1.) ggplot2: the best graphing package in R<br>
+<p>The tidyverse package contains the following packages:<br>
+1.) ggplot2: the best graphing package in R<br>
 2.) dplyr: most of our data wrangling tools come from here<br>
 3.) tidyr: tools for data tidying (cleaning, reshaping)<br>
 4.) readr: tools for reading in different types of data – this is where the read_csv() function comes from<br>
@@ -402,7 +403,7 @@ Here’s how we do that:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>penguins<span class="ot">&lt;-</span>penguins </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Here, the name of the new dataframe we want in our environment is to the left of the arrow and the name of the object we are calling is to the right. In simpler terms, we are defining a new dataframe called penguins (or any name we want) and it is defined as just an exact copy of penguins (the object that is already defined within palmerpenguins. This is the simplest example – we will quickly move on to more complex things. You will see that when you run this the dataframe ‘penguins’ appears in the local environment. You can call your local file anything you want, it does not need to be an exact copy of the orignal name! Choose names that are meaningful to you, but keep the names short and avoid spaces and other special characters as much as possible.</p>
+<p>Here, the name of the new dataframe we want in our environment is to the left of the arrow and the name of the object we are calling is to the right. In simpler terms, we are defining a new dataframe called penguins (or any name we want) and it is defined as just an exact copy of penguins (the object that is already defined within palmerpenguins. This is the simplest example – we will quickly move on to more complex things. You will see that when you run this the dataframe ‘penguins’ appears in the local environment. You can call your local file anything you want, it does not need to be an exact copy of the original name! Choose names that are meaningful to you, but keep the names short and avoid spaces and other special characters as much as possible.</p>
 </div>
 </div>
 </div>
@@ -440,7 +441,7 @@ Here’s how we do that:</p>
 </div>
 </div>
 <p>Species is column 1 and bill length is column 3. Those are the only columns we want!</p>
-<p><strong>Step 2.)</strong> Select columns we want to keep using bracket syntax. Here we wil use this basic syntax: df[rows, columns] We can input the rows and/or columns we want inside our brackets. If we want more than 1 row or column we will need to use a ‘c()’ for concatenate (combine). To select just species and bill length we would do the following:</p>
+<p><strong>Step 2.)</strong> Select columns we want to keep using bracket syntax. Here we will use this basic syntax: df[rows, columns] We can input the rows and/or columns we want inside our brackets. If we want more than 1 row or column we will need to use a ‘c()’ for concatenate (combine). To select just species and bill length we would do the following:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(penguins[,<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]) <span class="co">#Selecting NO specific rows and 2 columns (numbers 1 and 3)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -598,7 +599,7 @@ Toyota Corolla 33.9   4  71.1 65 4.22 1.835 19.90  1  1    4    1</code></pre>
 <pre><code> [1] 4 4 4 4 4 4 4 4 4 4 4</code></pre>
 </div>
 </div>
-<p><strong>Base R example (subset)</strong> In this case, the subset() function that is in base R works almost exactly like the filter() function. You can essentially use them interchangably.</p>
+<p><strong>Base R example (subset)</strong> In this case, the subset() function that is in base R works almost exactly like the filter() function. You can essentially use them interchangeably.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co">#subset mtcars to include only 4 cylinder cars</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>cars4cyl2<span class="fl">.0</span><span class="ot">&lt;-</span><span class="fu">subset</span>(mtcars, cyl<span class="sc">==</span><span class="st">'4'</span>)</span>
@@ -739,7 +740,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 6 4848        1     1      1     1      NA    NA    NA    NA    NA    NA    NA</code></pre>
 </div>
 </div>
-<p>The resulting data frame above is a wide version of the orignal in which each station now has its own column. This is likely how we would record the data in the field!</p>
+<p>The resulting data frame above is a wide version of the original in which each station now has its own column. This is likely how we would record the data in the field!</p>
 <p><strong>Example of Wide Format Data</strong> Let’s just use widefish for this since we just made it into wide format :)</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(widefish)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -773,7 +774,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 6 4842  BCE         1</code></pre>
 </div>
 </div>
-<p>And now we are back to our original data frame! The ‘!fish’ means simply that we do not wish to pivot the fish column. It remains unchanged. A ‘!’ before something in code usually means to exclude or remove. We’ve used names_to and values_to to give names to our new columns. pivot_longer will look for factors and put those in the names_to column and it will look for values (numeric) to pupt in the values_to column.</p>
+<p>And now we are back to our original data frame! The ‘!fish’ means simply that we do not wish to pivot the fish column. It remains unchanged. A ‘!’ before something in code usually means to exclude or remove. We’ve used names_to and values_to to give names to our new columns. pivot_longer will look for factors and put those in the names_to column and it will look for values (numeric) to put in the values_to column.</p>
 <p><strong>NOTES</strong> There are MANY other ways to modify pivot_wider() and pivot_longer(). I encourage you to look in the help tab, the tidyR/ Tidyverse documentation online, and for other examples on google and stack overflow.</p>
 <hr>
 </div>
@@ -807,7 +808,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 5 5 07/01/2021 00:00:00      B1_T1       Temp 17.70
 6 6 07/01/2021 00:00:00     B1_pH1         pH  8.12</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat) <span class="co">#what are the attributes of each column (</span><span class="al">NOTE</span><span class="co"> the attirbutes of the date column -- it is a factor and we want it to be a date/time0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(dat) <span class="co">#what are the attributes of each column (</span><span class="al">NOTE</span><span class="co"> the attributes of the date column -- it is a factor and we want it to be a date/time0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>'data.frame':   47200 obs. of  5 variables:
  $ X         : int  1 2 3 4 5 6 7 8 9 10 ...
@@ -882,7 +883,7 @@ Volvo 142E     21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2</code></pre>
 <strong>7.)</strong> Make a new data frame called ‘lobs’ from the ‘Loblolly’ data that is pre-loaded in R. These data show height (ft) and age (yr) of trees, identified by a numerical code (Seed).<br>
 <strong>8.)</strong> Pivot this data wider such that every row is an age and every column is a different ‘Seed’. We should see height data across ages for each individual ‘Seed’ (tree) in each column.<br>
 <strong>9.)</strong> Once you successful pivot the data wider, let’s pivot it back to long format. This should give us just three columns again (age, seed, and height). Note that when you pivot_longer you will need to name your new columns. See help for pivot_longer() for some examples. This should look similar or the same as our original ‘lobs’ data frame.<br>
-<strong>10.)</strong> Render your document and turn in your .html file on Moodle. Don’t forget embed-resources: true in your header!</p>
+<strong>10.)</strong> Render your document and turn in your .html file on Lyceum. Don’t forget embed-resources: true in your header!</p>
 
 
 </section>

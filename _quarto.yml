@@ -23,7 +23,7 @@ website:
       style: "docked"
       background: "#B2B3B2"
       contents: 
-       - getting_started.qmd
+       - Lab_0.qmd
        - Lab_1.qmd
        - Lab_2.qmd
        - Lab_3.qmd

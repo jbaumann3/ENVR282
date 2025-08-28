@@ -133,7 +133,7 @@ Technically, the levene test tells us we cannot do an ANOVA without doing a welc
 
 # **3.) One-way Anova**
 
-The simplest ANOVA is a one-way ANOVA, which is just an extension of a t-test. T-tests can only compare 2 means, but ANOVA can compare more than 2 groups. The simplest example of an ANOVA is when we have data organized by one grouping variable (hence, one-way). For example, if we want to know how mpg varies by cyl in mtcars, we would use a one-way anova. NOTE: if variance differs significantly between our groups, we want to run a welch_anova_test() instead of a one way anove (aov). welch_anova_test() is available in the rstatix package that we loaded above. aov() is present in base R.
+The simplest ANOVA is a one-way ANOVA, which is just an extension of a t-test. T-tests can only compare 2 means, but ANOVA can compare more than 2 groups. The simplest example of an ANOVA is when we have data organized by one grouping variable (hence, one-way). For example, if we want to know how mpg varies by cyl in mtcars, we would use a one-way anova. NOTE: if variance differs significantly between our groups, we want to run a welch_anova_test() instead of a one way anova (aov). welch_anova_test() is available in the rstatix package that we loaded above. aov() is present in base R.
 
 So, let's plot the data and then do some stats!
 
@@ -145,7 +145,7 @@ mtaov<-aov(mpg~cyl, data=mtcars)
 mtaov #normally, an aov() will give us a p-value. Here it recognizes that "estimated effects may be unbalanced". We can find the p-value in summary()
 summary(mtaov) #this anova will still give us a p-value
 
-welch_anova_test(mpg~cyl, data=mtcars) #here, we do get a p-value that is <0.05, suggesting that there is an effect of cylinders onf mpg
+welch_anova_test(mpg~cyl, data=mtcars) #here, we do get a p-value that is <0.05, suggesting that there is an effect of cylinders on mpg
 ```
 
 ## **Another Anova example**
@@ -170,7 +170,7 @@ Our plot shows us that there is almost certainly an effect of species on petal l
 
 **Second step**: Check ANOVA assumptions.
 
-Independence: We will assume this is fine. We can't possibly know for sure given the source of the data. Outliers: We already checkd visually. Nothing stands out as an extreme outlier. But let's confirm
+Independence: We will assume this is fine. We can't possibly know for sure given the source of the data. Outliers: We already checked visually. Nothing stands out as an extreme outlier. But let's confirm
 
 ```{r}
 iris %>% 
@@ -259,7 +259,7 @@ summary(aov1)
 
 This shows us that there is a significant effect of cylinder on mpg. However, there is no effect of gear of of the interaction of cyl and gear (cyl:gear). This type of ANOVA is called an interactive two-way anova.
 
-When building an ANOVA (or any statistical model) there are two ways to look at multiple factors. We can do additive (+) or interactive (\*). Additive tests the effects of each variable seperately. Interactive does the same plus an interaction term.
+When building an ANOVA (or any statistical model) there are two ways to look at multiple factors. We can do additive (+) or interactive (\*). Additive tests the effects of each variable separately. Interactive does the same plus an interaction term.
 
 Let's look at the difference
 
@@ -297,7 +297,7 @@ summary(aovtest)
 
 Great, we know about that effect. But which number of cylinders gives us the best mpg? It looks like 4 is the answer. But we still don't know! That is really what our hypothesis is most likely the be!
 
-To test that, we need to do a post-hoc test. I like the TUKEY honest significant difference test (which functions like a bnunch of t-tests all at once)
+To test that, we need to do a post-hoc test. I like the TUKEY honest significant difference test (which functions like a bunch of t-tests all at once)
 
 Here is how we do it!
 
@@ -326,6 +326,6 @@ The Tukey shows us comparisons of each cylinder category with one another. We se
 \
 **4.)** Read in [These data](https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2024/2024-03-05/trashwheel.csv) about trash cleanup in Baltimore Harbor. ![Mr. Trash Wheel doing his job](https://upload.wikimedia.org/wikipedia/commons/2/20/Mr._Trash_Wheel_%2827582099121%29.jpg)
 
-Mr. Trash Wheel and friends collect pollution from tributaries and Baltimore Harbor. There are now 4 such trash wheels in the area. Let's see if we can figure out which of these wheels does the most cleaning! Using the data you just read in, test the following hypothesis: "There is no difference in plastic bottle collection across months or trashwheels." Remember, you will need to make a useful graph, run your stats, test assumptions, and intrepret.\
+Mr. Trash Wheel and friends collect pollution from tributaries and Baltimore Harbor. There are now 4 such trash wheels in the area. Let's see if we can figure out which of these wheels does the most cleaning! Using the data you just read in, test the following hypothesis: "There is no difference in plastic bottle collection across months or trashwheels." Remember, you will need to make a useful graph, run your stats, test assumptions, and interpret.\
 \
-**5.)** Render your document and submit on moodle.
+**5.)** Render your document and submit on Lyceum.

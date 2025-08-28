@@ -143,7 +143,7 @@ cookieconsent.run({
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-labs">    
         <li>
-    <a class="dropdown-item" href="./getting_started.html" rel="" target="">
+    <a class="dropdown-item" href="./Lab_0.html" rel="" target="">
  <span class="dropdown-text">Lab 0: Getting Started</span></a>
   </li>  
         <li>
@@ -218,7 +218,7 @@ cookieconsent.run({
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_3.html">Lab 3: Advanced data wrangling and graphing</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Lab_4.html">Lab 4: Beginner Stats</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
     </div>
@@ -232,7 +232,7 @@ cookieconsent.run({
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./getting_started.html" class="sidebar-item-text sidebar-link">
+  <a href="./Lab_0.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lab 0: Getting Started</span></a>
   </div>
 </li>
@@ -279,14 +279,8 @@ cookieconsent.run({
   <li><a href="#load-packages" id="toc-load-packages" class="nav-link active" data-scroll-target="#load-packages"><strong>Load packages</strong></a></li>
   <li><a href="#a-note-on-statistics-and-experimental-design" id="toc-a-note-on-statistics-and-experimental-design" class="nav-link" data-scroll-target="#a-note-on-statistics-and-experimental-design"><strong>A note on statistics and experimental design</strong></a></li>
   <li><a href="#correlation-between-numerical-variables" id="toc-correlation-between-numerical-variables" class="nav-link" data-scroll-target="#correlation-between-numerical-variables"><strong>1.) Correlation between numerical variables</strong></a></li>
-  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><strong>2.) Simple Linear Regression</strong></a>
-  <ul class="collapse">
-  <li><a href="#plotting-a-regression-line" id="toc-plotting-a-regression-line" class="nav-link" data-scroll-target="#plotting-a-regression-line">plotting a regression line</a></li>
-  <li><a href="#assumptions" id="toc-assumptions" class="nav-link" data-scroll-target="#assumptions"><strong>Assumptions</strong></a></li>
-  <li><a href="#an-alternative-assumption-check" id="toc-an-alternative-assumption-check" class="nav-link" data-scroll-target="#an-alternative-assumption-check"><strong>An alternative assumption check</strong></a></li>
-  <li><a href="#when-data-are-not-linear" id="toc-when-data-are-not-linear" class="nav-link" data-scroll-target="#when-data-are-not-linear"><strong>when data are not linear</strong></a></li>
-  <li><a href="#linear-regression-with-categorical-variables" id="toc-linear-regression-with-categorical-variables" class="nav-link" data-scroll-target="#linear-regression-with-categorical-variables"><strong>Linear Regression with categorical variables</strong></a></li>
-  </ul></li>
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><strong>2.) Simple Linear Regression</strong></a></li>
+  <li><a href="#t-test" id="toc-t-test" class="nav-link" data-scroll-target="#t-test"><strong>3.) T-test</strong></a></li>
   <li><a href="#lab-4-assignment" id="toc-lab-4-assignment" class="nav-link" data-scroll-target="#lab-4-assignment"><strong>4: Lab 4 Assignment</strong></a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="Lab_4.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -339,7 +333,7 @@ cookieconsent.run({
 <section id="correlation-between-numerical-variables" class="level1">
 <h1><strong>1.) Correlation between numerical variables</strong></h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Correlation Coefficients</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Calculate a correlation coeficient (r)</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Spearman’s Test</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Multiple Correlations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Chi-Square</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Correlation Coefficients</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Calculate a correlation coefficient (r)</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Spearman’s Test</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false">Multiple Correlations</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false">Chi-Square</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <p>A <strong>correlation coefficient (r)</strong> tells us the relationship (strength and direction) between two variables. These coefficients can be positive or negative and will range from 0 to 1 (or negative 1). Values nearer to 1 (or negative 1) indicate stronger correlations and values closer to 0 indicate weaker correlations</p>
@@ -530,7 +524,7 @@ X-squared = 24.389, df = 10, p-value = 0.006632</code></pre>
 <section id="simple-linear-regression" class="level1">
 <h1><strong>2.) Simple Linear Regression</strong></h1>
 <p>A linear regression essentially compares the correlation of one variable with another. The closer the relationship is to 1:1 (a diagonal line at 45 degrees from the x and y axis) the more correlated the two variables are. Does correlation imply causation? NO, it does not. But this type of analysis driven by hypotheses can help us seek causation/ mechanisms and statistically assess relationships.</p>
-<p>Let’s take a look at a simple linear regression. To do this, we will use the lm() function in R. The syntax should always be reponse variable ~ explanatory variable We will do this with the iris data.</p>
+<p>Let’s take a look at a simple linear regression. To do this, we will use the lm() function in R. The syntax should always be response variable ~ explanatory variable We will do this with the iris data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>lm1<span class="ot">&lt;-</span><span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data=</span>iris)</span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -557,9 +551,10 @@ F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>The above table produces estimates for the slope and intercept of the line.</p>
 <p>At the bottom we see R2 values (multiple and adjusted. We usually use adjusted Rsquared). We also see an overall p-value for our linear regression model (H0= slope of our regression line = 0).</p>
-<p>:::panel-tabset</p>
-<section id="plotting-a-regression-line" class="level2">
-<h2 class="anchored" data-anchor-id="plotting-a-regression-line">plotting a regression line</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">plotting a regression line</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>Assumptions</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>An alternative assumption check</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>when data are not linear</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false"><strong>Linear Regression with categorical variables</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 <p>It is very easy to make a regression line in ggplot. We can plot our scatterplot as we normally would and then we add the regression line using the geom_smooth() argument.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x=</span>Petal.Length, <span class="at">y=</span>Sepal.Length))<span class="sc">+</span></span>
@@ -576,9 +571,8 @@ F-statistic: 468.6 on 1 and 148 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><br>
 The blue line represents our regression line (y~x). The gray around the line is the SE. We can add SE=FALSE to our geom_smooth() to turn that off:</p>
 <p>geom_smooth(method=‘lm’, SE=FALSE)</p>
-</section>
-<section id="assumptions" class="level2">
-<h2 class="anchored" data-anchor-id="assumptions"><strong>Assumptions</strong></h2>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
 <p>Linear regressions have 4 assumptions:</p>
 <p><strong>1.)</strong> Linearity of the data: We assume the relationship between predictor (x) and outcome/dependent variable (y) is approx. linear. At each value of X there is a population of possible Y-values whose mean lies on the regression line.<br>
 </p>
@@ -658,9 +652,8 @@ If assumptions of normality and equal variance are met, a residual plot should h
 <br>
 </p>
 <p>The residual plot above shows meets all assumptions, though this analysis is somewhat subjective.</p>
-</section>
-<section id="an-alternative-assumption-check" class="level2">
-<h2 class="anchored" data-anchor-id="an-alternative-assumption-check"><strong>An alternative assumption check</strong></h2>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
 <p>I think it is easier to do a more comprehensive visual check with the performance package in R. We can easily visually check the first 3 assumptions using check_model(). Assumption 4 requires us to think about experimental design.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>lm1<span class="ot">&lt;-</span><span class="fu">lm</span>(Sepal.Length <span class="sc">~</span> Petal.Length, <span class="at">data=</span>iris)</span>
@@ -673,9 +666,8 @@ If assumptions of normality and equal variance are met, a residual plot should h
 <p><br>
 Using the plots above, we can check 3 / 4 of our assumptions and look for influential observations/outliers. The plots even tell us what to look for on them! This is a bit simpler than trying to analyze the residual plot.<br>
 As with the residual plot, this analysis of assumptions is somewhat subjective. That is ok.</p>
-</section>
-<section id="when-data-are-not-linear" class="level2">
-<h2 class="anchored" data-anchor-id="when-data-are-not-linear"><strong>when data are not linear</strong></h2>
+</div>
+<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
 <p>Sometimes the relationship between two variables is not linear! There are many types of common relationships including logarithmic and exponential. We can often visualize these relationships and <strong>Transform</strong> our data to make them linear with some simple math.</p>
 <p>Let’s look at an example:</p>
 <div class="cell">
@@ -730,9 +722,8 @@ As with the residual plot, this analysis of assumptions is somewhat subjective. 
 </div>
 </div>
 <p>Here we can see that the transformation was fairly trivial (the data were close enough to a straight line already). BUT, technically, the first plot shows a logarithmic trend. We can transform one of the variables to generate a more linear trend. We can guess a transformation and check it with graphs or we can use our knowledge of mathematical relationships to understand how we might make our relationship more linear.</p>
-</section>
-<section id="linear-regression-with-categorical-variables" class="level2">
-<h2 class="anchored" data-anchor-id="linear-regression-with-categorical-variables"><strong>Linear Regression with categorical variables</strong></h2>
+</div>
+<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
 <p>We can look at mtcars this time…</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -801,13 +792,22 @@ Here we see some concern about Homoscedasticity and homogeneity of variance. We 
 </p>
 <p>Remember our hypothesis (null) was: “There will be no effect of cylinder on horsepower.” We are able to reject this null hypothesis and suggest that indeed horsepower increases as cylinder increases. We might also add caveats that homoscedasticity was not confirmed due to low sample size, but the result seems clear enough that this likely doesn’t matter.<br>
 <br>
-# <strong>3.) T-test</strong></p>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="t-test" class="level1">
+<h1><strong>3.) T-test</strong></h1>
 <p>The t-test (or students’ t-test) is a basic statistical test used to assess whether or not the means of two groups are different from one another. In this test, the null hypothesis is that the two means are equal (or that there is no difference between the two means).</p>
 <p><strong>A t-test should only be used if the following assumptions are met:</strong><br>
 <strong>1.)</strong> the two distributions whose means we are comparing must be <strong>normally distributed</strong><br>
 <strong>2.)</strong> The variances of the two groups must be <strong>equal</strong><br>
 </p>
-<p><strong>Generate example data</strong></p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><strong>Generate example data</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><strong>Assumption 1.) Assessing normality</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-3" role="tab" aria-controls="tabset-3-3" aria-selected="false"><strong>Assumption 2.) Assessing equal variance</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-4" role="tab" aria-controls="tabset-3-4" aria-selected="false"><strong>When can we ignore assumptions?</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-5" role="tab" aria-controls="tabset-3-5" aria-selected="false"><strong>A basic T-test in R</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-6-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-6" role="tab" aria-controls="tabset-3-6" aria-selected="false"><strong>Some examples</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>iris2<span class="ot">&lt;-</span>iris <span class="sc">%&gt;%</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Species <span class="sc">!=</span> <span class="st">'setosa'</span>) <span class="sc">%&gt;%</span></span>
@@ -831,10 +831,8 @@ Here we see some concern about Homoscedasticity and homogeneity of variance. We 
 </div>
 <p>We will use these data for our examples today. T-test requires <em>only</em> 2 groups/populations. We will assess the alternative hypothesis that one of our numerical variables (sepal length, sepal width, petal length, or petal width) differs by species.</p>
 <p>But first, we must <strong>test our assumptions</strong></p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>Assumption 1.) Assessing normality</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>Assumption 2.) Assessing equal variance</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>When can we ignore assumptions?</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-4" role="tab" aria-controls="tabset-2-4" aria-selected="false"><strong>A basic T-test in R</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-5" role="tab" aria-controls="tabset-2-5" aria-selected="false">Some examples</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
 <p><em>Method 1: the Shapiro-Wilk Test</em> If p &lt; 0.05 then the distribution is significantly different from normal.</p>
 <p>Step 1: we need to create separate data frames for each species to assess normality of each variable by species!</p>
 <div class="cell">
@@ -999,7 +997,7 @@ W = 0.96739, p-value = 0.1809</code></pre>
 </div>
 </div>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-3-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-3-tab">
 <p>AKA homogeneity of variance<br>
 </p>
 <p><strong>Methods 1: F-test</strong> We will use the <strong>F-Test</strong> to compare the variance of two populations. This can only be used with <em>2</em> populations and is thus only useful when we run a t-test.</p>
@@ -1183,13 +1181,13 @@ Since p-values are more like guidelines, we also want to visualize our data to a
 </div>
 </div>
 </div>
-<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<div id="tabset-3-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-4-tab">
 <p>We can if our sample sizes are large. If n is small, we should not ignore this assumption. There are alternatives to dealing with normality that we can discuss in the ANOVA section (such as transforming the data)</p>
 <p><a href="https://thestatsgeek.com/2013/09/28/the-t-test-and-robustness-to-non-normality/">For more info on that</a></p>
 <p>We can also ignore the equal variance requirement if we use the Welch t-test (default in R)<br>
 </p>
 </div>
-<div id="tabset-2-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-4-tab">
+<div id="tabset-3-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-5-tab">
 <p>Finally, let’s do some T-tests!<br>
 </p>
 <p>H0: No difference between the means of the 2 populations p&lt;0.05 allows us to reject this H0 (indicating a likely difference)</p>
@@ -1246,10 +1244,10 @@ Since p-values are more like guidelines, we also want to visualize our data to a
 </div>
 </div>
 </div>
-<div id="tabset-2-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-5-tab">
+<div id="tabset-3-6" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-6-tab">
 <p><strong>Does Petal Length differ by species?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>t1<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Petal.Length<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. BUt, we can also change them (as I will show later)</span></span>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" aria-hidden="true" tabindex="-1"></a>t1<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Petal.Length<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. But, we can also change them (as I will show later)</span></span>
 <span id="cb95-2"><a href="#cb95-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb95-3"><a href="#cb95-3" aria-hidden="true" tabindex="-1"></a>t1 <span class="co">#p&lt;0.05 suggests that there is a significant difference in petal length between species</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1270,7 +1268,7 @@ mean in group versicolor  mean in group virginica
 Our p&lt;0.05 suggests that there is a significant effect of species on petal length (petal length differs by species). BUT, do we get a clear explanation of which group is higher or lower? Look at the Welch T-test output and you can see the means! You can also use the graph we made to visualize this!</p>
 <p><strong>Does Petal Width differ by species?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>t2<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Petal.Width<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. BUt, we can also change them (as I will show later)</span></span>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" aria-hidden="true" tabindex="-1"></a>t2<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Petal.Width<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. But, we can also change them (as I will show later)</span></span>
 <span id="cb97-2"><a href="#cb97-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb97-3"><a href="#cb97-3" aria-hidden="true" tabindex="-1"></a>t2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1290,7 +1288,7 @@ mean in group versicolor  mean in group virginica
 <p><br>
 <strong>Does Sepal Width differ between species?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>t3<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Sepal.Width<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. BUt, we can also change them (as I will show later)</span></span>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>t3<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Sepal.Width<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. But, we can also change them (as I will show later)</span></span>
 <span id="cb99-2"><a href="#cb99-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb99-3"><a href="#cb99-3" aria-hidden="true" tabindex="-1"></a>t3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1310,7 +1308,7 @@ mean in group versicolor  mean in group virginica
 <p><br>
 <strong>Does Sepal Length differ between species?</strong></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>t4<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Sepal.Length<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. BUt, we can also change them (as I will show later)</span></span>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" aria-hidden="true" tabindex="-1"></a>t4<span class="ot">&lt;-</span><span class="fu">t.test</span>(<span class="at">data=</span>iris2, Sepal.Length<span class="sc">~</span>Species, <span class="at">alternative=</span><span class="st">'two.sided'</span>, <span class="at">var.equal=</span><span class="cn">FALSE</span>) <span class="co">#two.sided and var.equal= FALSE are default, so we don't have to list them. But, we can also change them (as I will show later)</span></span>
 <span id="cb101-2"><a href="#cb101-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb101-3"><a href="#cb101-3" aria-hidden="true" tabindex="-1"></a>t4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1332,7 +1330,6 @@ mean in group versicolor  mean in group virginica
 </div>
 </div>
 </section>
-</section>
 <section id="lab-4-assignment" class="level1">
 <h1><strong>4: Lab 4 Assignment</strong></h1>
 <p><br>
@@ -1351,7 +1348,7 @@ mean in group versicolor  mean in group virginica
 <br>
 <strong>4.)</strong> Filter out chinstrap penguins so we only have 2 species. Now, assess the following hypothesis: “There is no difference in flipper length between gentoo and adelie penguins.” Make a graph that is a good visual hypothesis test, run the appropriate stats, report the results, and use those results to assess the hypothesis.<br>
 <br>
-<strong>5.)</strong> Render your document and submit on moodle.</p>
+<strong>5.)</strong> Render your document and submit on Lyceum.</p>
 
 
 </section>
